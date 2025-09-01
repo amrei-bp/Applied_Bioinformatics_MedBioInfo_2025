@@ -23,7 +23,7 @@
     "href": "index.html",
     "title": "Applied Bioinformatics",
     "section": "",
-    "text": "The main aim with this course is to share how to use bioinformatics tools in a reproducible and scalable way. I will showcase the use of environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.\nThe website will remain active after the course so that you have access to the material even after the course.\nI want to thank Lizel Potgieter for her valuable contributions to the materials for this course!",
+    "text": "The main aim with this course is to share how to use bioinformatics tools in a reproducible and scalable way. I will showcase the use of environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.\nThe website will remain active after the course so that you have access to the material even after the course.\nI want to thank Lizel Potgieter for her valuable contributions to the materials for this course!\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nVScode\nSettting up and getting aquainted with VScode",
     "crumbs": [
       "Home"
     ]
