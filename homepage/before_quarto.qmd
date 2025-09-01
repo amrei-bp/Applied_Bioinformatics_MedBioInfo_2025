@@ -1,0 +1,5 @@
+---
+title: "Quarto"
+---
+
+Install the quarto extension in VScode. 

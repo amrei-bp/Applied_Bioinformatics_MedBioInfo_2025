@@ -1,0 +1,15 @@
+---
+title: "Applied Bioinformatics"
+---
+
+The main aim with this course is to share how to use bioinformatics tools in a reproducible and scalable way. I will showcase the use of environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with. 
+
+The website will remain active after the course so that you have access to the material even after the course. 
+
+I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuable contributions to the materials for this course! 
+
+
+
+
+
+

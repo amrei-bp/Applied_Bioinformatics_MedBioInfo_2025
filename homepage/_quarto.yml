@@ -1,0 +1,44 @@
+project:
+  type: website
+
+website:
+  title: "Applied Bioinformatics"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+  search: 
+    location: navbar
+    type: textbox
+
+  sidebar:
+    style: "docked"
+    search: true
+    logo: figures/logo/SLUBI_logo.png
+    contents:
+      - text: "Home"
+        href: index.qmd
+      - section: "Before the course"
+        contents:
+          - before_VScode.qmd
+          - before_quarto.qmd
+          - before_git.qmd
+          - before_github.qmd
+          - before_quarto_and_git.qmd
+
+
+      - section: "During the course"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+
+execute:
+  freeze: auto
+
