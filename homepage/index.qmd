@@ -8,8 +8,12 @@ The website will remain active after the course so that you have access to the m
 
 I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuable contributions to the materials for this course! 
 
+| Topic  | Content  |
+|--------|--------|
+| VScode  | [Settting up and getting aquainted with VScode](before_VScode.qmd) |
 
 
+: Before the course {.striped .hover}
 
 
 
