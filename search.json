@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This course is a hosted by the Swedish Agricultural University’s Bioinformatics Infrastructure (SLUBI).\nIn this course we hope to give you information on how to use reproducible bioinformatics pipelines, report results in a streamlined manner, and implement the system in your own research.\nFeedback is appreciated!\n(This is a Quarto website. To learn more about Quarto websites visit https://quarto.org/docs/websites.)"
-  },
-  {
     "objectID": "before_github.html",
     "href": "before_github.html",
     "title": "GitHub",
@@ -16,6 +9,18 @@
       "Home",
       "Before the course",
       "GitHub"
+    ]
+  },
+  {
+    "objectID": "before_quarto_and_git.html",
+    "href": "before_quarto_and_git.html",
+    "title": "Quarto Homepage on Github",
+    "section": "",
+    "text": "Creating a website in Quarto\nPublish the quarto homepage on GitHub via GitHub Actions.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Quarto Homepage on Github"
     ]
   },
   {
@@ -41,15 +46,10 @@
     ]
   },
   {
-    "objectID": "before_quarto_and_git.html",
-    "href": "before_quarto_and_git.html",
-    "title": "Quarto Homepage on Github",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Creating a website in Quarto\nPublish the quarto homepage on GitHub via GitHub Actions.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "Quarto Homepage on Github"
-    ]
+    "text": "This course is a hosted by the Swedish Agricultural University’s Bioinformatics Infrastructure (SLUBI).\nIn this course we hope to give you information on how to use reproducible bioinformatics pipelines, report results in a streamlined manner, and implement the system in your own research.\nFeedback is appreciated!\n(This is a Quarto website. To learn more about Quarto websites visit https://quarto.org/docs/websites.)"
   }
 ]
