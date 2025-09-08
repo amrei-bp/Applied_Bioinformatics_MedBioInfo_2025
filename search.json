@@ -1,34 +1,10 @@
 [
   {
-    "objectID": "before_github.html",
-    "href": "before_github.html",
-    "title": "GitHub",
-    "section": "",
-    "text": "Make an account on GitHub.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "GitHub"
-    ]
-  },
-  {
-    "objectID": "before_quarto_and_git.html",
-    "href": "before_quarto_and_git.html",
-    "title": "Quarto Homepage on Github",
-    "section": "",
-    "text": "Creating a website in Quarto\nPublish the quarto homepage on GitHub via GitHub Actions.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "Quarto Homepage on Github"
-    ]
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Applied Bioinformatics",
     "section": "",
-    "text": "The aim of this course is to share how to use bioinformatics tools in a reproducible and scalable way. I will showcase the use of environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.\nThe website will remain active after the course so that you have access to the material even after the course.\nWe will meet in person in Ultuna between Monday, October 6th, and Friday, October 10th, 2025. However, to get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using.\nYou will not be able to participate properly without completing the pre-course material! If possible start today and do a bit every day.\nI want to thank Lizel Potgieter for her valuable contributions to the materials for this course!\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nVScode\nSettting up and getting aquainted with VScode",
+    "text": "The aim of this course is to share how to use bioinformatics tools in a reproducible and scalable way. We will use environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.\nThe website will remain active after the course so that you have access to the material even after the course.\nWe will meet in person in Ultuna between Monday, October 6th, and Friday, October 10th, 2025. However, to get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using.\n\n\n\n\n\n\nImportant\n\n\n\nYou will not be able to participate properly without completing the pre-course material! If possible start today and do a bit every day.\n\n\nI want to thank Lizel Potgieter for her valuable contributions to the materials for this course!\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nVScode\nSettting up and getting aquainted with VScode\n\n\nQuarto\nInstalling and using Quarto with VScode\n\n\ngit and GitHub\nVersion control with git and GitHub",
     "crumbs": [
       "Home"
     ]
@@ -38,7 +14,7 @@
     "href": "before_quarto.html",
     "title": "Quarto",
     "section": "",
-    "text": "Install the quarto extension in VScode.",
+    "text": "When analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
     "crumbs": [
       "Home",
       "Before the course",
@@ -46,11 +22,71 @@
     ]
   },
   {
+    "objectID": "before_quarto.html#literate-programming",
+    "href": "before_quarto.html#literate-programming",
+    "title": "Quarto",
+    "section": "",
+    "text": "When analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "before_quarto.html#quarto",
+    "href": "before_quarto.html#quarto",
+    "title": "Quarto",
+    "section": "Quarto",
+    "text": "Quarto\n\nAn open-source scientific and technical publishing system.\n\nMeaning that you can use your favorite text editor (such as VScode (o; ) to write documents in plain text markdown.\nQuarto chunks, or code cells, are executable from within the document and can be written in a variety of different languages - such as python, R, Julia, bash, Observable, and more.\nYour document can then be rendered into a variety of different output formats: html, pdf, MS Word, Markdown, and more.\nWith this you can make presentations, dashboards, homepages (like this one), reports, books, manuscripts, and more.\n\n\n\n\n\n\nTo do for you\n\n\n\nInstall Quarto, and follow the tutorial for VScode.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto has a very good documentation, that you can access on their homepage -&gt; Guide, or by searching the web for “Quarto, feature you are looking for”.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "before_git_and_github.html#version-control",
+    "href": "before_git_and_github.html#version-control",
+    "title": "git and GitHub",
+    "section": "Version control",
+    "text": "Version control\nWe all have worked on data before, done analyses, talked with our PI, changed the analyses, worked a bit more… and in the end we have something like this:\n\n\n\nWhich one of these is the latest version?\n\n\nVersion control, the practice of tracking and managing changes to files, can help us not descend into chaos. With a version controlled project you always know which file, and even which part of the file, is the most recent, and you can even go back to older versions if you have to.\nVersion control can be used on the local system, where both the version database and the checked out file - the one that is actively being worked on - are on the local computer. Good, but the local computer can be corrupted and then the data is compromised.\n\n\n\nLocal version control\n\n\nVersion control can also be centralized, where the version database is on a central server, and the active file can be checked out from several different computers. This is useful when working from different systems, or when working with collaborators. However, when the central servers is compromised the historical version are lost.\n\n\n\nCentralized version control\n\n\nAt last, version control can be fully distributed, with all versions of the file being on the server and different computers. Each computer checks out the file from its own version database to work on them. The databases are then synchronized between the different computers and the server. One such distributed version control system is git. It can handle everything from small to very large projects and is simple to use. GitHubis a code hosting platform for version control and collaboration, built on git.\n\n\n\nDistributed version control\n\n\nDistributed version control facilitates collaboration with others. Software like git automatically tracks differences in files, and flags conflicts between files.\nAdditionally, GitHub, the code hosting platform based on git that we are using in this course, can be used to maintain uniformity within a working group. The group can develop their own project template that people can use and populate for their own projects.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "git and GitHub"
+    ]
+  },
+  {
+    "objectID": "before_git_and_github.html#git-and-github",
+    "href": "before_git_and_github.html#git-and-github",
+    "title": "git and GitHub",
+    "section": "git and GitHub",
+    "text": "git and GitHub\nGit is a version control software that is fully distributed - meaning that each project folder contains the full history of the project. These project folders are also called repositories and can be on several computers, or servers.\nGithub is a code hosting platform that is based on git. Here you can store, track and publish code (and code only, do NOT use github for data!). On Github you can collaborate with colleagues and work on projects together.\n\n\n\n\n\n\nNote\n\n\n\nA repository in git is the .git/ folder inside of your directory. This repository tracks all changes made to files in your project and contains your project history. Usually we refer to the git repository as the local repository.\nA repository in GitHub is where you can store your code, your files, together with their revision history. Repositories can be public or private, and might have several collaborators. Usually we refer to the Github repository as the remote repository.\n\n\nLet’s have a closer look at how git works:",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "git and GitHub"
+    ]
+  },
+  {
+    "objectID": "before_git_and_github.html#git",
+    "href": "before_git_and_github.html#git",
+    "title": "git and GitHub",
+    "section": "git",
+    "text": "git\n\nGit has three main states that your files can reside in: modified, staged, and committed:\n\n\n\nModified means that you have changed the file but have not committed it to your database yet.\nStaged means that you have marked a modified file in its current version to go into your next commit snapshot.\nCommitted means that the data is safely stored in your local database.\n\n\n\nsource: git documentation\n\nThis leads to the three main sections of a Git project: the working directory, the staging area, and the Git directory (or repository).\n\n\n\nWorking directory, staging area, and Git directory\n\n\nAnd the basic commands of git:\n\n\n\nBasic git commands\n\n\n\n\n\n\n\n\nNote\n\n\n\nThese basic operations are all done on your local system. You have the entire history of the project on your local disk, and do not need an internet connection to work on your data with git. You can do all your commits on your local computer and later push them to a remote repostitory, like Github.\n\n\n\n\n\n\n\n\nTo do for you\n\n\n\nInstall git, and follow the\nMake an account on GitHub.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "git and GitHub"
+    ]
+  },
+  {
     "objectID": "before_VScode.html",
     "href": "before_VScode.html",
     "title": "Visual Studio Code",
     "section": "",
-    "text": "During the pre-course assignements, and the course itself, we will be using Visual Studio Code (VScode). It is available for free and runs on all major platforms. Extensions make it very versatile, and we will be using it to edit and render text, to us version control, and to connect to and work on our course server.\nPlease install VScode using the instructions here. \nOnce you have installed VScode and open it, you will see the starting screen. Here is my starting screen: \nYours will look slightly different, especially in the activity bar all the way on the left, because I have already installed extensions when working with VScode. So don’t worry about the exact look.\nTo get aquainted with some of the features of VScode, please watch this 7-minute video from the Visual Studio homepage. Follow along the tutorial (as far as you can, he’s not providing the last script he’s showcasing).\n\n\n\n\n\n\nNote\n\n\n\nIf you can’t see the terminal on the lower part of the screen, you can open it by clicking on the button on the upper right of the screen.\n\n\n\nClick here to open the terminal",
+    "text": "During the pre-course assignements, and the course itself, we will be using Visual Studio Code (VScode). It is available for free and runs on all major platforms. Extensions make it very versatile, and we will be using it to edit and render text, to us version control, and to connect to and work on our course server.\n\n\n\n\n\n\nTo do for you\n\n\n\nInstall VScode using the instructions here.\n\n\nOnce you have installed VScode and open it, you will see the starting screen. Here is my starting screen: \nYours will look slightly different, especially in the activity bar all the way on the left, because I have already installed extensions when working with VScode. So don’t worry about the exact look.\n\n\n\n\n\n\nTo do for you\n\n\n\nTo get aquainted with some of the features of VScode, please watch this 7-minute video from the Visual Studio homepage. Follow along the tutorial (as far as you can, he’s not providing the last script he’s showcasing).\n\n\n\n\n\n\n\n\nNote\n\n\n\nIf you can’t see the terminal on the lower part of the screen, you can open it by clicking on the button on the upper right of the screen.\n\n\n\nClick here to open the terminal",
     "crumbs": [
       "Home",
       "Before the course",
@@ -63,5 +99,17 @@
     "title": "About",
     "section": "",
     "text": "This course is a hosted by the Swedish Agricultural University’s Bioinformatics Infrastructure (SLUBI).\nIn this course we hope to give you information on how to use reproducible bioinformatics pipelines, report results in a streamlined manner, and implement the system in your own research.\nFeedback is appreciated!\n(This is a Quarto website. To learn more about Quarto websites visit https://quarto.org/docs/websites.)"
+  },
+  {
+    "objectID": "before_quarto_and_git.html",
+    "href": "before_quarto_and_git.html",
+    "title": "Quarto Homepage on Github",
+    "section": "",
+    "text": "Creating a website in Quarto\nPublish the quarto homepage on GitHub via GitHub Actions.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Quarto Homepage on Github"
+    ]
   }
 ]
