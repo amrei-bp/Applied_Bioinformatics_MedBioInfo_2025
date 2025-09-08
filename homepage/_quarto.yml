@@ -23,9 +23,9 @@ website:
         contents:
           - before_VScode.qmd
           - before_quarto.qmd
-          - before_git.qmd
-          - before_github.qmd
+          - before_git_and_github.qmd
           - before_quarto_and_git.qmd
+          - before_server.qmd
 
 
       - section: "During the course"

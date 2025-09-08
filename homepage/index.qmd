@@ -1,21 +1,26 @@
 ---
 title: "Applied Bioinformatics"
 ---
-
-The aim of this course is to share how to use bioinformatics tools in a reproducible and scalable way. I will showcase the use of environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with. 
+<br>
+The aim of this course is to share how to use bioinformatics tools in a **reproducible and scalable way**. We will use **environments**, **containers**, and **established pipelines** so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with. 
 
 The website will remain active after the course so that you have access to the material even after the course. 
 
 We will meet in person in Ultuna between **Monday, October 6th, and Friday, October 10th, 2025**. However, to get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using. 
 
+::: {.callout-important}
 **You will not be able to participate properly without completing the pre-course material!** If possible **start today and do a bit every day**.
+:::
+
+
 
 I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuable contributions to the materials for this course! 
 
 | Topic  | Content  |
 |--------|--------|
 | VScode  | [Settting up and getting aquainted with VScode](before_VScode.qmd) |
-
+| Quarto | [Installing and using Quarto with VScode](before_quarto.qmd) |
+| git and GitHub | [Version control with git and GitHub](before_git_and_github.qmd) |
 
 : Before the course {.striped .hover}
 

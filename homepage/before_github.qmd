@@ -1,5 +1,0 @@
----
-title: "GitHub"
----
-
-Make an account on [GitHub](www.github.com).
