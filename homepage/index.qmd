@@ -12,18 +12,49 @@ We will meet in person in Ultuna between **Monday, October 6th, and Friday, Octo
 **You will not be able to participate properly without completing the pre-course material!** If possible **start today and do a bit every day**.
 :::
 
-
-
 I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuable contributions to the materials for this course! 
+
+## Course content
+
+### before the course:
 
 | Topic  | Content  |
 |--------|--------|
 | Server access  | [SSH connect to the course server](before_server.qmd) |
+| Command line  | [Use the command line to manipulate data](before_command_line.qmd) |
 | VScode  | [Settting up and getting aquainted with VScode](before_VScode.qmd) |
 | Quarto | [Installing and using Quarto with VScode](before_quarto.qmd) |
 | git and GitHub | [Version control with git and GitHub](before_git_and_github.qmd) |
+| Data Management | [Best practices when working with bioinformatics data](before_data_management.qmd) |
 
 : Before the course {.striped .hover}
 
+### during the course:
 
+
+| Day  | Session  |
+|--------|--------|
+| Monday  | Welcome, introduction  |
+|   | [Discussion: Data Management](course_data_management.qmd)  |
+|   | Hands-on: Markdown, quarto homepage |
+|   | Hands-on: Publish a homepage with Github |
+|   | Introduction to environments |
+| Tuesday  | QC of sequencing data   |
+|   | Hands-on: fastqc & multiqc with pixi |
+|   | Introduction to containers  |
+|   | Hands-on: containers  |
+|   | nextflow |
+|   | quality control with nextflow |
+| Wednesday  | containers cont. |
+|   | nf-core |
+|   | Hands-on: Test a nf-core pipeline|
+|   | Hands-on: set up a nf-core pipeline  |
+| Thursday  |   |
+|   |  |
+|   |  |
+| Friday  | [Visualize your results: ggplot](course_ggplot.qmd) |
+|   | [Discussion: AI in Bioinformatics](course_AI.qmd)|
+|   | clean-up and finishing|
+
+: Program {.striped .hover}
 
