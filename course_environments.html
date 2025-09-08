@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Applied Bioinformatics</title>
+<title>Introduction to Pixi – Applied Bioinformatics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Introduction to Pixi</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -134,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
@@ -193,11 +228,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-content" id="toc-course-content" class="nav-link active" data-scroll-target="#course-content">Course content</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#before-the-course" id="toc-before-the-course" class="nav-link" data-scroll-target="#before-the-course">before the course:</a></li>
-  <li><a href="#during-the-course" id="toc-during-the-course" class="nav-link" data-scroll-target="#during-the-course">during the course:</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
   </ul></li>
+  <li><a href="#setting-up-an-environment" id="toc-setting-up-an-environment" class="nav-link" data-scroll-target="#setting-up-an-environment">Setting Up An Environment</a>
+  <ul class="collapse">
+  <li><a href="#pixi.toml" id="toc-pixi.toml" class="nav-link" data-scroll-target="#pixi.toml">pixi.toml</a></li>
+  <li><a href="#pixi.lock" id="toc-pixi.lock" class="nav-link" data-scroll-target="#pixi.lock">pixi.lock</a></li>
+  </ul></li>
+  <li><a href="#adding-dependencies" id="toc-adding-dependencies" class="nav-link" data-scroll-target="#adding-dependencies">Adding Dependencies</a></li>
+  <li><a href="#running-a-package" id="toc-running-a-package" class="nav-link" data-scroll-target="#running-a-package">Running a Package</a></li>
   </ul>
 </nav>
     </div>
@@ -206,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Applied Bioinformatics</h1>
+<h1 class="title">Introduction to Pixi</h1>
 </div>
 
 
@@ -223,9 +264,106 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><br> The aim of this course is to share how to use bioinformatics tools in a <strong>reproducible and scalable way</strong>. We will use <strong>environments</strong>, <strong>containers</strong>, and <strong>established pipelines</strong> so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.</p>
-<p>The website will remain active after the course so that you have access to the material even after the course.</p>
-<p>We will meet in person in Ultuna between <strong>Monday, October 6th, and Friday, October 10th, 2025</strong>. However, to get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Different operating systems bring different challenges to bioinformatics. Windows, for instance, doesn’t really support most bioinformatics tools, or your computer might run a different version of a specific tool than mine. One way to solve this, and make research more reproducible, is through the use of environments. Bioinformatics environments specify the tools neded for the task at hand, and environment managers install these tools with all their dependencies. There are many different kinds of environment managers, and for this course we are going to use <a href="https://pixi.sh/latest/">Pixi</a>.</p>
+<p>There are, of course, other ways to solve tool access and compatibility issues, such as running virtual machines. In our experience, however, environments are a bit easier to manage and are more portable across different systems and users.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/pixi/pixi_home.png" class="img-fluid figure-img"></p>
+<figcaption>Pixi landing page</figcaption>
+</figure>
+</div>
+<p>As you can see, you can run Pixi on all major operating systems, and you can include various platforms in your Pixi environment.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+To do for you
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Log in to the course server and follow along:</p>
+</div>
+</div>
+<section id="installation" class="level3">
+<h3 class="anchored" data-anchor-id="installation">Installation</h3>
+<p>Installing Pixi is really easy and described thoroughly <a href="https://pixi.sh/latest/installation/">here</a> with separate installation guides for Windows and Mac/Linux.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To source your shell, you need to source the startup files, in Linux it’s the <code>~/.bashrc</code> file, in Mac it’s the <code>~/.zshrc</code> file.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="setting-up-an-environment" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-an-environment">Setting Up An Environment</h2>
+<p>You should create separate environments for each project you run, just to keep things tidy. To create an environment, you have to specify a name for your environment. You can include different platforms/operating systems in your environment, for example if you want to develop your code on a Windows system, and later use the same code on many samples on a large Linux cluster. You can also include different vetted sources for your tools, the so called channels.</p>
+<p>Here, we will create a project called <code>name_pixi_training</code> (please use your own name to avoid creating multiple environments with the same name). We are adding the <a href="https://conda-forge.org">conda-forge</a> and <a href="https://bioconda.github.io">bioconda</a> channels with the <code>-c</code> flag.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init name_pixi_training <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pixi will create a folder named <code>name_pixi_training</code> with a a file <code>pixi.toml</code>. Let’s have a look at that file!</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to get to the file
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Here is the code for changing directories, listing files, and viewing the contents of a file:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> name_sida_training</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> pixi.toml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To exit the <code>less</code> view, press <code>q</code> for quit.</p>
+</div>
+</div>
+</div>
+<section id="pixi.toml" class="level3">
+<h3 class="anchored" data-anchor-id="pixi.toml">pixi.toml</h3>
+<p>The .toml file give your information about your project. Let’s have a look at one I made one my computer before adding any dependencies to my environment. How is it different from the one you’ve made on HPC2N?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[workspace]</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels</span> = [<span class="st">"conda-forge"</span>, <span class="st">"bioconda"</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">name</span> = <span class="st">"amrei_pixi_training"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">platforms</span> = <span class="pp">[</span><span class="st">"osx-arm64"</span><span class="pp">]</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">version</span> = <span class="st">"0.1.0"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">[tasks]</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">[dependencies]</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your current platform will be automatically detected and added to the environment. If you want to add different platforms, you add them with the <code>-p linux-64</code> flag. In this example, you are adding Linux64. See the Pixi docs for the full list of supported platforms.</p>
+<p>If you are adding a platform that doesn’t natively run on your OS (e.g.&nbsp;adding Linux when running on Windows) be sure to add the OS you are running your system on as well!</p>
+</div>
+</div>
+<p>Once you have used the environment, or added a dependency/tool to it, you will find yet another file, called <code>pixi.lock</code>.</p>
+</section>
+<section id="pixi.lock" class="level3">
+<h3 class="anchored" data-anchor-id="pixi.lock">pixi.lock</h3>
+<p>The .lock file give you information on the channels you have decided to add, as well as the information on where the packages were downloaded from, license information, md5 information, and more.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -236,150 +374,81 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>You will not be able to participate properly without completing the pre-course material!</strong> If possible <strong>start today and do a bit every day</strong>.</p>
+<p>Do not delete the .toml or .lock files, or you will break your environment!</p>
 </div>
 </div>
-<p>I want to thank <a href="https://github.com/lpotgieter">Lizel Potgieter</a> for her valuable contributions to the materials for this course!</p>
-<section id="course-content" class="level2">
-<h2 class="anchored" data-anchor-id="course-content">Course content</h2>
-<section id="before-the-course" class="level3">
-<h3 class="anchored" data-anchor-id="before-the-course">before the course:</h3>
-<table class="table-striped table-hover caption-top table">
-<caption>Before the course</caption>
-<thead>
-<tr class="header">
-<th>Topic</th>
-<th>Content</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Server access</td>
-<td><a href="./before_server.html">SSH connect to the course server</a></td>
-</tr>
-<tr class="even">
-<td>Command line</td>
-<td><a href="./before_command_line.html">Use the command line to manipulate data</a></td>
-</tr>
-<tr class="odd">
-<td>VScode</td>
-<td><a href="./before_VScode.html">Settting up and getting aquainted with VScode</a></td>
-</tr>
-<tr class="even">
-<td>Quarto</td>
-<td><a href="./before_quarto.html">Installing and using Quarto with VScode</a></td>
-</tr>
-<tr class="odd">
-<td>git and GitHub</td>
-<td><a href="./before_git_and_github.html">Version control with git and GitHub</a></td>
-</tr>
-<tr class="even">
-<td>Data Management</td>
-<td><a href="./before_data_management.html">Best practices when working with bioinformatics data</a></td>
-</tr>
-</tbody>
-</table>
 </section>
-<section id="during-the-course" class="level3">
-<h3 class="anchored" data-anchor-id="during-the-course">during the course:</h3>
-<table class="table-striped table-hover caption-top table">
-<caption>Program</caption>
-<thead>
-<tr class="header">
-<th>Day</th>
-<th>Session</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Monday</td>
-<td>Welcome, introduction</td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="./course_data_management.html">Discussion: Data Management</a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Hands-on: Markdown, quarto homepage</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Hands-on: Publish a homepage with Github</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Introduction to environments</td>
-</tr>
-<tr class="even">
-<td>Tuesday</td>
-<td>QC of sequencing data</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Hands-on: fastqc &amp; multiqc with pixi</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Introduction to containers</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Hands-on: containers</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>nextflow</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>quality control with nextflow</td>
-</tr>
-<tr class="even">
-<td>Wednesday</td>
-<td>containers cont.</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>nf-core</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Hands-on: Test a nf-core pipeline</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Hands-on: set up a nf-core pipeline</td>
-</tr>
-<tr class="even">
-<td>Thursday</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Friday</td>
-<td><a href="./course_ggplot.html">Visualize your results: ggplot</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="./course_AI.html">Discussion: AI in Bioinformatics</a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>clean-up and finishing</td>
-</tr>
-</tbody>
-</table>
+</section>
+<section id="adding-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="adding-dependencies">Adding Dependencies</h2>
+<p>Adding dependencies to the .toml file is telling Pixi to install the specified program for you. However, instead of installing it globally, it only gets installed in the environment.</p>
+<p>To do this, we use the <code>pixi add</code> function. Let’s try adding <code>Quarto</code> to our environments.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You must be in the folder of the project to add software!</p>
+</div>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add quarto</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to summon the help function
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you are unsure of how a function works, you can always query it, usually with the <code>--help</code> or <code>-h</code> flags. Here’s how it would look for the <code>pixi add</code> function</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A general rule of thumb is that a single hyphen <code>-</code> is followed by a single letter flag, while double hyphens <code>--</code> are usually followed by multi-letter flags</p>
+</div>
+</div>
+</div>
+<p>Here is the pixi.toml we’ve seen earlier after I have added Quarto to my environment. You can see that the dependencies have been updated to include <code>Quarto</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[workspace]</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels</span> = [<span class="st">"conda-forge"</span>, <span class="st">"bioconda"</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">name</span> = <span class="st">"amrei_pixi_training"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">platforms</span> = <span class="pp">[</span><span class="st">"osx-arm64"</span><span class="pp">]</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">version</span> = <span class="st">"0.1.0"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">[tasks]</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ex">[dependencies]</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> = <span class="st">"&gt;=1.7.32,&lt;2"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="running-a-package" class="level2">
+<h2 class="anchored" data-anchor-id="running-a-package">Running a Package</h2>
+<p>Now that we have an environment with a tool installed, we actually want to use it. For this we use the <code>pixi run</code> function.</p>
+<p>Let’s query the help function within Quarto:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run quarto <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To use other tools, simply substitute <code>quarto</code> with the package you’ve added, and the tool specific commands.</p>
+</div>
+</div>
+<p>And just to see that we have not installed Quarto on the server itself, try out running Quarto without Pixi: it will tell you:</p>
+<p><code>quarto: command not found</code></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
