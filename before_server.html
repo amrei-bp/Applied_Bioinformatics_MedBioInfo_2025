@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -188,8 +223,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#remote-access-via-bash-over-ssh-in-the-consoleterminal" id="toc-remote-access-via-bash-over-ssh-in-the-consoleterminal" class="nav-link active" data-scroll-target="#remote-access-via-bash-over-ssh-in-the-consoleterminal">Remote access via bash over ssh in the console/terminal</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -213,8 +254,46 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><br> For this course, we will be working, for the most part, on a remote server.</p>
+<p>Here, you will access the server for the first time. You will need a terminal, your user name and password (which you will have gotten from Sam).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+IF NEEDED: Get a working Linux terminal on Windows
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the sake of simplicity we will teach you the way to use tools on Linux subsystems only. Hence, <strong>if you have a Windows PC or laptop</strong> you need to set up a way to access a Linux terminal. You can find plenty of <a href="https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/#:~:text=Assuming%20you%20have%2064%2Dbit,t%20work%20until%20you%20reboot.">tutorials</a> online to do this, but here are some steps that should be easy enough to follow:</p>
+<ul>
+<li>type in the bottom left search bar “powershell”, right-click on the result and select “run as administrator”</li>
+<li>copy-paste in the window you opened the following command:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--install</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>reboot your system</li>
+<li>open the Microsoft store and search for Ubuntu</li>
+<li>install Ubuntu 22.04.3 LTS</li>
+<li>launch it, set a username and a password</li>
+</ul>
+</div>
+</div>
+<section id="remote-access-via-bash-over-ssh-in-the-consoleterminal" class="level2">
+<h2 class="anchored" data-anchor-id="remote-access-via-bash-over-ssh-in-the-consoleterminal">Remote access via bash over ssh in the console/terminal</h2>
+<p>Before embarking on this short exercise, check out Chapter 4, “Working with Remote Machines” of the “Bioinformatics Data Skills” course book.</p>
+<p>Start with opening a terminal on your PC. This application is natively available on Linux and MacOs, while on Windows you will open the Ubuntu program you installed in the previous step. Now it is time to use the ssh command to connect to the server. Run the following command substituting “xxxxxxxx” with your account username, and “server-name” with the name of the server Sam has given you (if you haven’t gotten this information, please contact Sam, or me, via canvas):</p>
+<p>ssh xxxxxxxx@server-name.se</p>
+<ul>
+<li>the first time you run this command, the terminal will ask you if the address is trusted, type yes and enter;</li>
+<li>then enter your srver password; BE CAREFUL, you have few attempts, after which your account will be blocked for a while!</li>
+</ul>
+<p>Successfully completing this login procedure will connect your terminal to the “login node” of the cluster (you will be greeted by some system information and a prophetic cow).</p>
+<p>This location is the home folder of your account. Now you can practice your bash skills to explore the structure of the directories and available files.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

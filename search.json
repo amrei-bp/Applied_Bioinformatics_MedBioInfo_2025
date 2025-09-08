@@ -1,10 +1,34 @@
 [
   {
+    "objectID": "before_server.html",
+    "href": "before_server.html",
+    "title": "Connect to the server",
+    "section": "",
+    "text": "For this course, we will be working, for the most part, on a remote server.\nHere, you will access the server for the first time. You will need a terminal, your user name and password (which you will have gotten from Sam).",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Connect to the server"
+    ]
+  },
+  {
+    "objectID": "before_server.html#remote-access-via-bash-over-ssh-in-the-consoleterminal",
+    "href": "before_server.html#remote-access-via-bash-over-ssh-in-the-consoleterminal",
+    "title": "Connect to the server",
+    "section": "Remote access via bash over ssh in the console/terminal",
+    "text": "Remote access via bash over ssh in the console/terminal\nBefore embarking on this short exercise, check out Chapter 4, “Working with Remote Machines” of the “Bioinformatics Data Skills” course book.\nStart with opening a terminal on your PC. This application is natively available on Linux and MacOs, while on Windows you will open the Ubuntu program you installed in the previous step. Now it is time to use the ssh command to connect to the server. Run the following command substituting “xxxxxxxx” with your account username, and “server-name” with the name of the server Sam has given you (if you haven’t gotten this information, please contact Sam, or me, via canvas):\nssh xxxxxxxx@server-name.se\n\nthe first time you run this command, the terminal will ask you if the address is trusted, type yes and enter;\nthen enter your srver password; BE CAREFUL, you have few attempts, after which your account will be blocked for a while!\n\nSuccessfully completing this login procedure will connect your terminal to the “login node” of the cluster (you will be greeted by some system information and a prophetic cow).\nThis location is the home folder of your account. Now you can practice your bash skills to explore the structure of the directories and available files.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Connect to the server"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Applied Bioinformatics",
     "section": "",
-    "text": "The aim of this course is to share how to use bioinformatics tools in a reproducible and scalable way. We will use environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.\nThe website will remain active after the course so that you have access to the material even after the course.\nWe will meet in person in Ultuna between Monday, October 6th, and Friday, October 10th, 2025. However, to get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using.\n\n\n\n\n\n\nImportant\n\n\n\nYou will not be able to participate properly without completing the pre-course material! If possible start today and do a bit every day.\n\n\nI want to thank Lizel Potgieter for her valuable contributions to the materials for this course!\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nVScode\nSettting up and getting aquainted with VScode\n\n\nQuarto\nInstalling and using Quarto with VScode\n\n\ngit and GitHub\nVersion control with git and GitHub",
+    "text": "The aim of this course is to share how to use bioinformatics tools in a reproducible and scalable way. We will use environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.\nThe website will remain active after the course so that you have access to the material even after the course.\nWe will meet in person in Ultuna between Monday, October 6th, and Friday, October 10th, 2025. However, to get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using.\n\n\n\n\n\n\nImportant\n\n\n\nYou will not be able to participate properly without completing the pre-course material! If possible start today and do a bit every day.\n\n\nI want to thank Lizel Potgieter for her valuable contributions to the materials for this course!\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nServer access\nSSH connect to the course server\n\n\nVScode\nSettting up and getting aquainted with VScode\n\n\nQuarto\nInstalling and using Quarto with VScode\n\n\ngit and GitHub\nVersion control with git and GitHub",
     "crumbs": [
       "Home"
     ]
