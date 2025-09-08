@@ -1,3 +1,42 @@
 ---
 title: "Connect to the server"
 ---
+
+<br>
+For this course, we will be working, for the most part, on a remote server. 
+
+Here, you will access the server for the first time. You will need a terminal, your user name and password (which you will have gotten from Sam).
+
+::: {.callout-note}
+## IF NEEDED: Get a working Linux terminal on Windows 
+
+For the sake of simplicity we will teach you the way to use tools on Linux subsystems only. Hence, **if you have a Windows PC or laptop** you need to set up a way to access a Linux terminal. You can find plenty of [tutorials](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/#:~:text=Assuming%20you%20have%2064%2Dbit,t%20work%20until%20you%20reboot.) online to do this, but here are some steps that should be easy enough to follow:
+
+- type in the bottom left search bar "powershell", right-click on the result and select "run as administrator"
+- copy-paste in the window you opened the following command:
+
+```{.bash}
+wsl --install
+```
+
+- reboot your system
+- open the Microsoft store and search for Ubuntu
+- install Ubuntu 22.04.3 LTS
+- launch it, set a username and a password
+
+:::
+
+## Remote access via bash over ssh in the console/terminal
+
+Before embarking on this short exercise, check out Chapter 4, "Working with Remote Machines" of the "Bioinformatics Data Skills" course book.
+
+Start with opening a terminal on your PC. This application is natively available on Linux and MacOs, while on Windows you will open the Ubuntu program you installed in the previous step. Now it is time to use the ssh command to connect to the server. Run the following command substituting "xxxxxxxx" with your account username, and "server-name" with the name of the server Sam has given you (if you haven't gotten this information, please contact Sam, or me, via canvas):
+
+ssh xxxxxxxx@server-name.se
+
+- the first time you run this command, the terminal will ask you if the address is trusted, type yes and enter;
+- then enter your srver password; BE CAREFUL, you have few attempts, after which your account will be blocked for a while!
+
+Successfully completing this login procedure will connect your terminal to the "login node" of the cluster (you will be greeted by some system information and a prophetic cow). 
+
+This location is the home folder of your account. Now you can practice your bash skills to explore the structure of the directories and available files.

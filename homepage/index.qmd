@@ -18,6 +18,7 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 
 | Topic  | Content  |
 |--------|--------|
+| Server access  | [SSH connect to the course server](before_server.qmd) |
 | VScode  | [Settting up and getting aquainted with VScode](before_VScode.qmd) |
 | Quarto | [Installing and using Quarto with VScode](before_quarto.qmd) |
 | git and GitHub | [Version control with git and GitHub](before_git_and_github.qmd) |
