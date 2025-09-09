@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Pixi – Applied Bioinformatics</title>
+<title>Containers – Applied Bioinformatics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Introduction to Pixi</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Containers</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -228,21 +228,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#reproducibility-in-bioinformatics" id="toc-reproducibility-in-bioinformatics" class="nav-link active" data-scroll-target="#reproducibility-in-bioinformatics">Reproducibility in Bioinformatics</a></li>
+  <li><a href="#containers" id="toc-containers" class="nav-link" data-scroll-target="#containers">Containers</a>
   <ul class="collapse">
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#what-are-containers" id="toc-what-are-containers" class="nav-link" data-scroll-target="#what-are-containers">What are containers?</a></li>
+  <li><a href="#running-containers" id="toc-running-containers" class="nav-link" data-scroll-target="#running-containers">Running Containers</a></li>
+  <li><a href="#downloading-container-images" id="toc-downloading-container-images" class="nav-link" data-scroll-target="#downloading-container-images">Downloading Container Images</a></li>
+  <li><a href="#running-containers-1" id="toc-running-containers-1" class="nav-link" data-scroll-target="#running-containers-1">Running Containers</a></li>
+  <li><a href="#building-containers" id="toc-building-containers" class="nav-link" data-scroll-target="#building-containers">Building Containers</a></li>
   </ul></li>
-  <li><a href="#setting-up-an-environment" id="toc-setting-up-an-environment" class="nav-link" data-scroll-target="#setting-up-an-environment">Setting Up An Environment</a>
-  <ul class="collapse">
-  <li><a href="#pixi.toml" id="toc-pixi.toml" class="nav-link" data-scroll-target="#pixi.toml">pixi.toml</a></li>
-  <li><a href="#pixi.lock" id="toc-pixi.lock" class="nav-link" data-scroll-target="#pixi.lock">pixi.lock</a></li>
-  </ul></li>
-  <li><a href="#adding-dependencies" id="toc-adding-dependencies" class="nav-link" data-scroll-target="#adding-dependencies">Adding Dependencies</a></li>
-  <li><a href="#running-a-package" id="toc-running-a-package" class="nav-link" data-scroll-target="#running-a-package">Running a Package</a>
-  <ul class="collapse">
-  <li><a href="#pixi-run" id="toc-pixi-run" class="nav-link" data-scroll-target="#pixi-run">pixi run</a></li>
-  </ul></li>
-  <li><a href="#pixi-shell" id="toc-pixi-shell" class="nav-link" data-scroll-target="#pixi-shell">pixi shell</a></li>
   </ul>
 </nav>
     </div>
@@ -251,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction to Pixi</h1>
+<h1 class="title">Containers</h1>
 </div>
 
 
@@ -268,17 +262,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Different operating systems bring different challenges to bioinformatics. Windows, for instance, doesn’t really support most bioinformatics tools, or your computer might run a different version of a specific tool than mine. One way to solve this, and make research more reproducible, is through the use of environments. Bioinformatics environments specify the tools neded for the task at hand, and environment managers install these tools with all their dependencies. There are many different kinds of environment managers, and for this course we are going to use <a href="https://pixi.sh/latest/">Pixi</a>.</p>
-<p>There are, of course, other ways to solve tool access and compatibility issues, such as running virtual machines. In our experience, however, environments are a bit easier to manage and are more portable across different systems and users.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/pixi/pixi_home.png" class="img-fluid figure-img"></p>
-<figcaption>Pixi landing page</figcaption>
-</figure>
-</div>
-<p>As you can see, you can run Pixi on all major operating systems, and you can include various platforms in your Pixi environment.</p>
+<p><br></p>
+<section id="reproducibility-in-bioinformatics" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility-in-bioinformatics">Reproducibility in Bioinformatics</h2>
+<p>In an ideal world I would be able to write a piece of software, or a develop some code to analyse data on my computer, and then send someone else this software or code and they could run it as well, getting the same results.</p>
+<p>In reality, I would very likely run into at least one of the following problems:</p>
+<ol type="1">
+<li>It is not uncommon for people within the same team to use different operating systems (whether MacOS, Windows, or different flavours of Unix builds). Even if everyone is using a MacOS, there are still different versions that impact the way people are able to work with their machines.</li>
+<li>Almost every piece of software has some sort of dependency - other software - it needs to run. Some programs might “just” need a bash shell or basic python, while others need a variety of compilers and additional libraries to function. Often, these dependencies require further dependencies to be installed. It is also not uncommon for dependencies for Program 1 to clash with the dependencies for Program 2, requiring the user to uninstall dependencies to be able to install others.</li>
+<li>In bioinformatics, tools are very often not maintained after the student that wrote the software graduated, the PI moved to a different university, or the funding simply ran out. This leads to a lot of really good software not really being supported by newer operating systems, usually due to dependencies not being easily available or, as before, clashing with newer versions. This makes installing a tool one of the biggest hurdles to overcome in bioinformatics.</li>
+<li>You often cannot install different versions of the same program on one computer due to conflicting names. This is particularly problematic when you want to rerun an analysis for a publication where you need to use the same software all the way through.</li>
+</ol>
+<p>Any of these points might lead to you not being able to run my code, or it running but giving different results. They make bioinformatics less reproducible as tools and code cannot be moved easily betweem systems (for example if you upgrade your computer or want to share your pipeline with a colleague). Fortunately, most of these problems can be overcome with containers.</p>
+</section>
+<section id="containers" class="level2">
+<h2 class="anchored" data-anchor-id="containers">Containers</h2>
+<section id="what-are-containers" class="level3">
+<h3 class="anchored" data-anchor-id="what-are-containers">What are containers?</h3>
+<p>Containers are stand-alone pieces of software that require a container management tool to run. They are build and exchanged as container images that specify the contents of the container, such as the operating system, all dependencies, and software in an isolated environment. The container management tool then takes the images and build the container. These management tools can be run on all operating systems, and since the container has the operating system within it, it will run the same in all environments. Container images are easily portable and immutable, so they are stable over time.</p>
+</section>
+<section id="running-containers" class="level3">
+<h3 class="anchored" data-anchor-id="running-containers">Running Containers</h3>
+<p>There are several programs that can be used to build and run containers. <a href="https://www.docker.com">Docker</a>, <a href="https://apptainer.org">Appptainer</a>, and <a href="https://podman.io">Podman</a> are the most commonly used platforms to date. They all have their pros and cons. If you are using a Windows machine that only you are using, then Docker is likely the least complex tool to install. On multi-user systems like a server, Apptainer is the best tool for the job. For this tutorial and the rest of the course, we will use Apptainer commands. There are small syntax changes between bash and powershell commands, but they are very similar.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -289,12 +294,60 @@ To do for you
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Log in to the course server and follow along:</p>
+<p>Log in to the course server.</p>
 </div>
 </div>
-<section id="installation" class="level3">
-<h3 class="anchored" data-anchor-id="installation">Installation</h3>
-<p>Installing Pixi is really easy and described thoroughly <a href="https://pixi.sh/latest/installation/">here</a> with separate installation guides for Windows and Mac/Linux.</p>
+</section>
+<section id="downloading-container-images" class="level3">
+<h3 class="anchored" data-anchor-id="downloading-container-images">Downloading Container Images</h3>
+<p>There are several repositories for people to publish container images that they have specified. <a href="https://hub.docker.com">Dockerhub</a> and <a href="https://seqera.io/containers/">Seqera</a> are two commonly used platforms for downloading container images. You are able to use container images from dockerhub on Apptainer without any problems.</p>
+<section id="dockerhub-tutorial" class="level4">
+<h4 class="anchored" data-anchor-id="dockerhub-tutorial">dockerhub Tutorial</h4>
+<p>On the dockerhub landing page, you have a search bar, and some login options. You do not need to create an account to access the containers on dockerhub.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/container/docker1.png" class="img-fluid figure-img"></p>
+<figcaption>dockerhub landing page</figcaption>
+</figure>
+</div>
+<p>For these tutorials, we’ll search VCFtools, a commonly used software for VCF manipulation and querying. The results of the search give us several different containers with the same name.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/container/docker2.png" class="img-fluid figure-img"></p>
+<figcaption>Registry search</figcaption>
+</figure>
+</div>
+<p>You can see who made the container image, how many times it has been downloaded (or pulled), when it was updated (here updated means different versions of the image being uploaded), and how many people have starred it. It is usually a good rule of thumb to use the most popular images from users that have uploaded a lot of container images. The <a href="https://hub.docker.com/u/biocontainers">biocontainers</a> and <a href="https://hub.docker.com/u/pegi3s">pegi3s</a> profiles have builds for a lot of tools, and they are built really well!</p>
+<p>If we click on the vcftools from <a href="https://hub.docker.com/r/biocontainers/vcftools">biocontainers</a> we get to a typical dockerhub image landing page:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/container/docker3.png" class="img-fluid figure-img"></p>
+<figcaption>VCFtools page</figcaption>
+</figure>
+</div>
+<p>There is information on the frequency of the container image being pulled, as well as a pull command to download the image. This command is for docker, so we need to modify it for Apptainer.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull vcftools_0.1.16-1.sif docker://biocontainers/vcftools:v0.1.16-1-deb_cv1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+apptainer: command not found
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As you can see, Apptainer is not installed on the course server. Is there a way we can still use it?</p>
+</div>
+</div>
+<p>This command has several parts to it:</p>
+<ol type="1">
+<li><code>apptainer</code> calls on the Apptainer software to run</li>
+<li><code>pull</code> tells Apptainer which function to use. In this case, we want it to go fetch something from a repository</li>
+<li><code>vcftools_0.1.16-1.sif</code> is the name of the container image on our local machine. We could call it <code>I_Love_Dogs</code> but that is not very informative at all. Your collaborator won’t know what it means, and you certainly won’t know what it means in 6 months from now! It is also good practice to put the version number in your image name in case you want to have several versions at the same time, and you need to tell them apart.</li>
+<li><code>docker://</code> is the registry you are pulling from. There are several different registries, but we are only going to show 2 during this course. (You will see another one in the Seqera tutorial)</li>
+<li><code>biocontainers/vcftools</code> is the profile/repository and container you are pulling</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -305,107 +358,60 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>To source your shell, you need to source the startup files, in Linux it’s the <code>~/.bashrc</code> file, in Mac it’s the <code>~/.zshrc</code> file.</p>
+<p>File format extensions like .txt and .sif are really only important for us. However, it is good practice to append your files with appropriate extensions to ensure that you follow good data management practices</p>
 </div>
 </div>
+<p>If you are interested in a different version than the current version, there are other versions under the <code>tags</code> tab:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/container/docker4.png" class="img-fluid figure-img"></p>
+<figcaption>Container versions</figcaption>
+</figure>
+</div>
+<p>If you wanted to download another version of the container, you simply copy the command shown on the right side, and alter the syntax, for example</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull vcftools0.1.14.sif docker://biocontainers/vcftools:v0.1.14_cv2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="seqera-tutorial" class="level4">
+<h4 class="anchored" data-anchor-id="seqera-tutorial">Seqera Tutorial</h4>
+<p>The Seqera landing page is a bit different from the dockerhub landing page, and it works a bit differently from dockerhub. Dockerhub hosts container images that users have uploaded, while Seqera makes container images as you request them. They use <a href="https://bioconda.github.io">bioconda</a>, <a href="https://conda-forge.org">conda-forge</a>, and <a href="https://pypi.org">pypi</a> libraries to build their containers images with <a href="https://github.com/seqeralabs/wave">Wave</a>. The advantage is that you can include several different softwares in your container image at once. The disadvantage is that you are limited to software hosted on the aforementioned repositories. Usually this isn’t a problem, but sometimes you want to use something that isn’t hosted there.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/container/seqera1.png" class="img-fluid figure-img"></p>
+<figcaption>Seqera containers landing page</figcaption>
+</figure>
+</div>
+<p>When you pull an image from Seqera and want to run it with Apptainer, you need to remember to change the container setting from Docker to Singularity, the older name of Apptainer.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/container/seqera2.png" class="img-fluid figure-img"></p>
+<figcaption>Selecting Singularity</figcaption>
+</figure>
+</div>
+<p>Since Seqera builds containers on-demand, sometimes you have to wait for the container to finish compiling. You can see that it is still preparing the container image from the <code>fetching container</code> comment. Don’t try to pull it when it is still building!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/container/seqera3.png" class="img-fluid figure-img"></p>
+<figcaption>Waiting to build</figcaption>
+</figure>
+</div>
+<p>When the container image is ready, you can copy the text and pull the image to your system:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/container/seqera4.png" class="img-fluid figure-img"></p>
+<figcaption>Ready to download</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull vcftools_0.1.17.sif oras://community.wave.seqera.io/library/vcftools:0.1.17--b541aa8d9f9213f9</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here we use <code>oras://</code> instead of <code>docker://</code> as we are pulling from the <a href="https://oras.land">oras</a> registry. We are also pulling a different version from Seqera, so the name of the container is different.</p>
 </section>
 </section>
-<section id="setting-up-an-environment" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up-an-environment">Setting Up An Environment</h2>
-<p>You should create separate environments for each project you run, just to keep things tidy. To create an environment, you have to specify a name for your environment. You can include different platforms/operating systems in your environment, for example if you want to develop your code on a Windows system, and later use the same code on many samples on a large Linux cluster. You can also include different vetted sources for your tools, the so called channels.</p>
-<p>Here, we will create a project called <code>name_pixi_training</code> (please use your own name to avoid creating multiple environments with the same name). We are adding the <a href="https://conda-forge.org">conda-forge</a> and <a href="https://bioconda.github.io">bioconda</a> channels with the <code>-c</code> flag.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init name_pixi_training <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Pixi will create a folder named <code>name_pixi_training</code> with a a file <code>pixi.toml</code>. Let’s have a look at that file!</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-How to get to the file
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Here is the code for changing directories, listing files, and viewing the contents of a file:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> name_sida_training</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> pixi.toml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To exit the <code>less</code> view, press <code>q</code> for quit.</p>
-</div>
-</div>
-</div>
-<section id="pixi.toml" class="level3">
-<h3 class="anchored" data-anchor-id="pixi.toml">pixi.toml</h3>
-<p>The .toml file give your information about your project. Let’s have a look at one I made one my computer before adding any dependencies to my environment. How is it different from the one you’ve made on HPC2N?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Click on the numbers in the list below to highlight the corresponding code.</p>
-</div>
-</div>
-<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode bash code-annotation-code code-with-copy code-annotated"><code class="sourceCode bash"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[workspace]</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels</span> = [<span class="st">"conda-forge"</span>, <span class="st">"bioconda"</span>]</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">name</span> = <span class="st">"amrei_pixi_training"</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">platforms</span> = <span class="pp">[</span><span class="st">"osx-arm64"</span><span class="pp">]</span></span>
-<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">version</span> = <span class="st">"0.1.0"</span></span>
-<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">[tasks]</span></span>
-<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-2-9" class="code-annotation-target"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">[dependencies]</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Overview section of the environment.</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2">Added channels - these are the sources we allow for our dependencies/ tools.</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="3">The name of the environment.</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="4" data-code-annotation="4">Operating system the environment is optimised for.</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="7" data-code-annotation="5">This is where we can define tasks - interesting, but not covered in this course.</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="9" data-code-annotation="6">Here will be the list of tool installed within the environment (once we have added them).</span>
-</dd>
-</dl>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Your current platform will be automatically detected and added to the environment. If you want to add different platforms, you add them with the <code>-p linux-64</code> flag. In this example, you are adding Linux64. See the Pixi docs for the full list of supported platforms.</p>
-<p>If you are adding a platform that doesn’t natively run on your OS (e.g.&nbsp;adding Linux when running on Windows) be sure to add the OS you are running your system on as well!</p>
-</div>
-</div>
-<p>Once you have used the environment, or added a dependency/tool to it, you will find yet another file, called <code>pixi.lock</code>.</p>
-</section>
-<section id="pixi.lock" class="level3">
-<h3 class="anchored" data-anchor-id="pixi.lock">pixi.lock</h3>
-<p>The .lock file give you information on the channels you have decided to add, as well as the information on where the packages were downloaded from, license information, md5 information, and more.</p>
+<section id="running-containers-1" class="level3">
+<h3 class="anchored" data-anchor-id="running-containers-1">Running Containers</h3>
+<p>Once you have the container image on your local machine, you want to be able to use it. Apptainer can be used to build the container from the image. Then you can either enter the container and run as if you had the exact same operating system as the person who built it, or you can run the software inside the container from outside of the container.</p>
+<p>There are 2 different ways to use a container: <code>run</code> and <code>exec</code>. The <code>apptainer run</code> command launches the container and first runs the <code>%runscript</code> for the container if one is defined, and then runs your command (we will cover <code>%runscript</code> in the <code>Building Containers</code> section). The <code>apptainer exec</code> command will not run the <code>%runscript</code> even if one is defined. It is a small, fiddly detail that might be applicable if you use other people’s containers. After calling Apptainer and the <code>run</code> or <code>exec</code> commands, you can use your software as you usually would</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec vcftools_0.1.17.sif vcftools <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command runs your <code>vcftools_0.1.17.sif</code> container from the image, calls on the program <code>vcftools</code> that is within the container, and shows you the version. If you had installed VCFtools locally, you would have just used</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -416,67 +422,48 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Do not delete the .toml or .lock files, or you will break your environment!</p>
+<p>Please remember that VCFtools is just an example. If you want to run any other tool everything after <code>apptainer run</code> or <code>apptainer exec</code> has to be substituted by the name of the specific container image and the run commands for that particular tool!</p>
 </div>
 </div>
 </section>
-</section>
-<section id="adding-dependencies" class="level2">
-<h2 class="anchored" data-anchor-id="adding-dependencies">Adding Dependencies</h2>
-<p>Adding dependencies to the .toml file is telling Pixi to install the specified program for you. However, instead of installing it globally, it only gets installed in the environment.</p>
-<p>To do this, we use the <code>pixi add</code> function. Let’s try adding <code>Quarto</code> to our environments.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="building-containers" class="level3">
+<h3 class="anchored" data-anchor-id="building-containers">Building Containers</h3>
+<p>If the software you would like to use is not packaged into a container by anyone else, you might want to build it yourself. For this, we are just going to show a very simple example. Building containers from scratch is a computationally intensive task. You build containers from a <code>definition</code> file with the extension <code>.def</code></p>
+<p>Here we are going to build a container with a cow telling us the date. Save this in a file called <code>lolcow.def</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> ubuntu:20.04</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> update</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> install cowsay lolcat fortune</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">%environment</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LC_ALL</span><span class="op">=</span>C</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/usr/games:<span class="va">$PATH</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">%runscript</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">date</span> <span class="kw">|</span> <span class="ex">cowsay</span> <span class="kw">|</span> <span class="ex">lolcat</span>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>There are several components to this definition file.</p>
+<ol type="1">
+<li>You can set the operating system you want in the container, in this case Ubuntu 20.04.</li>
+<li><code>%post</code> section is where you update the OS from its base state, install dependencies and so on.</li>
+<li><code>%environment</code> is where you export paths and modify the environment.</li>
+<li><code>%runscript</code> is the script that will run when you use <code>apptainer run container.sif</code>. If you don’t include a runscript, then nothing will happen when you try to run it without any commands. You could build this container without anything in the <code>%runscript</code> section, and use <code>apptainer run container.sif date | cowsay | lolcat</code> to get the same output.</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> build lolcow.sif lolcow.def</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You’ll get a lot of output on the status of the build, ending in</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Adding environment to container</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Adding runscript</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Creating SIF file...</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Build complete: lolcow.sif</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can now run our new container with</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run lolcow.sif</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/container/lolcow1.png" class="img-fluid figure-img"></p>
+<figcaption>Boring cow</figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You must be in the folder of the project to add software!</p>
-</div>
-</div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add quarto</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-How to summon the help function
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>If you are unsure of how a function works, you can always query it, usually with the <code>--help</code> or <code>-h</code> flags. Here’s how it would look for the <code>pixi add</code> function</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>A general rule of thumb is that a single hyphen <code>-</code> is followed by a single letter flag, while double hyphens <code>--</code> are usually followed by multi-letter flags</p>
-</div>
-</div>
-</div>
-<p>Here is the pixi.toml we’ve seen earlier after I have added Quarto to my environment. You can see that the dependencies have been updated to include <code>Quarto</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[workspace]</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels</span> = [<span class="st">"conda-forge"</span>, <span class="st">"bioconda"</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">name</span> = <span class="st">"amrei_pixi_training"</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">platforms</span> = <span class="pp">[</span><span class="st">"osx-arm64"</span><span class="pp">]</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">version</span> = <span class="st">"0.1.0"</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">[tasks]</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">[dependencies]</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> = <span class="st">"&gt;=1.7.32,&lt;2"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="running-a-package" class="level2">
-<h2 class="anchored" data-anchor-id="running-a-package">Running a Package</h2>
-<p>Now that we have an environment with a tool installed, we actually want to use it. For this we have several options:</p>
-<section id="pixi-run" class="level3">
-<h3 class="anchored" data-anchor-id="pixi-run">pixi run</h3>
-<p>Use pixi to run the tool with the <code>pixi run</code> command.</p>
-<p>Let’s query the help function within Quarto:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run quarto <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -487,36 +474,43 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>To use other tools, simply substitute <code>quarto</code> with the package you’ve added, and the tool specific commands.</p>
+<p>Try removing the %runscript, build it again, and see what happens.</p>
 </div>
 </div>
-<p>And just to see that we have not installed Quarto on the server itself, try out running Quarto without Pixi: it will tell you:</p>
-<p><code>quarto: command not found</code></p>
-</section>
-</section>
-<section id="pixi-shell" class="level2">
-<h2 class="anchored" data-anchor-id="pixi-shell">pixi shell</h2>
-<p>Alternatively, you can create and “enter” the environment with</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> shell</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>and then interact with the installed dependencies as if they were installed the traditional way:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> ubuntu:20.04</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> update</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> install cowsay lolcat fortune</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">%environment</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LC_ALL</span><span class="op">=</span>C</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/usr/games:<span class="va">$PATH</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">%runscript</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">fortune</span> <span class="kw">|</span> <span class="ex">cowsay</span> <span class="kw">|</span> <span class="ex">lolcat</span>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If we use the same definition file as before, but substitute <code>date</code> for <code>fortune</code> in the runscript and build the container, we now get a philosophical cow with a dark sense of humour:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/container/lolcow2.png" class="img-fluid figure-img"></p>
+<figcaption>Fun cow</figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-Note
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/container/lolcow3.png" class="img-fluid figure-img"></p>
+<figcaption>Inspirational cow</figcaption>
+</figure>
 </div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Once you are using the pixi shell, you will see that your prompt has changed and is now prefixex with [name_of_environment]. This is how you can check in which environment you operate (and this is why it is important that you name your environments in a way that makes sense).</p>
-</div>
-</div>
-<p>To exit the environment, type</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To show the difference between the <code>run</code> and <code>exec</code> commands, we can use the same container with <code>fortune</code> in the runscript and run:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run lolcow.sif bash <span class="at">-c</span> <span class="st">"date|cowsay"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec lolcow.sif bash <span class="at">-c</span> <span class="st">"date|cowsay"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>run</code> command gives us a philosophical cow while <code>exec</code> gives us our boring cow again.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
