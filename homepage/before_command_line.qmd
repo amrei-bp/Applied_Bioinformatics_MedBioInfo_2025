@@ -13,6 +13,25 @@ For this course, we will use a GUI for some parts, but all our interaction with 
 
 I know that you have varying experience with the command line. The following tutorial gives an excellent overview over the basics (and not so basics). If you have already worked with the command line it will probably be enough to browse and brush up on some parts, if you haven't this will be your chance to learn: 
 
-[Software carpentries tutorial on the Unix shell](https://swcarpentry.github.io/shell-novice/). 
+[Software carpentries tutorial on the Unix shell](https://swcarpentry.github.io/shell-novice/).
+
+:::
+
+::: {.callout-tip}
+The above tutorial is designed to be taken on your local machine, where you have a home directory and a Desktop. 
+
+You can also follow the tutorial on the course server. However, you won't have a Desktop there, and will have to adjust accordingly. 
+
+If you want to follow the course on the server you can download the tutorial data with:
+
+```{.bash}
+curl https://swcarpentry.github.io/shell-novice/data/shell-lesson-data.zip -o shell-lesson-data.zip 
+```
+
+Then decompress with: 
+
+```{.bash}
+unzip shell-lesson-data.zip 
+```
 
 :::
