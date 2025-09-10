@@ -19,6 +19,8 @@ Yours will look slightly different, especially in the activity bar all the way o
 ## To do for you
 
 To get aquainted with some of the features of VScode, please [**watch this 7-minute video**](https://code.visualstudio.com/docs/introvideos/basics) from the Visual Studio homepage. Follow along the tutorial (as far as you can, he's not providing the last script he's showcasing).
+
+You can read up more on the graphical user interface of VScde [here](https://code.visualstudio.com/api/ux-guidelines/overview). 
 :::
  
 
