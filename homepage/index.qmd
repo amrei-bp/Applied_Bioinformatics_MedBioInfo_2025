@@ -24,6 +24,7 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 | VScode  | [Settting up and getting aquainted with VScode](before_VScode.qmd) |
 | Server access  | [SSH connect to the course server](before_server.qmd) |
 | Command line  | [Use the command line to manipulate data](before_command_line.qmd) |
+| screen | [Manage persistent bash sessions](before_screen.qmd) |
 | Data Management | [Best practices when working with bioinformatics data](before_data_management.qmd) |
 | Quarto | [Installing and using Quarto with VScode](before_quarto.qmd) |
 | git and GitHub | [Version control with git and GitHub](before_git_and_github.qmd) |
