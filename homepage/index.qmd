@@ -37,7 +37,7 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 | Day  | Session  |
 |--------|--------|
 | Monday  | [Welcome, introduction](course_intro.qmd)  |
-|   | [Discussion: Data Management](course_data_management.qmd)  |
+|   | [Data Management & Reproducible Research](course_data_management.qmd)  |
 |   | [Using git collaboratively](course_git.qmd)  |
 |   | [Create a blog with Quarto](course_blog.qmd) |
 |   | [Publish your blog with GitHub actions](course_publish_blog.qmd) |

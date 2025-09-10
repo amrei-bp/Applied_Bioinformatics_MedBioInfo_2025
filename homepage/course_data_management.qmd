@@ -64,7 +64,7 @@ Often, with a new project, one sits down with the data, tries out things and see
 
 This traditional way of working with bioinformatics data can have merits and lead to new discoveries. However, in this course we would like to introduce you to a more structured way to make sense of your data. 
 
-Let's have a look at how a beginning PhD student might approach their data: 
+Let's have a look at a typical PhD student's research project: 
 
 - They might analyse their data, and get some results. 
 - After talking with their supervisor they might get a few other samples from a collaborator, or need to drop them from the analyses due to quality concerns. 
@@ -88,15 +88,22 @@ In the "end" we have something like this:
 
 Our hypothetical PhD student, even if taking into account the best practice tips from above, is still likely to run the same analyses over and over whenever the input data changes. Sometimes, this might be months, or even years, after the original analysis was performed. 
 
-Luckily for our student, they can save their code snippets (with intuitive file names) and re-use the code from back then. This is often done with R-scripts, but can just as well be applied to bash scripts, python scripts etc.
+Luckily, they can save their code snippets (with intuitive file names) and re-use the code from back then. This is often done with R-scripts, but can just as well be applied to bash scripts, python scripts etc.
 
 In the past years, the development went even further and one can even combine code and documentation in the same document. The code is wrapped in so called `chunks`, or `code cells`, that are executable from within the document. 
 
-Before the course you have already worked with one such notebook - `Quarto`. 
+> Debugging is twice as hard as writing the code in the first place.
+Therefore, if you write the code as cleverly as possible, you are,
+by definition, not smart enough to debug it.
+> Brian Kernighan
 
-## Quarto
-Now we will set up a quarto homepage. 
+Before the course you have already worked with one such notebook - `Quarto`. We will continue to work with it during this course. 
 
+::: {.callout-tip}
+- Document your methods and workflows.
+- Document where and when you downloaded data.
+- Document the versions of the software that you ran.
+:::
 
 ## Version control
 
@@ -104,17 +111,17 @@ Now that our student has reproducible documents, with reasonable names, that can
 
 No, because there is **version control**, the practice of tracking and managing changes to files. 
 
-## Git and Github
+Again, before the course you worked through the basics of git, and how to use it with GitHub collaboratively. We will continue using git during the course as well. 
 
 ## Environment managers
 
-Using git, our PhD student can now share their reproducible code with their colloaborators, or between systems. They can rest assured that the different versions of the notebook are tracked and can be checked out when necessary. But what about the bioinformatic tools? 
+Using git, our PhD student can now share their reproducible code with their colloaborators, or between systems. They can rest assured that the different versions of the notebook are tracked and can be checked out when necessary. But what about the bioinformatic tools? Can they also be shared easily?
 
 Different computers can run on different operating systems, or can have different versions of databases installed. This can lead to conflicts between tools, or software versions and can impact code usability, or reproducibility. 
 
 Fortunately, smart people have developed environment managers such as `conda`, `bioconda`, or `pixi`. These tools **find and install packages**, so that the same package versions are being run between different computers. However, the code might still give different results on different operating systems.
 
-## Hands-on: Managing environments with Pixi
+During this course we will be building our own environments with Pixi - you'll see how great it is not having to manually install tools anymore!
 
 ## Containers in bioinformatics
 
@@ -122,10 +129,10 @@ But what if our PhD student needs to run their code on different operating syste
 
 They can use containers, that contain everything needed to run the application, even the operating system. Containers are being exchanged as container images, which makes them lightweight. Containers do not change over time, so the results will be the same today and in a few years. Everyone gets the same container that works in the same way.
 
-## Hands-on: containers
+In this course, you will have guessed it, we will learn about containers, where to get them and how to use them.
 
 
-## Workflow manager - Nextflow
+## Workflow manager
 
 Now our PhD student can use containers, or environments, to provide a uniform environment for their version controlled, wonderfully documented and reproducible code. Fantastic! But they still have to deploy, or at least monitor, their scripts manually. 
 
@@ -137,5 +144,10 @@ Humans tend to do mistakes, especially when it comes to tedious or repetitive ta
 
 :::
 
-## Hands-on: Nextflow
+In this course, we will also cover a workflow manager, `Nextflow` and learn how to make our own workflow, and how to run already developed workflows. 
 
+## Goal of the course
+
+With this, we want to give you tools that will help you plan and carry out your research. These tools will make your work more efficient and more reproducible. No matter what kind of data you use, you will take something useful from this course.
+
+![Overview of modern sequencing technologies and where they apply to biological processes](figures/data_management/technologies.png){.class width=70%}
