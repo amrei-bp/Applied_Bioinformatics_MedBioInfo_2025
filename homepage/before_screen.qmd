@@ -1,6 +1,7 @@
 ---
 title: "Manage persistent bash sessions"
 ---
+<br> 
 
 If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:
 
@@ -24,7 +25,7 @@ And follow the instructions below:
 
 ## Practice a screen tutorial
 
-Connect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from ["Interacting with Screen on Linux"](https://devconnected.com/screen-command-on-linux-explained/).
+Connect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from ["2. Name Your Session"](https://www.geeksforgeeks.org/linux-unix/screen-command-in-linux-with-examples/).
 
 After the above practice, in your terminal window you can test out the power of screen:
 
@@ -34,4 +35,4 @@ After the above practice, in your terminal window you can test out the power of 
 - notice how the date/times have continued to be printed to the screen in the background.
 - press `CTRL-C` `to interrupt the loop, then CTRL-A ESC` to enter scrolling mode, then you can use the `PAGE-UP` and `PAGE-DOWN` keys to observe the activity that took place in screen even whilst you were detached from the screen !
 
-Thank-you to Gabriella Ponzatti for this section!
+Thank-you to Gabriele Pozatti for this section!
