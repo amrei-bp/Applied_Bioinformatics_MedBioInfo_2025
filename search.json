@@ -49,7 +49,7 @@
     "href": "index.html#course-content",
     "title": "Applied Bioinformatics",
     "section": "Course content",
-    "text": "Course content\n\nbefore the course:\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nHPC access\nCreate user accounts for the HPC resources\n\n\nVScode\nSettting up and getting aquainted with VScode\n\n\nServer access\nSSH connect to the course server\n\n\nCommand line\nUse the command line to manipulate data\n\n\nscreen\nManage persistent bash sessions\n\n\nData Management\nBest practices when working with bioinformatics data\n\n\nQuarto\nInstalling and using Quarto with VScode\n\n\ngit and GitHub\nVersion control with git and GitHub\n\n\n\n\n\nduring the course:\n\nProgram\n\n\nDay\nSession\n\n\n\n\nMonday\nWelcome, introduction\n\n\n\nDiscussion: Data Management\n\n\n\nUsing git collaboratively\n\n\n\nCreate a blog with Quarto\n\n\n\nPublish your blog with GitHub actions\n\n\n\nIntroduction to environments\n\n\nTuesday\nQC of sequencing data\n\n\n\nHands-on: fastqc & multiqc with pixi\n\n\n\nIntroduction to containers\n\n\n\nUse containers\n\n\nWednesday\nnextflow\n\n\n\nquality control with nextflow\n\n\n\ncontainers cont.\n\n\nThursday\nnf-core\n\n\n\nHands-on: Test a nf-core pipeline\n\n\n\nHands-on: set up a nf-core pipeline\n\n\nFriday\nVisualize your results: ggplot\n\n\n\nDiscussion: AI in Bioinformatics\n\n\n\nclean-up and finishing",
+    "text": "Course content\n\nbefore the course:\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nHPC access\nCreate user accounts for the HPC resources\n\n\nVScode\nSettting up and getting aquainted with VScode\n\n\nServer access\nSSH connect to the course server\n\n\nCommand line\nUse the command line to manipulate data\n\n\nscreen\nManage persistent bash sessions\n\n\nData Management\nBest practices when working with bioinformatics data\n\n\nQuarto\nInstalling and using Quarto with VScode\n\n\ngit and GitHub\nVersion control with git and GitHub\n\n\n\n\n\nduring the course:\n\nProgram\n\n\nDay\nSession\n\n\n\n\nMonday\nWelcome, introduction\n\n\n\nData Management & Reproducible Research\n\n\n\nUsing git collaboratively\n\n\n\nCreate a blog with Quarto\n\n\n\nPublish your blog with GitHub actions\n\n\n\nIntroduction to environments\n\n\nTuesday\nQC of sequencing data\n\n\n\nHands-on: fastqc & multiqc with pixi\n\n\n\nIntroduction to containers\n\n\n\nUse containers\n\n\nWednesday\nnextflow\n\n\n\nquality control with nextflow\n\n\n\ncontainers cont.\n\n\nThursday\nnf-core\n\n\n\nHands-on: Test a nf-core pipeline\n\n\n\nHands-on: set up a nf-core pipeline\n\n\nFriday\nVisualize your results: ggplot\n\n\n\nDiscussion: AI in Bioinformatics\n\n\n\nclean-up and finishing",
     "crumbs": [
       "Home"
     ]
@@ -108,77 +108,49 @@
     "href": "course_data_management.html#working-with-data",
     "title": "Data Management for Reproducible Research",
     "section": "Working with data",
-    "text": "Working with data\nOften, with a new project, one sits down with the data, tries out things and see if they worked. A lot of bioinformatics is not being afraid to try things, and reading the documentation.\nThis traditional way of working with bioinformatics data can have merits and lead to new discoveries. However, in this course we would like to introduce you to a more structured way to make sense of your data.\nLet’s have a look at how a beginning PhD student might approach their data:\n\nThey might analyse their data, and get some results.\nAfter talking with their supervisor they might get a few other samples from a collaborator, or need to drop them from the analyses due to quality concerns.\nThey run the analyses again and get a different set of results.\nThere might be a few iterations of this process, and then the reviewers require some additional analyses…\n\nIn the “end” we have something like this:\n\n\n\nWhich one of these is the latest version?\n\n\n\n\n\n\n\n\nBest practices file organization\n\n\n\n\nThere is a folder for the raw data, which does not get altered.\nCode is kept separate from data.\nUse a version control system (at least for code) – e.g. git.\nThere should be a README in every directory, describing the purpose of the directory and its contents.\nUse file naming schemes that makes it easy to find files and understand what they are (for humans and machines) and document them.\nUse non-proprietary formats – .csv rather than .xlsx"
+    "text": "Working with data\nOften, with a new project, one sits down with the data, tries out things and see if they worked. A lot of bioinformatics is not being afraid to try things, and reading the documentation.\nThis traditional way of working with bioinformatics data can have merits and lead to new discoveries. However, in this course we would like to introduce you to a more structured way to make sense of your data.\nLet’s have a look at a typical PhD student’s research project:\n\nThey might analyse their data, and get some results.\nAfter talking with their supervisor they might get a few other samples from a collaborator, or need to drop them from the analyses due to quality concerns.\nThey run the analyses again and get a different set of results.\nThere might be a few iterations of this process, and then the reviewers require some additional analyses…\n\nIn the “end” we have something like this:\n\n\n\nWhich one of these is the latest version?\n\n\n\n\n\n\n\n\nBest practices file organization\n\n\n\n\nThere is a folder for the raw data, which does not get altered.\nCode is kept separate from data.\nUse a version control system (at least for code) – e.g. git.\nThere should be a README in every directory, describing the purpose of the directory and its contents.\nUse file naming schemes that makes it easy to find files and understand what they are (for humans and machines) and document them.\nUse non-proprietary formats – .csv rather than .xlsx"
   },
   {
     "objectID": "course_data_management.html#literate-programming",
     "href": "course_data_management.html#literate-programming",
     "title": "Data Management for Reproducible Research",
     "section": "Literate programming",
-    "text": "Literate programming\nOur hypothetical PhD student, even if taking into account the best practice tips from above, is still likely to run the same analyses over and over whenever the input data changes. Sometimes, this might be months, or even years, after the original analysis was performed.\nLuckily for our student, they can save their code snippets (with intuitive file names) and re-use the code from back then. This is often done with R-scripts, but can just as well be applied to bash scripts, python scripts etc.\nIn the past years, the development went even further and one can even combine code and documentation in the same document. The code is wrapped in so called chunks, or code cells, that are executable from within the document.\nBefore the course you have already worked with one such notebook - Quarto."
-  },
-  {
-    "objectID": "course_data_management.html#quarto",
-    "href": "course_data_management.html#quarto",
-    "title": "Data Management for Reproducible Research",
-    "section": "Quarto",
-    "text": "Quarto\nNow we will set up a quarto homepage."
+    "text": "Literate programming\nOur hypothetical PhD student, even if taking into account the best practice tips from above, is still likely to run the same analyses over and over whenever the input data changes. Sometimes, this might be months, or even years, after the original analysis was performed.\nLuckily, they can save their code snippets (with intuitive file names) and re-use the code from back then. This is often done with R-scripts, but can just as well be applied to bash scripts, python scripts etc.\nIn the past years, the development went even further and one can even combine code and documentation in the same document. The code is wrapped in so called chunks, or code cells, that are executable from within the document.\n\nDebugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it. Brian Kernighan\n\nBefore the course you have already worked with one such notebook - Quarto. We will continue to work with it during this course.\n\n\n\n\n\n\nTip\n\n\n\n\nDocument your methods and workflows.\nDocument where and when you downloaded data.\nDocument the versions of the software that you ran."
   },
   {
     "objectID": "course_data_management.html#version-control",
     "href": "course_data_management.html#version-control",
     "title": "Data Management for Reproducible Research",
     "section": "Version control",
-    "text": "Version control\nNow that our student has reproducible documents, with reasonable names, that can execute their analyses reliably over and over again, what happens if they modify their analyses? Will they end up again with different result files and their project sink down in chaos?\nNo, because there is version control, the practice of tracking and managing changes to files."
-  },
-  {
-    "objectID": "course_data_management.html#git-and-github",
-    "href": "course_data_management.html#git-and-github",
-    "title": "Data Management for Reproducible Research",
-    "section": "Git and Github",
-    "text": "Git and Github"
+    "text": "Version control\nNow that our student has reproducible documents, with reasonable names, that can execute their analyses reliably over and over again, what happens if they modify their analyses? Will they end up again with different result files and their project sink down in chaos?\nNo, because there is version control, the practice of tracking and managing changes to files.\nAgain, before the course you worked through the basics of git, and how to use it with GitHub collaboratively. We will continue using git during the course as well."
   },
   {
     "objectID": "course_data_management.html#environment-managers",
     "href": "course_data_management.html#environment-managers",
     "title": "Data Management for Reproducible Research",
     "section": "Environment managers",
-    "text": "Environment managers\nUsing git, our PhD student can now share their reproducible code with their colloaborators, or between systems. They can rest assured that the different versions of the notebook are tracked and can be checked out when necessary. But what about the bioinformatic tools?\nDifferent computers can run on different operating systems, or can have different versions of databases installed. This can lead to conflicts between tools, or software versions and can impact code usability, or reproducibility.\nFortunately, smart people have developed environment managers such as conda, bioconda, or pixi. These tools find and install packages, so that the same package versions are being run between different computers. However, the code might still give different results on different operating systems."
-  },
-  {
-    "objectID": "course_data_management.html#hands-on-managing-environments-with-pixi",
-    "href": "course_data_management.html#hands-on-managing-environments-with-pixi",
-    "title": "Data Management for Reproducible Research",
-    "section": "Hands-on: Managing environments with Pixi",
-    "text": "Hands-on: Managing environments with Pixi"
+    "text": "Environment managers\nUsing git, our PhD student can now share their reproducible code with their colloaborators, or between systems. They can rest assured that the different versions of the notebook are tracked and can be checked out when necessary. But what about the bioinformatic tools? Can they also be shared easily?\nDifferent computers can run on different operating systems, or can have different versions of databases installed. This can lead to conflicts between tools, or software versions and can impact code usability, or reproducibility.\nFortunately, smart people have developed environment managers such as conda, bioconda, or pixi. These tools find and install packages, so that the same package versions are being run between different computers. However, the code might still give different results on different operating systems.\nDuring this course we will be building our own environments with Pixi - you’ll see how great it is not having to manually install tools anymore!"
   },
   {
     "objectID": "course_data_management.html#containers-in-bioinformatics",
     "href": "course_data_management.html#containers-in-bioinformatics",
     "title": "Data Management for Reproducible Research",
     "section": "Containers in bioinformatics",
-    "text": "Containers in bioinformatics\nBut what if our PhD student needs to run their code on different operating systems?\nThey can use containers, that contain everything needed to run the application, even the operating system. Containers are being exchanged as container images, which makes them lightweight. Containers do not change over time, so the results will be the same today and in a few years. Everyone gets the same container that works in the same way."
+    "text": "Containers in bioinformatics\nBut what if our PhD student needs to run their code on different operating systems?\nThey can use containers, that contain everything needed to run the application, even the operating system. Containers are being exchanged as container images, which makes them lightweight. Containers do not change over time, so the results will be the same today and in a few years. Everyone gets the same container that works in the same way.\nIn this course, you will have guessed it, we will learn about containers, where to get them and how to use them."
   },
   {
-    "objectID": "course_data_management.html#hands-on-containers",
-    "href": "course_data_management.html#hands-on-containers",
+    "objectID": "course_data_management.html#workflow-manager",
+    "href": "course_data_management.html#workflow-manager",
     "title": "Data Management for Reproducible Research",
-    "section": "Hands-on: containers",
-    "text": "Hands-on: containers"
+    "section": "Workflow manager",
+    "text": "Workflow manager\nNow our PhD student can use containers, or environments, to provide a uniform environment for their version controlled, wonderfully documented and reproducible code. Fantastic! But they still have to deploy, or at least monitor, their scripts manually.\nFortunately there are workflow managers that can integrate all of the above, submit your jobs for you, and even monitor and re-submit scripts after failure. They will automatically submit jobs for you, decreasing downtime and increasing efficiency.\n\n\n\n\n\n\nTip\n\n\n\nHumans tend to do mistakes, especially when it comes to tedious or repetitive tasks. If you automate data handling, formatting etc. you are less likely to make mistakes like typos, or changing colors in images.\n\n\nIn this course, we will also cover a workflow manager, Nextflow and learn how to make our own workflow, and how to run already developed workflows."
   },
   {
-    "objectID": "course_data_management.html#workflow-manager---nextflow",
-    "href": "course_data_management.html#workflow-manager---nextflow",
+    "objectID": "course_data_management.html#goal-of-the-course",
+    "href": "course_data_management.html#goal-of-the-course",
     "title": "Data Management for Reproducible Research",
-    "section": "Workflow manager - Nextflow",
-    "text": "Workflow manager - Nextflow\nNow our PhD student can use containers, or environments, to provide a uniform environment for their version controlled, wonderfully documented and reproducible code. Fantastic! But they still have to deploy, or at least monitor, their scripts manually.\nFortunately there are workflow managers that can integrate all of the above, submit your jobs for you, and even monitor and re-submit scripts after failure. They will automatically submit jobs for you, decreasing downtime and increasing efficiency.\n\n\n\n\n\n\nTip\n\n\n\nHumans tend to do mistakes, especially when it comes to tedious or repetitive tasks. If you automate data handling, formatting etc. you are less likely to make mistakes like typos, or changing colors in images."
-  },
-  {
-    "objectID": "course_data_management.html#hands-on-nextflow",
-    "href": "course_data_management.html#hands-on-nextflow",
-    "title": "Data Management for Reproducible Research",
-    "section": "Hands-on: Nextflow",
-    "text": "Hands-on: Nextflow"
+    "section": "Goal of the course",
+    "text": "Goal of the course\nWith this, we want to give you tools that will help you plan and carry out your research. These tools will make your work more efficient and more reproducible. No matter what kind of data you use, you will take something useful from this course.\n\n\n\nOverview of modern sequencing technologies and where they apply to biological processes"
   },
   {
     "objectID": "before_VScode.html",
