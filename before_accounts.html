@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Connect to the server – Applied Bioinformatics</title>
+<title>Create a user accounts for the server – Applied Bioinformatics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -142,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./before_VScode.html">Before the course</a></li><li class="breadcrumb-item"><a href="./before_server.html">Connect to the server</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Create a user accounts for the server</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -208,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./before_server.html" class="sidebar-item-text sidebar-link active">
+  <a href="./before_server.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Connect to the server</span></a>
   </div>
 </li>
@@ -228,20 +193,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#access-server-via-vscode" id="toc-access-server-via-vscode" class="nav-link active" data-scroll-target="#access-server-via-vscode">Access server via VScode</a>
+  <li><a href="#create-a-user-account-at-suprnaiss" id="toc-create-a-user-account-at-suprnaiss" class="nav-link active" data-scroll-target="#create-a-user-account-at-suprnaiss">Create a user account at SUPR/NAISS</a>
   <ul class="collapse">
-  <li><a href="#add-new-ssh-host" id="toc-add-new-ssh-host" class="nav-link" data-scroll-target="#add-new-ssh-host">add new SSH host</a></li>
-  <li><a href="#connect-to-server" id="toc-connect-to-server" class="nav-link" data-scroll-target="#connect-to-server">connect to server</a></li>
+  <li><a href="#accept-naiss-user-agreement" id="toc-accept-naiss-user-agreement" class="nav-link" data-scroll-target="#accept-naiss-user-agreement">Accept NAISS user agreement</a></li>
   </ul></li>
+  <li><a href="#join-the-course-project-at-hpc2n" id="toc-join-the-course-project-at-hpc2n" class="nav-link" data-scroll-target="#join-the-course-project-at-hpc2n">Join the course project at HPC2N</a></li>
+  <li><a href="#create-a-user-account-at-hpc2n" id="toc-create-a-user-account-at-hpc2n" class="nav-link" data-scroll-target="#create-a-user-account-at-hpc2n">Create a user account at HPC2N</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions?</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./before_VScode.html">Before the course</a></li><li class="breadcrumb-item"><a href="./before_server.html">Connect to the server</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Connect to the server</h1>
+<h1 class="title">Create a user accounts for the server</h1>
 </div>
 
 
@@ -258,109 +225,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><br> For this course, we will be working on a remote server, HPC2N. You should already have applied for a user account there. If you haven’t, <a href="./before_accounts.html">do it now</a>.</p>
-<p>Here, you will access the server for the first time. <strong>You will need a terminal, your user name and the temporary password you will have gotten from HPC2N.</strong></p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you have forgotten your password, or it’s no longer valid, you can re-set it using the <a href="https://docs.hpc2n.umu.se/documentation/password/">Password reset service</a>.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-IF NEEDED: Get a working Linux terminal on Windows
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For the sake of simplicity we will teach you the way to use tools on Linux subsystems only. Hence, <strong>if you have a Windows PC or laptop</strong> you need to set up a way to access a Linux terminal. You can find plenty of <a href="https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/#:~:text=Assuming%20you%20have%2064%2Dbit,t%20work%20until%20you%20reboot.">tutorials</a> online to do this, but here are some steps that should be easy enough to follow:</p>
-<ul>
-<li>type in the bottom left search bar “powershell”, right-click on the result and select “run as administrator”</li>
-<li>copy-paste in the window you opened the following command:</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--install</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>reboot your system</li>
-<li>open the Microsoft store and search for Ubuntu</li>
-<li>install Ubuntu 22.04.3 LTS</li>
-<li>launch it, set a username and a password</li>
-</ul>
-</div>
-</div>
-<section id="access-server-via-vscode" class="level2">
-<h2 class="anchored" data-anchor-id="access-server-via-vscode">Access server via VScode</h2>
-<p>We can use VScode to connect to the server. For this, we need to install the <code>remote SSH</code> extension from within VScode.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In the side bar, click on the extensions symbol (looks like building blocks), and search for <code>remote SSH</code>. Click then on install in the lower right corner.</p>
-</div>
-</div>
-<section id="add-new-ssh-host" class="level3">
-<h3 class="anchored" data-anchor-id="add-new-ssh-host">add new SSH host</h3>
-<ul>
-<li>Open the Command Palette (View -&gt; Command Palette).</li>
-<li>Type <code>Remote-SSH</code> and select <code>Remote-SSH: Add New SSH Host</code>.</li>
-<li>Type <code>ssh username@kebnekaise.hpc2n.umu.se</code>, where you substitute “username” with your HPC2N user name.</li>
-<li>If VScode cannot automatically detect the trype of server you need to select <code>Linux</code>.</li>
-<li>You will be asked to pick a SSH configuration file to update. Choose the default (top of the list <code>.ssh/config</code>).</li>
-</ul>
-</section>
-<section id="connect-to-server" class="level3">
-<h3 class="anchored" data-anchor-id="connect-to-server">connect to server</h3>
-<ul>
-<li>Type <code>Remote-SSH</code> and select <code>Remote-SSH: Connect to Host</code>.</li>
-<li>Select the HPC2N server.</li>
-<li>type in your password.</li>
-</ul>
-<p>After a bit of setting up you will see in the bottom left corner the verification that you are connected to the server:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/server/connected.png" class="class img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Connected!</figcaption>
-</figure>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-After the first log-in: reset password
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In the welcome mail you got when your HPC2N account was created there was a link to create a first, temporary password. When you have logged in using that, you need to change your password.</p>
-<p>From the <a href="https://docs.hpc2n.umu.se/documentation/access/#first__time__login__password__change">HPC2N documentation</a>:</p>
-<p>This is done using the passwd command:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">passwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Use a good password that combines letters of different case. Do not use dictionary words. Avoid using the same password that you also use in other places.</p>
-<ul>
-<li>It will first ask for your current password. The first time you login, that will be the temporary password you created with the HPC2N password reset service.</li>
-<li>Type in that and press enter.</li>
-<li>Then type in the new password you want, enter, and repeat.</li>
-<li>You have changed the password.</li>
-</ul>
-</div>
-</div>
-<p>You are now on connected to the login node of the cluster.</p>
+<p><br> The following procedure takes a few days to get through because of clearance delays, so please start straight away, since every thing else in the course depends on it :)</p>
+<p>We will run parts of this course on a HighPerformance Computing cluster, HPC2N. The cluster is a local resource in Umeå, and to use it you need a user account both at the National Academic Infrastructure for Super­computing in Sweden (NAISS), and at HPC2N.</p>
+<section id="create-a-user-account-at-suprnaiss" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-user-account-at-suprnaiss">Create a user account at SUPR/NAISS</h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -371,14 +239,112 @@ To do for you
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Read <a href="https://docs.hpc2n.umu.se/tutorials/clusterguide/#beginners__intro__to__clusters">here</a> more about HPC cluster architecture. Read until the header <code>MPI</code>.</p>
+<p>Fill out &amp; submit <a href="https://supr.naiss.se/person/register/">account request form</a>. Read carefully and follow the provided instructions.</p>
 </div>
 </div>
-<p>This location is the home folder of your account.</p>
-<p>Open up the terminal in VScode (View -&gt; Terminal), and you are ready for the next chapter, learning (or repeating) the basics of the command line.</p>
-
-
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Use Register with Federated Identity if you are enrolled in a Swedish university.</li>
+<li>If you are not enrolled in a Swedish university or if the previous option doesn’t work for you, use instead Register without Federated Identity.</li>
+</ul>
+</div>
+</div>
+<section id="accept-naiss-user-agreement" class="level3">
+<h3 class="anchored" data-anchor-id="accept-naiss-user-agreement">Accept NAISS user agreement</h3>
+<p>Just after creating the SUPR account, on the page you are taken to, there will be a section titled “User Agreement” at the very top. Just under it is the button named “Accept NAISS User Agreement”.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+To do for you
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Click it.</p>
+</div>
+</div>
+<p>Alternately, if you do this at a later point. Login to SUPR. At the very top it will say “NAISS User Agreement Pending”.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Use <code>With SWAMID</code> if you are enrolled in a Swedish university - <strong>this option is much faster!</strong></li>
+<li>If you are not enrolled in a Swedish university use instead <code>Alternative: Offline via Paper Form</code>. Here you will have to print out, sign and send in the form. <strong>This may take up to a week. </strong></li>
+</ul>
+</div>
+</div>
+<p>When you have a SUPR account you can join our course project on HPC2N:</p>
 </section>
+</section>
+<section id="join-the-course-project-at-hpc2n" class="level2">
+<h2 class="anchored" data-anchor-id="join-the-course-project-at-hpc2n">Join the course project at HPC2N</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+To do for you
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Log in to <a href="https://supr.naiss.se/">SUPR</a>.</p>
+<ul>
+<li>Click “Projects” in the left side column.</li>
+<li>Under “Requesting Membership in Projects”, put in my name, since I am the PI of the project you wish to join. Click “Search for Project”.</li>
+<li>Click “Request” on the MedBioInfo project.</li>
+<li>When I have accepted your membership in the project, go to SUPR again to apply for an account at HPC2N. You will receive an email when your application for membership in a project has been accepted.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="create-a-user-account-at-hpc2n" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-user-account-at-hpc2n">Create a user account at HPC2N</h2>
+<p>Note: you <strong>must be a member</strong> of a project before you do this!</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+To do for you
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Login to SUPR.</li>
+<li>Click “Accounts” in the left side column.</li>
+<li>You can request an account at HPC2N now. Look under the heading “Account Requests”.</li>
+<li>Click “Request account”.</li>
+<li>Your information will then be sent to HPC2N, and you will be taken back to a webpage where you can choose your username.</li>
+<li>User accounts are usually created once a week. You will get an email from HPC2N when your account has been created.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions?</h2>
+<p>Contact me via Canvas!</p>
+
+
 </section>
 
 </main> <!-- /main -->
