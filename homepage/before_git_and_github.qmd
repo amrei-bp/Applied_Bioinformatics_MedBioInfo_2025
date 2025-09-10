@@ -69,8 +69,11 @@ These basic operations are all done on your local system. You have the entire hi
 ::: {.callout-important}
 ## To do for you
 
-Install [git](https://git-scm.com/downloads), and follow the 
-
-Make an account on [GitHub](www.github.com).
+Install [git](https://git-scm.com/downloads), and follow the Software Carpentries tutorial on [Version Control with Git](https://swcarpentry.github.io/git-novice/), chapters 1 to 13. 
 :::
 
+::: {.callout-note}
+Make sure you configure git with your GitHub account e-mail (either the one you signed up with, or the one provided by GitHub to hide your actual e-mail). 
+
+I am using vim as a text editor, so I have never changed the default text editor for git. In the tutorial they give you options to change if you are used to a different editor. 
+:::
