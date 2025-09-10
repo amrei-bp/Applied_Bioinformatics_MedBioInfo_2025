@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Applied Bioinformatics</title>
+<title>Manage persistent bash sessions – Applied Bioinformatics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Manage persistent bash sessions</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -134,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
@@ -193,11 +193,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-content" id="toc-course-content" class="nav-link active" data-scroll-target="#course-content">Course content</a>
-  <ul class="collapse">
-  <li><a href="#before-the-course" id="toc-before-the-course" class="nav-link" data-scroll-target="#before-the-course">before the course:</a></li>
-  <li><a href="#during-the-course" id="toc-during-the-course" class="nav-link" data-scroll-target="#during-the-course">during the course:</a></li>
-  </ul></li>
+  <li><a href="#practice-a-screen-tutorial" id="toc-practice-a-screen-tutorial" class="nav-link active" data-scroll-target="#practice-a-screen-tutorial">Practice a screen tutorial</a></li>
   </ul>
 </nav>
     </div>
@@ -206,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Applied Bioinformatics</h1>
+<h1 class="title">Manage persistent bash sessions</h1>
 </div>
 
 
@@ -223,163 +219,43 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><br> The aim of this course is to share how to use bioinformatics tools in a <strong>reproducible and scalable way</strong>. We will use <strong>environments</strong>, <strong>containers</strong>, and <strong>established pipelines</strong> so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.</p>
-<p>The website will remain active after the course so that you have access to the material even after the course.</p>
-<p>We will meet in person in Ultuna between <strong>Monday, October 6th, and Friday, October 10th, 2025</strong>. However, to get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using.</p>
+<p>If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:</p>
+<ul>
+<li>you started a program which prints out interesting stuff in your terminal, but taking forever to run, it is in effect denying you the option to do anything else in your terminal 😕</li>
+<li>you are at home connected to a remote server via SSH, you’re eagerly waiting for a phylogeny inference program that has been running for 6 hours to finish, then your Internet connection goes down (or your laptop battery runs dry), which terminates your SSH session which in turn terminates your running program, so you have to start again from scratch 😤</li>
+<li>you are at the lab working on a powerful workstation preparing some data for a project meeting tomorrow, some long running workflow in your terminal will require a few minutes of user interaction at around 11pm in order for the results to be ready in the morning: if only you could access your active terminal from home rather than hiking back to the lab at night 😴</li>
+<li>from a terminal on your laptop, you’ve been running via SSH some interactive program for a few hours on a remote server. You need to power down the laptop to bring it home with you, but that means shutting down your terminal and terminating everything that was running and starting everything from scratch when you re-open your laptop later 😬</li>
+</ul>
+<p>Screen (and similar programs) allows you to run persistent bash sessions, so that if any of the above happens your bash session on the remote server will just continue. All running processes will proceed in your absence, and you can later re-attach to your session and find things exactly how they would have been had you sat right there, starring at the screen for hours 😎!</p>
+<p>This is very useful since your re-attached session will continue in the same directory and will have all the project relevant command history saved.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+To do for you
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>You will not be able to participate properly without completing the pre-course material!</strong> If possible <strong>start today and do a bit every day</strong>.</p>
+<p>Watch an <a href="https://www.youtube.com/watch?v=Mw6QvsChxo4">8 min. video</a> which demonstrates how screen works.</p>
+<p>And follow the instructions below:</p>
 </div>
 </div>
-<p>I want to thank <a href="https://github.com/lpotgieter">Lizel Potgieter</a> for her valuable contributions to the materials for this course!</p>
-<section id="course-content" class="level2">
-<h2 class="anchored" data-anchor-id="course-content">Course content</h2>
-<section id="before-the-course" class="level3">
-<h3 class="anchored" data-anchor-id="before-the-course">before the course:</h3>
-<table class="table-striped table-hover caption-top table">
-<caption>Before the course</caption>
-<thead>
-<tr class="header">
-<th>Topic</th>
-<th>Content</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>HPC access</td>
-<td><a href="./before_accounts.html">Create user accounts for the HPC resources</a></td>
-</tr>
-<tr class="even">
-<td>VScode</td>
-<td><a href="./before_VScode.html">Settting up and getting aquainted with VScode</a></td>
-</tr>
-<tr class="odd">
-<td>Server access</td>
-<td><a href="./before_server.html">SSH connect to the course server</a></td>
-</tr>
-<tr class="even">
-<td>Command line</td>
-<td><a href="./before_command_line.html">Use the command line to manipulate data</a></td>
-</tr>
-<tr class="odd">
-<td>screen</td>
-<td><a href="./before_screen.html">Manage persistent bash sessions</a></td>
-</tr>
-<tr class="even">
-<td>Data Management</td>
-<td><a href="./before_data_management.html">Best practices when working with bioinformatics data</a></td>
-</tr>
-<tr class="odd">
-<td>Quarto</td>
-<td><a href="./before_quarto.html">Installing and using Quarto with VScode</a></td>
-</tr>
-<tr class="even">
-<td>git and GitHub</td>
-<td><a href="./before_git_and_github.html">Version control with git and GitHub</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="during-the-course" class="level3">
-<h3 class="anchored" data-anchor-id="during-the-course">during the course:</h3>
-<table class="table-striped table-hover caption-top table">
-<caption>Program</caption>
-<thead>
-<tr class="header">
-<th>Day</th>
-<th>Session</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Monday</td>
-<td><a href="course_intro.qmd">Welcome, introduction</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="./course_data_management.html">Discussion: Data Management</a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="course_git.qmd">Using git collaboratively</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="course_blog.qmd">Create a blog with Quarto</a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="course_publish_blog.qmd">Publish your blog with GitHub actions</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="./course_environments.html">Introduction to environments</a></td>
-</tr>
-<tr class="odd">
-<td>Tuesday</td>
-<td>QC of sequencing data</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Hands-on: fastqc &amp; multiqc with pixi</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="./course_container.html">Introduction to containers</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Use containers</td>
-</tr>
-<tr class="odd">
-<td>Wednesday</td>
-<td>nextflow</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>quality control with nextflow</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>containers cont.</td>
-</tr>
-<tr class="even">
-<td>Thursday</td>
-<td>nf-core</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Hands-on: Test a nf-core pipeline</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Hands-on: set up a nf-core pipeline</td>
-</tr>
-<tr class="odd">
-<td>Friday</td>
-<td><a href="./course_ggplot.html">Visualize your results: ggplot</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="./course_AI.html">Discussion: AI in Bioinformatics</a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>clean-up and finishing</td>
-</tr>
-</tbody>
-</table>
+<section id="practice-a-screen-tutorial" class="level2">
+<h2 class="anchored" data-anchor-id="practice-a-screen-tutorial">Practice a screen tutorial</h2>
+<p>Connect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from <a href="https://devconnected.com/screen-command-on-linux-explained/">“Interacting with Screen on Linux”</a>.</p>
+<p>After the above practice, in your terminal window you can test out the power of screen:</p>
+<ul>
+<li>within your screen session, run this infinite loop: <code>while true; do date; sleep 1; done</code></li>
+<li>close the terminal window running your above split screen session altogether (brutal closing, ie clicking the “close window” garbage can icon on the top right corner of the terminal window in VScode, or closing VScode and your connection to HPC2n completely).</li>
+<li>then open a fresh terminal window, (be sure you are connected to HPC2N) and re-attach to your still alive and kicking screen session.</li>
+<li>notice how the date/times have continued to be printed to the screen in the background.</li>
+<li>press <code>CTRL-C</code> <code>to interrupt the loop, then CTRL-A ESC</code> to enter scrolling mode, then you can use the <code>PAGE-UP</code> and <code>PAGE-DOWN</code> keys to observe the activity that took place in screen even whilst you were detached from the screen !</li>
+</ul>
+<p>Thank-you to Gabriella Ponzatti for this section!</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
