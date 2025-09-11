@@ -25,7 +25,6 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 | Server access  | [SSH connect to the course server](before_server.qmd) |
 | Command line  | [Use the command line to manipulate data](before_command_line.qmd) |
 | screen | [Manage persistent bash sessions](before_screen.qmd) |
-| Data Management | [Best practices when working with bioinformatics data](before_data_management.qmd) |
 | Quarto | [Installing and using Quarto with VScode](before_quarto.qmd) |
 | git and GitHub | [Version control with git and GitHub](before_git_and_github.qmd) |
 
@@ -41,9 +40,9 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 |   | [Using git collaboratively](course_git.qmd)  |
 |   | [Create a blog with Quarto](course_blog.qmd) |
 |   | [Publish your blog with GitHub actions](course_publish_blog.qmd) |
-|   | [Introduction to environments](course_environments.qmd) |
-| Tuesday  | QC of sequencing data   |
-|   | Hands-on: fastqc & multiqc with pixi |
+| Tuesday   | [QC of sequencing data](course_qc.qmd)   |
+|  | [Introduction to environments](course_environments.qmd) |
+|   | [FastQC & Multiqc with Pixi & Slurm](course_fastqc.qmd) |
 |   | [Introduction to containers](course_container.qmd)  |
 |   | Use containers |
 | Wednesday  | nextflow |
