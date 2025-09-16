@@ -195,82 +195,6 @@
     "text": "Goal of the course\nWith this, we want to give you tools that will help you plan and carry out your research. These tools will make your work more efficient and more reproducible. No matter what kind of data you use, you will take something useful from this course.\n\n\n\nOverview of modern sequencing technologies and where they apply to biological processes"
   },
   {
-    "objectID": "before_VScode.html",
-    "href": "before_VScode.html",
-    "title": "Visual Studio Code",
-    "section": "",
-    "text": "During the pre-course assignements, and the course itself, we will be using Visual Studio Code (VScode). It is available for free and runs on all major platforms. Extensions make it very versatile, and we will be using it to edit and render text, to us version control, and to connect to and work on our course server.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall VScode using the instructions here.\n\n\nOnce you have installed VScode and open it, you will see the starting screen. Here is my starting screen: \nYours will look slightly different, especially in the activity bar all the way on the left, because I have already installed extensions when working with VScode. So don’t worry about the exact look.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nTo get aquainted with some of the features of VScode, please watch this 7-minute video from the Visual Studio homepage. Follow along the tutorial (as far as you can, he’s not providing the last script he’s showcasing).\nRead up more on the graphical user interface of VScode here.\n\n\n\n\n\n\n\n\nNote\n\n\n\nIf you can’t see the terminal on the lower part of the screen, you can open it by clicking on the button on the upper right of the screen.\n\n\n\nClick here to open the terminal",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "Visual Studio Code"
-    ]
-  },
-  {
-    "objectID": "before_git_and_github.html#version-control",
-    "href": "before_git_and_github.html#version-control",
-    "title": "git and GitHub",
-    "section": "Version control",
-    "text": "Version control\nWe all have worked on data before, done analyses, talked with our PI, changed the analyses, worked a bit more… and in the end we have something like this:\n\n\n\nWhich one of these is the latest version?\n\n\nVersion control, the practice of tracking and managing changes to files, can help us not descend into chaos. With a version controlled project you always know which file, and even which part of the file, is the most recent, and you can even go back to older versions if you have to.\nVersion control can be used on the local system, where both the version database and the checked out file - the one that is actively being worked on - are on the local computer. Good, but the local computer can be corrupted and then the data is compromised.\n\n\n\nLocal version control\n\n\nVersion control can also be centralized, where the version database is on a central server, and the active file can be checked out from several different computers. This is useful when working from different systems, or when working with collaborators. However, when the central servers is compromised the historical version are lost.\n\n\n\nCentralized version control\n\n\nAt last, version control can be fully distributed, with all versions of the file being on the server and different computers. Each computer checks out the file from its own version database to work on them. The databases are then synchronized between the different computers and the server. One such distributed version control system is git. It can handle everything from small to very large projects and is simple to use. GitHubis a code hosting platform for version control and collaboration, built on git.\n\n\n\nDistributed version control\n\n\nDistributed version control facilitates collaboration with others. Software like git automatically tracks differences in files, and flags conflicts between files.\nAdditionally, GitHub, the code hosting platform based on git that we are using in this course, can be used to maintain uniformity within a working group. The group can develop their own project template that people can use and populate for their own projects.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "git and GitHub"
-    ]
-  },
-  {
-    "objectID": "before_git_and_github.html#git-and-github",
-    "href": "before_git_and_github.html#git-and-github",
-    "title": "git and GitHub",
-    "section": "git and GitHub",
-    "text": "git and GitHub\nGit is a version control software that is fully distributed - meaning that each project folder contains the full history of the project. These project folders are also called repositories and can be on several computers, or servers.\nGithub is a code hosting platform that is based on git. Here you can store, track and publish code (and code only, do NOT use github for data!). On Github you can collaborate with colleagues and work on projects together.\n\n\n\n\n\n\nNote\n\n\n\nA repository in git is the .git/ folder inside of your directory. This repository tracks all changes made to files in your project and contains your project history. Usually we refer to the git repository as the local repository.\nA repository in GitHub is where you can store your code, your files, together with their revision history. Repositories can be public or private, and might have several collaborators. Usually we refer to the Github repository as the remote repository.\n\n\nLet’s have a closer look at how git works:",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "git and GitHub"
-    ]
-  },
-  {
-    "objectID": "before_git_and_github.html#git",
-    "href": "before_git_and_github.html#git",
-    "title": "git and GitHub",
-    "section": "git",
-    "text": "git\n\nGit has three main states that your files can reside in: modified, staged, and committed:\n\n\n\nModified means that you have changed the file but have not committed it to your database yet.\nStaged means that you have marked a modified file in its current version to go into your next commit snapshot.\nCommitted means that the data is safely stored in your local database.\n\n\n\nsource: git documentation\n\nThis leads to the three main sections of a Git project: the working directory, the staging area, and the Git directory (or repository).\n\n\n\nWorking directory, staging area, and Git directory\n\n\nAnd the basic commands of git:\n\n\n\nBasic git commands\n\n\n\n\n\n\n\n\nNote\n\n\n\nThese basic operations are all done on your local system. You have the entire history of the project on your local disk, and do not need an internet connection to work on your data with git. You can do all your commits on your local computer and later push them to a remote repostitory, like Github.\n\n\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall git, and follow the Software Carpentries tutorial on Version Control with Git, chapters 1 to 13.\n\n\n\n\n\n\n\n\nNote\n\n\n\nMake sure you configure git with your GitHub account e-mail (either the one you signed up with, or the one provided by GitHub to hide your actual e-mail).\nI am using vim as a text editor, so I have never changed the default text editor for git. In the tutorial they give you options to change if you are used to a different editor.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "git and GitHub"
-    ]
-  },
-  {
-    "objectID": "course_blog.html",
-    "href": "course_blog.html",
-    "title": "Create a Quarto blog",
-    "section": "",
-    "text": "For this course we will create a blog in Quarto and publish it with GitHub pages (in the next part). At the end of every day, I want you to take some time to review the day’s topics and write (and publish) a blog entry for each topic.\nThis gives you time to review what we’ve done, and practice literate programming, presentation, and git. You can explore Quarto and it’s possibilities, or add bits and pieces to topics you’re already familiar with.\nAnd at the end of the course you will hand in the blog, and the corresponding repository. But you will also have a resource you can go back to, for yourself, or maybe for teaching purposes.\nLast, but not least, you can use the blog to showcase skills you have mastered (especially if you add to it during your PhD)."
-  },
-  {
-    "objectID": "course_blog.html#how-to-start-a-blog-with-quarto",
-    "href": "course_blog.html#how-to-start-a-blog-with-quarto",
-    "title": "Create a Quarto blog",
-    "section": "How to start a blog with Quarto",
-    "text": "How to start a blog with Quarto\nIn VScode, open the command palette:\nView -&gt; Command Palette\nAfter the prompt, &gt;, type:\nQuarto: Create Project\nSelect Blog Project, the location on your computer, and fill in the name."
-  },
-  {
-    "objectID": "course_blog.html#explore-the-blog-and-change-things",
-    "href": "course_blog.html#explore-the-blog-and-change-things",
-    "title": "Create a Quarto blog",
-    "section": "Explore the blog and change things",
-    "text": "Explore the blog and change things\n\nRender the blog and explore - where are the posts, what can you change?\nWrite your first blog post: How to make a quarto blog."
-  },
-  {
-    "objectID": "course_blog.html#tips-and-tricks",
-    "href": "course_blog.html#tips-and-tricks",
-    "title": "Create a Quarto blog",
-    "section": "Tips and tricks",
-    "text": "Tips and tricks\nWith listings, you can control which posts will be shown where.\nThere are a lot of options for you executable code.\nYou can change the color scheme of the blog.\nLightbox images might be interesting.\nMake use of the categories to sort blog posts into groups.\nCheck other Quarto homepages for cool features!"
-  },
-  {
     "objectID": "course_environments.html",
     "href": "course_environments.html",
     "title": "Introduction to Pixi",
@@ -311,6 +235,117 @@
     "title": "Introduction to Pixi",
     "section": "pixi shell",
     "text": "pixi shell\nAlternatively, you can create and “enter” the environment with\npixi shell\nand then interact with the installed dependencies as if they were installed the traditional way:\nquarto --help\n\n\n\n\n\n\nNote\n\n\n\nOnce you are using the pixi shell, you will see that your prompt has changed and is now prefixex with [name_of_environment]. This is how you can check in which environment you operate (and this is why it is important that you name your environments in a way that makes sense).\n\n\nTo exit the environment, type\nexit"
+  },
+  {
+    "objectID": "course_blog.html",
+    "href": "course_blog.html",
+    "title": "Create a Quarto blog",
+    "section": "",
+    "text": "For this course we will create a blog in Quarto and publish it with GitHub pages (in the next part). At the end of every day, I want you to take some time to review the day’s topics and write (and publish) a blog entry for each topic.\nThis gives you time to review what we’ve done, and practice literate programming, presentation, and git. You can explore Quarto and it’s possibilities, or add bits and pieces to topics you’re already familiar with.\nAnd at the end of the course you will hand in the blog, and the corresponding repository. But you will also have a resource you can go back to, for yourself, or maybe for teaching purposes.\nLast, but not least, you can use the blog to showcase skills you have mastered (especially if you add to it during your PhD)."
+  },
+  {
+    "objectID": "course_blog.html#how-to-start-a-blog-with-quarto",
+    "href": "course_blog.html#how-to-start-a-blog-with-quarto",
+    "title": "Create a Quarto blog",
+    "section": "How to start a blog with Quarto",
+    "text": "How to start a blog with Quarto\nIn VScode, open the command palette:\nView -&gt; Command Palette\nAfter the prompt, &gt;, type:\nQuarto: Create Project\nSelect Blog Project, the location on your computer, and fill in the name."
+  },
+  {
+    "objectID": "course_blog.html#explore-the-blog-and-change-things",
+    "href": "course_blog.html#explore-the-blog-and-change-things",
+    "title": "Create a Quarto blog",
+    "section": "Explore the blog and change things",
+    "text": "Explore the blog and change things\n\nRender the blog and explore - where are the posts, what can you change?\nWrite your first blog post: How to make a quarto blog."
+  },
+  {
+    "objectID": "course_blog.html#tips-and-tricks",
+    "href": "course_blog.html#tips-and-tricks",
+    "title": "Create a Quarto blog",
+    "section": "Tips and tricks",
+    "text": "Tips and tricks\nWith listings, you can control which posts will be shown where.\nThere are a lot of options for you executable code.\nYou can change the color scheme of the blog.\nLightbox images might be interesting.\nMake use of the categories to sort blog posts into groups.\nCheck other Quarto homepages for cool features!"
+  },
+  {
+    "objectID": "before_git_and_github.html#version-control",
+    "href": "before_git_and_github.html#version-control",
+    "title": "git and GitHub",
+    "section": "Version control",
+    "text": "Version control\nWe all have worked on data before, done analyses, talked with our PI, changed the analyses, worked a bit more… and in the end we have something like this:\n\n\n\nWhich one of these is the latest version?\n\n\nVersion control, the practice of tracking and managing changes to files, can help us not descend into chaos. With a version controlled project you always know which file, and even which part of the file, is the most recent, and you can even go back to older versions if you have to.\nVersion control can be used on the local system, where both the version database and the checked out file - the one that is actively being worked on - are on the local computer. Good, but the local computer can be corrupted and then the data is compromised.\n\n\n\nLocal version control\n\n\nVersion control can also be centralized, where the version database is on a central server, and the active file can be checked out from several different computers. This is useful when working from different systems, or when working with collaborators. However, when the central servers is compromised the historical version are lost.\n\n\n\nCentralized version control\n\n\nAt last, version control can be fully distributed, with all versions of the file being on the server and different computers. Each computer checks out the file from its own version database to work on them. The databases are then synchronized between the different computers and the server. One such distributed version control system is git. It can handle everything from small to very large projects and is simple to use. GitHubis a code hosting platform for version control and collaboration, built on git.\n\n\n\nDistributed version control\n\n\nDistributed version control facilitates collaboration with others. Software like git automatically tracks differences in files, and flags conflicts between files.\nAdditionally, GitHub, the code hosting platform based on git that we are using in this course, can be used to maintain uniformity within a working group. The group can develop their own project template that people can use and populate for their own projects.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "git and GitHub"
+    ]
+  },
+  {
+    "objectID": "before_git_and_github.html#git-and-github",
+    "href": "before_git_and_github.html#git-and-github",
+    "title": "git and GitHub",
+    "section": "git and GitHub",
+    "text": "git and GitHub\nGit is a version control software that is fully distributed - meaning that each project folder contains the full history of the project. These project folders are also called repositories and can be on several computers, or servers.\nGithub is a code hosting platform that is based on git. Here you can store, track and publish code (and code only, do NOT use github for data!). On Github you can collaborate with colleagues and work on projects together.\n\n\n\n\n\n\nNote\n\n\n\nA repository in git is the .git/ folder inside of your directory. This repository tracks all changes made to files in your project and contains your project history. Usually we refer to the git repository as the local repository.\nA repository in GitHub is where you can store your code, your files, together with their revision history. Repositories can be public or private, and might have several collaborators. Usually we refer to the Github repository as the remote repository.\n\n\nLet’s have a closer look at how git works:",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "git and GitHub"
+    ]
+  },
+  {
+    "objectID": "before_git_and_github.html#git",
+    "href": "before_git_and_github.html#git",
+    "title": "git and GitHub",
+    "section": "git",
+    "text": "git\n\nGit has three main states that your files can reside in: modified, staged, and committed:\n\n\n\nModified means that you have changed the file but have not committed it to your database yet.\nStaged means that you have marked a modified file in its current version to go into your next commit snapshot.\nCommitted means that the data is safely stored in your local database.\n\n\n\nsource: git documentation\n\nThis leads to the three main sections of a Git project: the working directory, the staging area, and the Git directory (or repository).\n\n\n\nWorking directory, staging area, and Git directory\n\n\nAnd the basic commands of git:\n\n\n\nBasic git commands\n\n\n\n\n\n\n\n\nNote\n\n\n\nThese basic operations are all done on your local system. You have the entire history of the project on your local disk, and do not need an internet connection to work on your data with git. You can do all your commits on your local computer and later push them to a remote repostitory, like Github.\n\n\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall git, and follow the Software Carpentries tutorial on Version Control with Git, chapters 1 to 13.\n\n\n\n\n\n\n\n\nNote\n\n\n\nMake sure you configure git with your GitHub account e-mail (either the one you signed up with, or the one provided by GitHub to hide your actual e-mail).\nI am using vim as a text editor, so I have never changed the default text editor for git. In the tutorial they give you options to change if you are used to a different editor.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "git and GitHub"
+    ]
+  },
+  {
+    "objectID": "before_VScode.html",
+    "href": "before_VScode.html",
+    "title": "Visual Studio Code",
+    "section": "",
+    "text": "During the pre-course assignements, and the course itself, we will be using Visual Studio Code (VScode). It is available for free and runs on all major platforms. Extensions make it very versatile, and we will be using it to edit and render text, to us version control, and to connect to and work on our course server.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall VScode using the instructions here.\n\n\nOnce you have installed VScode and open it, you will see the starting screen. Here is my starting screen: \nYours will look slightly different, especially in the activity bar all the way on the left, because I have already installed extensions when working with VScode. So don’t worry about the exact look.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nTo get aquainted with some of the features of VScode, please watch this 7-minute video from the Visual Studio homepage. Follow along the tutorial (as far as you can, he’s not providing the last script he’s showcasing).\nRead up more on the graphical user interface of VScode here.\n\n\n\n\n\n\n\n\nNote\n\n\n\nIf you can’t see the terminal on the lower part of the screen, you can open it by clicking on the button on the upper right of the screen.\n\n\n\nClick here to open the terminal",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Visual Studio Code"
+    ]
+  },
+  {
+    "objectID": "course_publish_blog.html",
+    "href": "course_publish_blog.html",
+    "title": "Publish your blog",
+    "section": "",
+    "text": "To publish your blog we need to first start tracking it with git:"
+  },
+  {
+    "objectID": "course_publish_blog.html#tracking-your-blog-with-git",
+    "href": "course_publish_blog.html#tracking-your-blog-with-git",
+    "title": "Publish your blog",
+    "section": "Tracking your blog with git",
+    "text": "Tracking your blog with git\nIn the terminal, make sure you are in the directory of your blog, then type:\ngit init\nThis will initialize your blog directory as a git repository.\n\nInitialized empty Git repository in path/to/directory\n\nNow, if you check with\ngit status\nyou will see that the repository is indeed empty. You will also see some untracked files.\n\n\n\nTerminal after checking the git status\n\n\nAdd all the files to the repository and commit the changes to git."
+  },
+  {
+    "objectID": "course_publish_blog.html#add-the-blog-to-github",
+    "href": "course_publish_blog.html#add-the-blog-to-github",
+    "title": "Publish your blog",
+    "section": "add the blog to GitHub",
+    "text": "add the blog to GitHub\nNow we need to add the local repository to GitHub. Log into GitHub on the homepage. Then add a new repository, give it a name and make it public. Do not add anything to it, not .gitignore, README, license etc. \nOnce initialized, GitHub will give you several suggestions of what to do with your new repository. Follow the instructions of the option: ...or push an existing repository from the command line\nBack in VScode, check in the terminal that you are in the correct directory (the one of your blog).\nYou can then add the remote origin etc with the commands given on GitHub:\ngit remote add origin &lt;specifics of your repository&gt;\ngit branch -M main\ngit push -u origin main\nCheck on Github if the content of your blog has been added. You might have to refresh your page."
+  },
+  {
+    "objectID": "course_publish_blog.html#publish-via-github-actions",
+    "href": "course_publish_blog.html#publish-via-github-actions",
+    "title": "Publish your blog",
+    "section": "publish via GitHub actions",
+    "text": "publish via GitHub actions\nNow that you have a local git repository that is synced to GitHub you can publish your blog using GitHub Pages, a website hosting service.\nThe default URL of your blog will be a combination of your GitHub user name and the name of the repository. If you have your own domain you can also use that at a later point in time.\nThe steps for publishing your blog with GitHub Actions are here. Follow the instructions until the section Executing code.\nNow, the publish command will be triggered automatically every time you push changes to the remote repository."
+  },
+  {
+    "objectID": "course_publish_blog.html#tips-and-tricks",
+    "href": "course_publish_blog.html#tips-and-tricks",
+    "title": "Publish your blog",
+    "section": "Tips and tricks",
+    "text": "Tips and tricks\nWhen working on the blog, use git (adding, committing, pushing) often. Try to keep commits to one topic - maybe one blog entry per time. This way it is easier to label the commits and backtrack what has happened in the repository.\nDo not add large files to the repository. GitHub is a code hosting platform, not a data hosting platform. If you have data in your local directory you can exlude it from the repository with the .gitignore file."
   },
   {
     "objectID": "before_quarto.html",
