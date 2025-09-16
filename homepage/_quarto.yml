@@ -4,6 +4,13 @@ project:
 website:
   title: "Applied Bioinformatics"
   navbar:
+    tools:
+      - icon: github
+        menu:
+          - text: Source Code
+            href:  https://github.com/amrei-bp/Applied_Bioinformatics_MedBioInfo_2025
+          - text: Report a Bug
+            href:  https://github.com/amrei-bp/Applied_Bioinformatics_MedBioInfo_2025/issues
     left:
       - href: index.qmd
         text: Home
