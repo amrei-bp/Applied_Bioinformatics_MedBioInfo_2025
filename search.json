@@ -243,6 +243,34 @@
     ]
   },
   {
+    "objectID": "course_blog.html",
+    "href": "course_blog.html",
+    "title": "Create a Quarto blog",
+    "section": "",
+    "text": "For this course we will create a blog in Quarto and publish it with GitHub pages (in the next part). At the end of every day, I want you to take some time to review the day’s topics and write (and publish) a blog entry for each topic.\nThis gives you time to review what we’ve done, and practice literate programming, presentation, and git. You can explore Quarto and it’s possibilities, or add bits and pieces to topics you’re already familiar with.\nAnd at the end of the course you will hand in the blog, and the corresponding repository. But you will also have a resource you can go back to, for yourself, or maybe for teaching purposes.\nLast, but not least, you can use the blog to showcase skills you have mastered (especially if you add to it during your PhD)."
+  },
+  {
+    "objectID": "course_blog.html#how-to-start-a-blog-with-quarto",
+    "href": "course_blog.html#how-to-start-a-blog-with-quarto",
+    "title": "Create a Quarto blog",
+    "section": "How to start a blog with Quarto",
+    "text": "How to start a blog with Quarto\nIn VScode, open the command palette:\nView -&gt; Command Palette\nAfter the prompt, &gt;, type:\nQuarto: Create Project\nSelect Blog Project, the location on your computer, and fill in the name."
+  },
+  {
+    "objectID": "course_blog.html#explore-the-blog-and-change-things",
+    "href": "course_blog.html#explore-the-blog-and-change-things",
+    "title": "Create a Quarto blog",
+    "section": "Explore the blog and change things",
+    "text": "Explore the blog and change things\n\nRender the blog and explore - where are the posts, what can you change?\nWrite your first blog post: How to make a quarto blog."
+  },
+  {
+    "objectID": "course_blog.html#tips-and-tricks",
+    "href": "course_blog.html#tips-and-tricks",
+    "title": "Create a Quarto blog",
+    "section": "Tips and tricks",
+    "text": "Tips and tricks\nWith listings, you can control which posts will be shown where.\nThere are a lot of options for you executable code.\nYou can change the color scheme of the blog.\nLightbox images might be interesting.\nMake use of the categories to sort blog posts into groups.\nCheck other Quarto homepages for cool features!"
+  },
+  {
     "objectID": "course_environments.html",
     "href": "course_environments.html",
     "title": "Introduction to Pixi",
