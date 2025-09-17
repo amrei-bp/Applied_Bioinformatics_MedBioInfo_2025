@@ -3,6 +3,19 @@ title: "Quality control of sequencing data"
 subtitle: "screen, slurm, pixi, FastQC, MultiQC"
 ---
 
+<br>
+Regardless of what type of bioinformatics project you are working on, you will have to assess whether the data you have is of good enough quality to proceed with - bad input data can seriously impair your ability to draw conclusions from the samples later on!
+
+Poor quality sequencing data can be caused by a variety of factors, such as sample contamination, improper sample handling, technical problems. Some of these problems will be checked for before and during the sequencing - it is always good to read all documentation coming from the sequencing facility. 
+
+When it comes to sequencing data, FastQC is a well known and often used software to check raw reads for their quality. 
+
+::: {.callout-note}
+Sample preparation includes fragmenting the genome into the **sequencing library**.
+
+A **read** is the inferred nucleotide base sequence of a genome fragment as determined by the sequencer. 
+:::
+
 
 ## Quality Control Tutorial
 
@@ -78,7 +91,11 @@ ln -s path/to/common_data/RNAseq/*fastq.gz data/
 
 ## Metagenomics
 
-## 
+## Whole genome sequencing
+
+## proteomics
+
+## image 
 
 :::::
 
@@ -108,9 +125,9 @@ The quality score is encoded in ASCII, to represent scores from 0 (high probabil
 
 We could now look through the fastq file and scan the quality scores for the reads in our sample one by one. Sounds kind of tedious, doesn't it? Luckily, here comes FastQC (and other, similar tools). 
 
-## FastQC
+## [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
-Fastqc is a simple tool to monitor the quality and the properties of a NGS sequencing file in fastq, SAM and BAM format. More information [here](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){.external target="_blank"}. 
+Fastqc is a tool to monitor the quality and the properties of a NGS sequencing file in fastq, SAM and BAM format. It summarizes its findings for a quick visual overview. More information [here](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){.external target="_blank"}. 
 
 FastQC will give us an overview of the entire sample, so we won't have to look at the quality score of every single read in the sample. In addition to the quality scores, FastQC also checks other quality measures. 
 
@@ -138,6 +155,13 @@ pixi add fastqc
 pixi run fastqc --help
 ```
 
+Then, activate the environment with: 
+
+```{.bash}
+pixi shell
+```
+
+
 ### SLURM
 
 HPC2N is running SLURM (Simple Linux Utility for Resource Management) as its job scheduling system. When you submit a job on the cluster log-in node, SLURM will start, execute and monitor your jobs on the working nodes. It allocates access to the cluster resources, and manages the queue of pending jobs. 
@@ -154,10 +178,10 @@ The basic usage of slurm on the command line is thus:
 srun -A project_ID -t 30:00 -n 1 <tool options and commands>
 ```
 
-We want to use FastQC on the samples, which is in the Pixi environment. So we preceed the `srun` command with `pixi run`, and add the FastQC specific commands:
+We want to use FastQC on the samples, so we add the FastQC specific commands:
 
 ```{.bash}
-pixi run srun -A project_ID -t 15:00 -n 1 fastqc --noextract -o fastqc data data/sample_1.fastq.gz data/sample_2.fastq.gz 
+srun -A project_ID -t 15:00 -n 1 fastqc --noextract -o fastqc data data/sample_1.fastq.gz data/sample_2.fastq.gz 
 ```
 
 You will of course have to modify for your project structure. 
@@ -208,10 +232,10 @@ Copy the following into the `fastqc.sh` file, and save the contents. Read throug
 fastqc -o ../fastqc --noextract ../data/*fastq.gz
 ```
 
-Save and run with Pixi: 
+Save and run within your Pixi environment: 
 
 ```{.bash}
-pixi run sbatch fastqc.sh 
+sbatch fastqc.sh 
 ```
 
 Check your job with:
