@@ -104,18 +104,249 @@
     "text": "How To Decide When To Use AI\nIf we know the risks and the true cost of what we are doing, we can make informed decisions about how we chose to incorporate new technologies into our day-to-day and working lives.\nHere are some questions that we find useful to ask ourselves before opening a GPT:\n\nAm I phrasing my prompt in a good way? Here is a guide to prompt engineering that might be useful.\nCan I find this information any other way?\nHow much time am I saving by looking this question up here vs on BioStars, for example?\nDo I know enough about the topic to know whether the GPT is lying to me?\nWhat are the consequences of testing the validity of the GPT solution? Can I potentially corrupt my data or my system? Is there a potential for me to lie to someone who trusts me enough to ask my opinion?\n\nIf a GPT is used to learn a new skill, remember how important active learning is. Seek explanations for everything the GPT tells you. Find independent sources that were produced by experts to validate your learning.\nHold on to the ability to learn and the desire to be curious."
   },
   {
-    "objectID": "before_screen.html",
-    "href": "before_screen.html",
-    "title": "Manage persistent bash sessions",
+    "objectID": "course_fastqc.html",
+    "href": "course_fastqc.html",
+    "title": "Quality control of sequencing data",
     "section": "",
-    "text": "If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:\nScreen (and similar programs) allows you to run persistent bash sessions, so that if any of the above happens your bash session on the remote server will just continue. All running processes will proceed in your absence, and you can later re-attach to your session and find things exactly how they would have been had you sat right there, starring at the screen for hours 😎!\nThis is very useful since your re-attached session will continue in the same directory and will have all the project relevant command history saved."
+    "text": "Within this tutorial we will\n\nget familiar with the command line.\nuse the job scheduler slurm.\nmake a Pixi environment.\nrun FastQC on some raw sequencing files to practice and to understand the output.\nuse MultiQC to summarize the FastQC output.\n\n\n\nScreen or GNU Screen is a terminal multiplexer. In other words, it means that you can start a screen session and then open any number of windows (virtual terminals) inside that session. Processes running in Screen will continue to run when their window is not visible even if you get disconnected.\nStart a named session\nscreen -S fastqc\nDetach from Linux Screen Session\nYou can detach from the screen session at any time by typing:\nCtrl + a d\nReattach to a Linux Screen\nTo find the session ID list the current running screen sessions with:\nscreen -ls\nTo resume your screen session use the following command:\nscreen -r name"
   },
   {
-    "objectID": "before_screen.html#practice-a-screen-tutorial",
-    "href": "before_screen.html#practice-a-screen-tutorial",
-    "title": "Manage persistent bash sessions",
-    "section": "Practice a screen tutorial",
-    "text": "Practice a screen tutorial\nConnect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from “2. Name Your Session”.\nAfter the above practice, in your terminal window you can test out the power of screen:\n\nwithin your screen session, run this infinite loop: while true; do date; sleep 1; done\nclose the terminal window running your above split screen session altogether (brutal closing, ie clicking the “close window” garbage can icon on the top right corner of the terminal window in VScode, or closing VScode and your connection to HPC2n completely).\nthen open a fresh terminal window, (be sure you are connected to HPC2N) and re-attach to your still alive and kicking screen session.\nnotice how the date/times have continued to be printed to the screen in the background.\npress CTRL-C to interrupt the loop, then CTRL-A ESC to enter scrolling mode, then you can use the PAGE-UP and PAGE-DOWN keys to observe the activity that took place in screen even whilst you were detached from the screen !\n\nThank-you to Gabriele Pozatti for this section!"
+    "objectID": "course_fastqc.html#quality-control-tutorial",
+    "href": "course_fastqc.html#quality-control-tutorial",
+    "title": "Quality control of sequencing data",
+    "section": "",
+    "text": "Within this tutorial we will\n\nget familiar with the command line.\nuse the job scheduler slurm.\nmake a Pixi environment.\nrun FastQC on some raw sequencing files to practice and to understand the output.\nuse MultiQC to summarize the FastQC output.\n\n\n\nScreen or GNU Screen is a terminal multiplexer. In other words, it means that you can start a screen session and then open any number of windows (virtual terminals) inside that session. Processes running in Screen will continue to run when their window is not visible even if you get disconnected.\nStart a named session\nscreen -S fastqc\nDetach from Linux Screen Session\nYou can detach from the screen session at any time by typing:\nCtrl + a d\nReattach to a Linux Screen\nTo find the session ID list the current running screen sessions with:\nscreen -ls\nTo resume your screen session use the following command:\nscreen -r name"
+  },
+  {
+    "objectID": "course_fastqc.html#choose-your-adventure",
+    "href": "course_fastqc.html#choose-your-adventure",
+    "title": "Quality control of sequencing data",
+    "section": "Choose your adventure:",
+    "text": "Choose your adventure:\nThe next part - choosing your data - will be different depending on which dataset you want to work with. Please select the tab that applies.\n\n\n\n\n\n\nTip\n\n\n\nSince we will create a lot of output, some we will use in a downstream analysis, I would recommend to get very well organized with a clear system of directories.\nI called my working directory after the type of data (e.g. RNASeq), so I know which project I am working on. Within that directory I have my data in a sub-directory called data. This way, the data is not in the way, and I remember to not alter it.\n\n\n\nRNAseqMetagenomics\n\n\nTime series of the induction of human regulatory T cells (Tregs).\nThe dataset is available at the European Nucleotide Archive (ENA) under the accession: PRJNA369563.\nI have downloaded four paired samples for you, and they are available at:\nmedbioinfo2025/common_data/RNAseq\nIf you want to work with this data, make a symbolic link to the data\nln -s path/to/common_data/RNAseq/*fastq.gz data/"
+  },
+  {
+    "objectID": "course_fastqc.html#data-format",
+    "href": "course_fastqc.html#data-format",
+    "title": "Quality control of sequencing data",
+    "section": "Data format",
+    "text": "Data format\nYou now have the raw sequencing data, in a very common data format, fastq. Let’s have a look at the data (change accordingly):\nzcat data/sample.fastq.gz | head -n 10 \nFor each read we see an entry consisting of four lines. Every new read starts with an @.\n\nFastq format\n\n\n\n\n\n\nLine\nContent\n\n\n\n\n1\nInformation about the read, always starts with an @\n\n\n2\nnucleic sequence of the read\n\n\n3\nstarts with `+`, can (but does not have to) contain data\n\n\n4\ncharacters representing the quality scores with the bases of the read sequence\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe quality score is encoded in ASCII, to represent scores from 0 (high probability of error in calling the base) to 42 (low probability of error in calling the base).\n\n\nWe could now look through the fastq file and scan the quality scores for the reads in our sample one by one. Sounds kind of tedious, doesn’t it? Luckily, here comes FastQC (and other, similar tools)."
+  },
+  {
+    "objectID": "course_fastqc.html#fastqc",
+    "href": "course_fastqc.html#fastqc",
+    "title": "Quality control of sequencing data",
+    "section": "FastQC",
+    "text": "FastQC\nFastqc is a simple tool to monitor the quality and the properties of a NGS sequencing file in fastq, SAM and BAM format. More information here.\nFastQC will give us an overview of the entire sample, so we won’t have to look at the quality score of every single read in the sample. In addition to the quality scores, FastQC also checks other quality measures.\nYou will now check the quality of the data set you chose.\n\n\n\n\n\n\nTip\n\n\n\nFind someone who is working on the same data set, so you can discuss what you are finding in just your data.\n\n\nNow, first we check if FastQC is installed on the system:\nfastqc --help\nSince it isn’t (bash: fastqc: command not found) we will now make a Pixi environment that contains FastQC.\n\nPixi environment with FastQC\nInitiate a pixi environment, with permitted package sources from conda-forge and bioconda. Then add FastQC to the environment (at the moment we do not care which version, so we do not specify a version). Last, queck that we can run FastQC via Pixi.\npixi init -c conda-forge -c bioconda\npixi add fastqc\npixi run fastqc --help\n\n\nSLURM\nHPC2N is running SLURM (Simple Linux Utility for Resource Management) as its job scheduling system. When you submit a job on the cluster log-in node, SLURM will start, execute and monitor your jobs on the working nodes. It allocates access to the cluster resources, and manages the queue of pending jobs.\nTo be able to do so, SLURM needs a bit of information from us when we submit a job:\n-A: project_ID (to deduct the used computing time from the correct project) -t allocated time dd-hh:mm:ss (to optimize the job queue) -n number of cores (default is one)\nThe basic usage of slurm on the command line is thus:\nsrun -A project_ID -t 30:00 -n 1 &lt;tool options and commands&gt;\nWe want to use FastQC on the samples, which is in the Pixi environment. So we preceed the srun command with pixi run, and add the FastQC specific commands:\npixi run srun -A project_ID -t 15:00 -n 1 fastqc --noextract -o fastqc data data/sample_1.fastq.gz data/sample_2.fastq.gz \nYou will of course have to modify for your project structure.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nNow you can download the .html report from the server (in VScode: right click on the file in the file explorer –&gt; download, otherwise rsync from the local system) and look at them.\n\nWhat is the quality of your sample?\nCan you use it for downstream analyses? Discuss with your neighbour.\nLook at online resources to see if what you see is a problem, or expected because of the type of data you work with.\n\n\n\nNow, srun works fine if you’re working on one sample. But what if you want to run FastQC on many samples? Or if you want to go back and run the command again in a few weeks, will you remember exactly what you ran?"
+  },
+  {
+    "objectID": "course_fastqc.html#sbatch",
+    "href": "course_fastqc.html#sbatch",
+    "title": "Quality control of sequencing data",
+    "section": "sbatch",
+    "text": "sbatch\nMake a new directory, called scripts. This is where you will house all scripts of your project. Within scripts, touch a new file, fastqc.sh.\nThis is how my project directory looks like at this point:\n.\n├── data\n│   ├── sample1_1.fastq.gz\n│   ├── sample1_2.fastq.gz\n│   ├── sample2_1.fastq.gz\n│   ├── sample2_2.fastq.gz\n├── fastqc\n│   ├── sample1_1_fastqc.html\n│   ├── sample1_1_fastqc.zip\n│   ├── sample1_2_fastqc.html\n│   └── sample1_2_fastqc.zip\n├── pixi.lock\n├── pixi.toml\n└── scripts\n    └── fastqc.sh\nCopy the following into the fastqc.sh file, and save the contents. Read through the file and try to understand what the different lines are doing.\n#! /bin/bash -l\n#SBATCH -A project_ID\n#SBATCH -t 30:00\n#SBATCH -n 1\n\nfastqc -o ../fastqc --noextract ../data/*fastq.gz\nSave and run with Pixi:\npixi run sbatch fastqc.sh \nCheck your job with:\nsqueue -u &lt;user-name&gt;\nAfter running a bash script you will get a slurm output file in the directory you submitted your job from. Look at that output. See if you understand what that output contains.\nless slurm-&lt;jobID&gt;.out\nNow you have a .html file for each sample, which is fine for a few samples, but gets tedious when running a project with many samples. So let’s go and summarize them with MultiQC."
+  },
+  {
+    "objectID": "course_fastqc.html#multiqc",
+    "href": "course_fastqc.html#multiqc",
+    "title": "Quality control of sequencing data",
+    "section": "MultiQC",
+    "text": "MultiQC\nMulti-QC summarises the output of a lot of different tools. Only having run FastQC it might not seem powerful, but at the end of workflows it is really nice to have a program go through all the files and summarize them, saving you the hassle.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nSet up and run MultiQC on your FastQC output. Things to think about:\n\nadd MultiQC to the Pixi environment\nwrite a sbatch script, just because you can\nsave the output in a separate directory\n\nOnce you have run MultiQC, go through the report and understand what it says about your data."
+  },
+  {
+    "objectID": "course_fastqc.html#notes-tips-and-tricks",
+    "href": "course_fastqc.html#notes-tips-and-tricks",
+    "title": "Quality control of sequencing data",
+    "section": "Notes, tips and tricks",
+    "text": "Notes, tips and tricks\nRNAseq failed per base sequence content\nCheck your running jobs:\nsqueue -u &lt;user_name&gt;\nCheck the projects you are a member of:\nprojinfo"
+  },
+  {
+    "objectID": "before_quarto.html",
+    "href": "before_quarto.html",
+    "title": "Quarto",
+    "section": "",
+    "text": "When analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "before_quarto.html#literate-programming",
+    "href": "before_quarto.html#literate-programming",
+    "title": "Quarto",
+    "section": "",
+    "text": "When analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "before_quarto.html#quarto",
+    "href": "before_quarto.html#quarto",
+    "title": "Quarto",
+    "section": "Quarto",
+    "text": "Quarto\n\nAn open-source scientific and technical publishing system.\n\nMeaning that you can use your favorite text editor (such as VScode (o; ) to write documents in plain text markdown.\nQuarto chunks, or code cells, are executable from within the document and can be written in a variety of different languages - such as python, R, Julia, bash, Observable, and more.\nYour document can then be rendered into a variety of different output formats: html, pdf, MS Word, Markdown, and more.\nWith this you can make presentations, dashboards, homepages (like this one), reports, books, manuscripts, and more.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall Quarto, and follow the tutorial for VScode.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto has a very good documentation, that you can access on their homepage -&gt; Guide, or by searching the web for “Quarto, feature you are looking for”.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "course_publish_blog.html",
+    "href": "course_publish_blog.html",
+    "title": "Publish your blog",
+    "section": "",
+    "text": "To publish your blog we need to first start tracking it with git:"
+  },
+  {
+    "objectID": "course_publish_blog.html#tracking-your-blog-with-git",
+    "href": "course_publish_blog.html#tracking-your-blog-with-git",
+    "title": "Publish your blog",
+    "section": "Tracking your blog with git",
+    "text": "Tracking your blog with git\nIn the terminal, make sure you are in the directory of your blog, then type:\ngit init\nThis will initialize your blog directory as a git repository.\n\nInitialized empty Git repository in path/to/directory\n\nNow, if you check with\ngit status\nyou will see that the repository is indeed empty. You will also see some untracked files.\n\n\n\nTerminal after checking the git status\n\n\nAdd all the files to the repository and commit the changes to git."
+  },
+  {
+    "objectID": "course_publish_blog.html#add-the-blog-to-github",
+    "href": "course_publish_blog.html#add-the-blog-to-github",
+    "title": "Publish your blog",
+    "section": "add the blog to GitHub",
+    "text": "add the blog to GitHub\nNow we need to add the local repository to GitHub. Log into GitHub on the homepage. Then add a new repository, give it a name and make it public. Do not add anything to it, not .gitignore, README, license etc. \nOnce initialized, GitHub will give you several suggestions of what to do with your new repository. Follow the instructions of the option: ...or push an existing repository from the command line\nBack in VScode, check in the terminal that you are in the correct directory (the one of your blog).\nYou can then add the remote origin etc with the commands given on GitHub:\ngit remote add origin &lt;specifics of your repository&gt;\ngit branch -M main\ngit push -u origin main\nCheck on Github if the content of your blog has been added. You might have to refresh your page."
+  },
+  {
+    "objectID": "course_publish_blog.html#publish-via-github-actions",
+    "href": "course_publish_blog.html#publish-via-github-actions",
+    "title": "Publish your blog",
+    "section": "publish via GitHub actions",
+    "text": "publish via GitHub actions\nNow that you have a local git repository that is synced to GitHub you can publish your blog using GitHub Pages, a website hosting service.\nThe default URL of your blog will be a combination of your GitHub user name and the name of the repository. If you have your own domain you can also use that at a later point in time.\nThe steps for publishing your blog with GitHub Actions are here. Follow the instructions until the section Executing code.\nNow, the publish command will be triggered automatically every time you push changes to the remote repository."
+  },
+  {
+    "objectID": "course_publish_blog.html#tips-and-tricks",
+    "href": "course_publish_blog.html#tips-and-tricks",
+    "title": "Publish your blog",
+    "section": "Tips and tricks",
+    "text": "Tips and tricks\nWhen working on the blog, use git (adding, committing, pushing) often. Try to keep commits to one topic - maybe one blog entry per time. This way it is easier to label the commits and backtrack what has happened in the repository.\nDo not add large files to the repository. GitHub is a code hosting platform, not a data hosting platform. If you have data in your local directory you can exlude it from the repository with the .gitignore file."
+  },
+  {
+    "objectID": "before_VScode.html",
+    "href": "before_VScode.html",
+    "title": "Visual Studio Code",
+    "section": "",
+    "text": "During the pre-course assignements, and the course itself, we will be using Visual Studio Code (VScode). It is available for free and runs on all major platforms. Extensions make it very versatile, and we will be using it to edit and render text, to us version control, and to connect to and work on our course server.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall VScode using the instructions here.\n\n\nOnce you have installed VScode and open it, you will see the starting screen. Here is my starting screen: \nYours will look slightly different, especially in the activity bar all the way on the left, because I have already installed extensions when working with VScode. So don’t worry about the exact look.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nTo get aquainted with some of the features of VScode, please watch this 7-minute video from the Visual Studio homepage. Follow along the tutorial (as far as you can, he’s not providing the last script he’s showcasing).\nRead up more on the graphical user interface of VScode here.\n\n\n\n\n\n\n\n\nNote\n\n\n\nIf you can’t see the terminal on the lower part of the screen, you can open it by clicking on the button on the upper right of the screen.\n\n\n\nClick here to open the terminal",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Visual Studio Code"
+    ]
+  },
+  {
+    "objectID": "before_git_and_github.html#version-control",
+    "href": "before_git_and_github.html#version-control",
+    "title": "git and GitHub",
+    "section": "Version control",
+    "text": "Version control\nWe all have worked on data before, done analyses, talked with our PI, changed the analyses, worked a bit more… and in the end we have something like this:\n\n\n\nWhich one of these is the latest version?\n\n\nVersion control, the practice of tracking and managing changes to files, can help us not descend into chaos. With a version controlled project you always know which file, and even which part of the file, is the most recent, and you can even go back to older versions if you have to.\nVersion control can be used on the local system, where both the version database and the checked out file - the one that is actively being worked on - are on the local computer. Good, but the local computer can be corrupted and then the data is compromised.\n\n\n\nLocal version control\n\n\nVersion control can also be centralized, where the version database is on a central server, and the active file can be checked out from several different computers. This is useful when working from different systems, or when working with collaborators. However, when the central servers is compromised the historical version are lost.\n\n\n\nCentralized version control\n\n\nAt last, version control can be fully distributed, with all versions of the file being on the server and different computers. Each computer checks out the file from its own version database to work on them. The databases are then synchronized between the different computers and the server. One such distributed version control system is git. It can handle everything from small to very large projects and is simple to use. GitHubis a code hosting platform for version control and collaboration, built on git.\n\n\n\nDistributed version control\n\n\nDistributed version control facilitates collaboration with others. Software like git automatically tracks differences in files, and flags conflicts between files.\nAdditionally, GitHub, the code hosting platform based on git that we are using in this course, can be used to maintain uniformity within a working group. The group can develop their own project template that people can use and populate for their own projects.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "git and GitHub"
+    ]
+  },
+  {
+    "objectID": "before_git_and_github.html#git-and-github",
+    "href": "before_git_and_github.html#git-and-github",
+    "title": "git and GitHub",
+    "section": "git and GitHub",
+    "text": "git and GitHub\nGit is a version control software that is fully distributed - meaning that each project folder contains the full history of the project. These project folders are also called repositories and can be on several computers, or servers.\nGithub is a code hosting platform that is based on git. Here you can store, track and publish code (and code only, do NOT use github for data!). On Github you can collaborate with colleagues and work on projects together.\n\n\n\n\n\n\nNote\n\n\n\nA repository in git is the .git/ folder inside of your directory. This repository tracks all changes made to files in your project and contains your project history. Usually we refer to the git repository as the local repository.\nA repository in GitHub is where you can store your code, your files, together with their revision history. Repositories can be public or private, and might have several collaborators. Usually we refer to the Github repository as the remote repository.\n\n\nLet’s have a closer look at how git works:",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "git and GitHub"
+    ]
+  },
+  {
+    "objectID": "before_git_and_github.html#git",
+    "href": "before_git_and_github.html#git",
+    "title": "git and GitHub",
+    "section": "git",
+    "text": "git\n\nGit has three main states that your files can reside in: modified, staged, and committed:\n\n\n\nModified means that you have changed the file but have not committed it to your database yet.\nStaged means that you have marked a modified file in its current version to go into your next commit snapshot.\nCommitted means that the data is safely stored in your local database.\n\n\n\nsource: git documentation\n\nThis leads to the three main sections of a Git project: the working directory, the staging area, and the Git directory (or repository).\n\n\n\nWorking directory, staging area, and Git directory\n\n\nAnd the basic commands of git:\n\n\n\nBasic git commands\n\n\n\n\n\n\n\n\nNote\n\n\n\nThese basic operations are all done on your local system. You have the entire history of the project on your local disk, and do not need an internet connection to work on your data with git. You can do all your commits on your local computer and later push them to a remote repostitory, like Github.\n\n\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall git, and follow the Software Carpentries tutorial on Version Control with Git, chapters 1 to 13.\n\n\n\n\n\n\n\n\nNote\n\n\n\nMake sure you configure git with your GitHub account e-mail (either the one you signed up with, or the one provided by GitHub to hide your actual e-mail).\nI am using vim as a text editor, so I have never changed the default text editor for git. In the tutorial they give you options to change if you are used to a different editor.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "git and GitHub"
+    ]
+  },
+  {
+    "objectID": "course_blog.html",
+    "href": "course_blog.html",
+    "title": "Create a Quarto blog",
+    "section": "",
+    "text": "For this course we will create a blog in Quarto and publish it with GitHub pages (in the next part). At the end of every day, I want you to take some time to review the day’s topics and write (and publish) a blog entry for each topic.\nThis gives you time to review what we’ve done, and practice literate programming, presentation, and git. You can explore Quarto and it’s possibilities, or add bits and pieces to topics you’re already familiar with.\nAnd at the end of the course you will hand in the blog, and the corresponding repository. But you will also have a resource you can go back to, for yourself, or maybe for teaching purposes.\nLast, but not least, you can use the blog to showcase skills you have mastered (especially if you add to it during your PhD)."
+  },
+  {
+    "objectID": "course_blog.html#how-to-start-a-blog-with-quarto",
+    "href": "course_blog.html#how-to-start-a-blog-with-quarto",
+    "title": "Create a Quarto blog",
+    "section": "How to start a blog with Quarto",
+    "text": "How to start a blog with Quarto\nIn VScode, open the command palette:\nView -&gt; Command Palette\nAfter the prompt, &gt;, type:\nQuarto: Create Project\nSelect Blog Project, the location on your computer, and fill in the name."
+  },
+  {
+    "objectID": "course_blog.html#explore-the-blog-and-change-things",
+    "href": "course_blog.html#explore-the-blog-and-change-things",
+    "title": "Create a Quarto blog",
+    "section": "Explore the blog and change things",
+    "text": "Explore the blog and change things\n\nRender the blog and explore - where are the posts, what can you change?\nWrite your first blog post: How to make a quarto blog."
+  },
+  {
+    "objectID": "course_blog.html#tips-and-tricks",
+    "href": "course_blog.html#tips-and-tricks",
+    "title": "Create a Quarto blog",
+    "section": "Tips and tricks",
+    "text": "Tips and tricks\nWith listings, you can control which posts will be shown where.\nThere are a lot of options for you executable code.\nYou can change the color scheme of the blog.\nLightbox images might be interesting.\nMake use of the categories to sort blog posts into groups.\nCheck other Quarto homepages for cool features!"
+  },
+  {
+    "objectID": "course_environments.html",
+    "href": "course_environments.html",
+    "title": "Introduction to Pixi",
+    "section": "",
+    "text": "Different operating systems bring different challenges to bioinformatics. Windows, for instance, doesn’t really support most bioinformatics tools, or your computer might run a different version of a specific tool than mine. One way to solve this, and make research more reproducible, is through the use of environments. Bioinformatics environments specify the tools neded for the task at hand, and environment managers install these tools with all their dependencies. There are many different kinds of environment managers, and for this course we are going to use Pixi.\nThere are, of course, other ways to solve tool access and compatibility issues, such as running virtual machines. In our experience, however, environments are a bit easier to manage and are more portable across different systems and users.\n\n\n\nPixi landing page\n\n\nAs you can see, you can run Pixi on all major operating systems, and you can include various platforms in your Pixi environment.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLog in to the course server and follow along:\n\n\n\n\nInstalling Pixi is really easy and described thoroughly here with separate installation guides for Windows and Mac/Linux.\n\n\n\n\n\n\nTip\n\n\n\nTo source your shell, you need to source the startup files, in Linux it’s the ~/.bashrc file, in Mac it’s the ~/.zshrc file."
+  },
+  {
+    "objectID": "course_environments.html#introduction",
+    "href": "course_environments.html#introduction",
+    "title": "Introduction to Pixi",
+    "section": "",
+    "text": "Different operating systems bring different challenges to bioinformatics. Windows, for instance, doesn’t really support most bioinformatics tools, or your computer might run a different version of a specific tool than mine. One way to solve this, and make research more reproducible, is through the use of environments. Bioinformatics environments specify the tools neded for the task at hand, and environment managers install these tools with all their dependencies. There are many different kinds of environment managers, and for this course we are going to use Pixi.\nThere are, of course, other ways to solve tool access and compatibility issues, such as running virtual machines. In our experience, however, environments are a bit easier to manage and are more portable across different systems and users.\n\n\n\nPixi landing page\n\n\nAs you can see, you can run Pixi on all major operating systems, and you can include various platforms in your Pixi environment.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLog in to the course server and follow along:\n\n\n\n\nInstalling Pixi is really easy and described thoroughly here with separate installation guides for Windows and Mac/Linux.\n\n\n\n\n\n\nTip\n\n\n\nTo source your shell, you need to source the startup files, in Linux it’s the ~/.bashrc file, in Mac it’s the ~/.zshrc file."
+  },
+  {
+    "objectID": "course_environments.html#setting-up-an-environment",
+    "href": "course_environments.html#setting-up-an-environment",
+    "title": "Introduction to Pixi",
+    "section": "Setting Up An Environment",
+    "text": "Setting Up An Environment\nYou should create separate environments for each project you run, just to keep things tidy. To create an environment, you have to specify a name for your environment. You can include different platforms/operating systems in your environment, for example if you want to develop your code on a Windows system, and later use the same code on many samples on a large Linux cluster. You can also include different vetted sources for your tools, the so called channels.\nHere, we will create a project called name_pixi_training (please use your own name to avoid creating multiple environments with the same name). We are adding the conda-forge and bioconda channels with the -c flag.\npixi init name_pixi_training -c conda-forge -c bioconda\nPixi will create a folder named name_pixi_training with a a file pixi.toml. Let’s have a look at that file!\n\n\n\n\n\n\nTipHow to get to the file\n\n\n\n\n\nHere is the code for changing directories, listing files, and viewing the contents of a file:\ncd name_sida_training\nls\nless pixi.toml\nTo exit the less view, press q for quit.\n\n\n\n\npixi.toml\nThe .toml file give your information about your project. Let’s have a look at one I made one my computer before adding any dependencies to my environment. How is it different from the one you’ve made on HPC2N?\n\n\n\n\n\n\nTip\n\n\n\nClick on the numbers in the list below to highlight the corresponding code.\n\n\n1[workspace]\n2channels = [\"conda-forge\", \"bioconda\"]\n3name = \"amrei_pixi_training\"\n4platforms = [\"osx-arm64\"]\nversion = \"0.1.0\"\n\n5[tasks]\n\n6[dependencies]\n\n1\n\nOverview section of the environment.\n\n2\n\nAdded channels - these are the sources we allow for our dependencies/ tools.\n\n3\n\nThe name of the environment.\n\n4\n\nOperating system the environment is optimised for.\n\n5\n\nThis is where we can define tasks - interesting, but not covered in this course.\n\n6\n\nHere will be the list of tool installed within the environment (once we have added them).\n\n\n\n\n\n\n\n\nNote\n\n\n\nYour current platform will be automatically detected and added to the environment. If you want to add different platforms, you add them with the -p linux-64 flag. In this example, you are adding Linux64. See the Pixi docs for the full list of supported platforms.\nIf you are adding a platform that doesn’t natively run on your OS (e.g. adding Linux when running on Windows) be sure to add the OS you are running your system on as well!\n\n\nOnce you have used the environment, or added a dependency/tool to it, you will find yet another file, called pixi.lock.\n\n\npixi.lock\nThe .lock file give you information on the channels you have decided to add, as well as the information on where the packages were downloaded from, license information, md5 information, and more.\n\n\n\n\n\n\nImportant\n\n\n\nDo not delete the .toml or .lock files, or you will break your environment!"
+  },
+  {
+    "objectID": "course_environments.html#adding-dependencies",
+    "href": "course_environments.html#adding-dependencies",
+    "title": "Introduction to Pixi",
+    "section": "Adding Dependencies",
+    "text": "Adding Dependencies\nAdding dependencies to the .toml file is telling Pixi to install the specified program for you. However, instead of installing it globally, it only gets installed in the environment.\nTo do this, we use the pixi add function. Let’s try adding Quarto to our environments.\n\n\n\n\n\n\nImportant\n\n\n\nYou must be in the folder of the project to add software!\n\n\npixi add quarto\n\n\n\n\n\n\nTipHow to summon the help function\n\n\n\n\n\nIf you are unsure of how a function works, you can always query it, usually with the --help or -h flags. Here’s how it would look for the pixi add function\npixi add --help\nA general rule of thumb is that a single hyphen - is followed by a single letter flag, while double hyphens -- are usually followed by multi-letter flags\n\n\n\nHere is the pixi.toml we’ve seen earlier after I have added Quarto to my environment. You can see that the dependencies have been updated to include Quarto.\n[workspace]\nchannels = [\"conda-forge\", \"bioconda\"]\nname = \"amrei_pixi_training\"\nplatforms = [\"osx-arm64\"]\nversion = \"0.1.0\"\n\n[tasks]\n\n[dependencies]\nquarto = \"&gt;=1.7.32,&lt;2\""
+  },
+  {
+    "objectID": "course_environments.html#running-a-package",
+    "href": "course_environments.html#running-a-package",
+    "title": "Introduction to Pixi",
+    "section": "Running a Package",
+    "text": "Running a Package\nNow that we have an environment with a tool installed, we actually want to use it. For this we have several options:\n\npixi run\nUse pixi to run the tool with the pixi run command.\nLet’s query the help function within Quarto:\npixi run quarto --help\n\n\n\n\n\n\nNote\n\n\n\nTo use other tools, simply substitute quarto with the package you’ve added, and the tool specific commands.\n\n\nAnd just to see that we have not installed Quarto on the server itself, try out running Quarto without Pixi: it will tell you:\nquarto: command not found"
+  },
+  {
+    "objectID": "course_environments.html#pixi-shell",
+    "href": "course_environments.html#pixi-shell",
+    "title": "Introduction to Pixi",
+    "section": "pixi shell",
+    "text": "pixi shell\nAlternatively, you can create and “enter” the environment with\npixi shell\nand then interact with the installed dependencies as if they were installed the traditional way:\nquarto --help\n\n\n\n\n\n\nNote\n\n\n\nOnce you are using the pixi shell, you will see that your prompt has changed and is now prefixex with [name_of_environment]. This is how you can check in which environment you operate (and this is why it is important that you name your environments in a way that makes sense).\n\n\nTo exit the environment, type\nexit"
   },
   {
     "objectID": "course_data_management.html#data-life-cycle",
@@ -195,193 +426,18 @@
     "text": "Goal of the course\nWith this, we want to give you tools that will help you plan and carry out your research. These tools will make your work more efficient and more reproducible. No matter what kind of data you use, you will take something useful from this course.\n\n\n\nOverview of modern sequencing technologies and where they apply to biological processes"
   },
   {
-    "objectID": "course_environments.html",
-    "href": "course_environments.html",
-    "title": "Introduction to Pixi",
+    "objectID": "before_screen.html",
+    "href": "before_screen.html",
+    "title": "Manage persistent bash sessions",
     "section": "",
-    "text": "Different operating systems bring different challenges to bioinformatics. Windows, for instance, doesn’t really support most bioinformatics tools, or your computer might run a different version of a specific tool than mine. One way to solve this, and make research more reproducible, is through the use of environments. Bioinformatics environments specify the tools neded for the task at hand, and environment managers install these tools with all their dependencies. There are many different kinds of environment managers, and for this course we are going to use Pixi.\nThere are, of course, other ways to solve tool access and compatibility issues, such as running virtual machines. In our experience, however, environments are a bit easier to manage and are more portable across different systems and users.\n\n\n\nPixi landing page\n\n\nAs you can see, you can run Pixi on all major operating systems, and you can include various platforms in your Pixi environment.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLog in to the course server and follow along:\n\n\n\n\nInstalling Pixi is really easy and described thoroughly here with separate installation guides for Windows and Mac/Linux.\n\n\n\n\n\n\nTip\n\n\n\nTo source your shell, you need to source the startup files, in Linux it’s the ~/.bashrc file, in Mac it’s the ~/.zshrc file."
+    "text": "If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:\nScreen (and similar programs) allows you to run persistent bash sessions, so that if any of the above happens your bash session on the remote server will just continue. All running processes will proceed in your absence, and you can later re-attach to your session and find things exactly how they would have been had you sat right there, starring at the screen for hours 😎!\nThis is very useful since your re-attached session will continue in the same directory and will have all the project relevant command history saved."
   },
   {
-    "objectID": "course_environments.html#introduction",
-    "href": "course_environments.html#introduction",
-    "title": "Introduction to Pixi",
-    "section": "",
-    "text": "Different operating systems bring different challenges to bioinformatics. Windows, for instance, doesn’t really support most bioinformatics tools, or your computer might run a different version of a specific tool than mine. One way to solve this, and make research more reproducible, is through the use of environments. Bioinformatics environments specify the tools neded for the task at hand, and environment managers install these tools with all their dependencies. There are many different kinds of environment managers, and for this course we are going to use Pixi.\nThere are, of course, other ways to solve tool access and compatibility issues, such as running virtual machines. In our experience, however, environments are a bit easier to manage and are more portable across different systems and users.\n\n\n\nPixi landing page\n\n\nAs you can see, you can run Pixi on all major operating systems, and you can include various platforms in your Pixi environment.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLog in to the course server and follow along:\n\n\n\n\nInstalling Pixi is really easy and described thoroughly here with separate installation guides for Windows and Mac/Linux.\n\n\n\n\n\n\nTip\n\n\n\nTo source your shell, you need to source the startup files, in Linux it’s the ~/.bashrc file, in Mac it’s the ~/.zshrc file."
-  },
-  {
-    "objectID": "course_environments.html#setting-up-an-environment",
-    "href": "course_environments.html#setting-up-an-environment",
-    "title": "Introduction to Pixi",
-    "section": "Setting Up An Environment",
-    "text": "Setting Up An Environment\nYou should create separate environments for each project you run, just to keep things tidy. To create an environment, you have to specify a name for your environment. You can include different platforms/operating systems in your environment, for example if you want to develop your code on a Windows system, and later use the same code on many samples on a large Linux cluster. You can also include different vetted sources for your tools, the so called channels.\nHere, we will create a project called name_pixi_training (please use your own name to avoid creating multiple environments with the same name). We are adding the conda-forge and bioconda channels with the -c flag.\npixi init name_pixi_training -c conda-forge -c bioconda\nPixi will create a folder named name_pixi_training with a a file pixi.toml. Let’s have a look at that file!\n\n\n\n\n\n\nTipHow to get to the file\n\n\n\n\n\nHere is the code for changing directories, listing files, and viewing the contents of a file:\ncd name_sida_training\nls\nless pixi.toml\nTo exit the less view, press q for quit.\n\n\n\n\npixi.toml\nThe .toml file give your information about your project. Let’s have a look at one I made one my computer before adding any dependencies to my environment. How is it different from the one you’ve made on HPC2N?\n\n\n\n\n\n\nTip\n\n\n\nClick on the numbers in the list below to highlight the corresponding code.\n\n\n1[workspace]\n2channels = [\"conda-forge\", \"bioconda\"]\n3name = \"amrei_pixi_training\"\n4platforms = [\"osx-arm64\"]\nversion = \"0.1.0\"\n\n5[tasks]\n\n6[dependencies]\n\n1\n\nOverview section of the environment.\n\n2\n\nAdded channels - these are the sources we allow for our dependencies/ tools.\n\n3\n\nThe name of the environment.\n\n4\n\nOperating system the environment is optimised for.\n\n5\n\nThis is where we can define tasks - interesting, but not covered in this course.\n\n6\n\nHere will be the list of tool installed within the environment (once we have added them).\n\n\n\n\n\n\n\n\nNote\n\n\n\nYour current platform will be automatically detected and added to the environment. If you want to add different platforms, you add them with the -p linux-64 flag. In this example, you are adding Linux64. See the Pixi docs for the full list of supported platforms.\nIf you are adding a platform that doesn’t natively run on your OS (e.g. adding Linux when running on Windows) be sure to add the OS you are running your system on as well!\n\n\nOnce you have used the environment, or added a dependency/tool to it, you will find yet another file, called pixi.lock.\n\n\npixi.lock\nThe .lock file give you information on the channels you have decided to add, as well as the information on where the packages were downloaded from, license information, md5 information, and more.\n\n\n\n\n\n\nImportant\n\n\n\nDo not delete the .toml or .lock files, or you will break your environment!"
-  },
-  {
-    "objectID": "course_environments.html#adding-dependencies",
-    "href": "course_environments.html#adding-dependencies",
-    "title": "Introduction to Pixi",
-    "section": "Adding Dependencies",
-    "text": "Adding Dependencies\nAdding dependencies to the .toml file is telling Pixi to install the specified program for you. However, instead of installing it globally, it only gets installed in the environment.\nTo do this, we use the pixi add function. Let’s try adding Quarto to our environments.\n\n\n\n\n\n\nImportant\n\n\n\nYou must be in the folder of the project to add software!\n\n\npixi add quarto\n\n\n\n\n\n\nTipHow to summon the help function\n\n\n\n\n\nIf you are unsure of how a function works, you can always query it, usually with the --help or -h flags. Here’s how it would look for the pixi add function\npixi add --help\nA general rule of thumb is that a single hyphen - is followed by a single letter flag, while double hyphens -- are usually followed by multi-letter flags\n\n\n\nHere is the pixi.toml we’ve seen earlier after I have added Quarto to my environment. You can see that the dependencies have been updated to include Quarto.\n[workspace]\nchannels = [\"conda-forge\", \"bioconda\"]\nname = \"amrei_pixi_training\"\nplatforms = [\"osx-arm64\"]\nversion = \"0.1.0\"\n\n[tasks]\n\n[dependencies]\nquarto = \"&gt;=1.7.32,&lt;2\""
-  },
-  {
-    "objectID": "course_environments.html#running-a-package",
-    "href": "course_environments.html#running-a-package",
-    "title": "Introduction to Pixi",
-    "section": "Running a Package",
-    "text": "Running a Package\nNow that we have an environment with a tool installed, we actually want to use it. For this we have several options:\n\npixi run\nUse pixi to run the tool with the pixi run command.\nLet’s query the help function within Quarto:\npixi run quarto --help\n\n\n\n\n\n\nNote\n\n\n\nTo use other tools, simply substitute quarto with the package you’ve added, and the tool specific commands.\n\n\nAnd just to see that we have not installed Quarto on the server itself, try out running Quarto without Pixi: it will tell you:\nquarto: command not found"
-  },
-  {
-    "objectID": "course_environments.html#pixi-shell",
-    "href": "course_environments.html#pixi-shell",
-    "title": "Introduction to Pixi",
-    "section": "pixi shell",
-    "text": "pixi shell\nAlternatively, you can create and “enter” the environment with\npixi shell\nand then interact with the installed dependencies as if they were installed the traditional way:\nquarto --help\n\n\n\n\n\n\nNote\n\n\n\nOnce you are using the pixi shell, you will see that your prompt has changed and is now prefixex with [name_of_environment]. This is how you can check in which environment you operate (and this is why it is important that you name your environments in a way that makes sense).\n\n\nTo exit the environment, type\nexit"
-  },
-  {
-    "objectID": "course_blog.html",
-    "href": "course_blog.html",
-    "title": "Create a Quarto blog",
-    "section": "",
-    "text": "For this course we will create a blog in Quarto and publish it with GitHub pages (in the next part). At the end of every day, I want you to take some time to review the day’s topics and write (and publish) a blog entry for each topic.\nThis gives you time to review what we’ve done, and practice literate programming, presentation, and git. You can explore Quarto and it’s possibilities, or add bits and pieces to topics you’re already familiar with.\nAnd at the end of the course you will hand in the blog, and the corresponding repository. But you will also have a resource you can go back to, for yourself, or maybe for teaching purposes.\nLast, but not least, you can use the blog to showcase skills you have mastered (especially if you add to it during your PhD)."
-  },
-  {
-    "objectID": "course_blog.html#how-to-start-a-blog-with-quarto",
-    "href": "course_blog.html#how-to-start-a-blog-with-quarto",
-    "title": "Create a Quarto blog",
-    "section": "How to start a blog with Quarto",
-    "text": "How to start a blog with Quarto\nIn VScode, open the command palette:\nView -&gt; Command Palette\nAfter the prompt, &gt;, type:\nQuarto: Create Project\nSelect Blog Project, the location on your computer, and fill in the name."
-  },
-  {
-    "objectID": "course_blog.html#explore-the-blog-and-change-things",
-    "href": "course_blog.html#explore-the-blog-and-change-things",
-    "title": "Create a Quarto blog",
-    "section": "Explore the blog and change things",
-    "text": "Explore the blog and change things\n\nRender the blog and explore - where are the posts, what can you change?\nWrite your first blog post: How to make a quarto blog."
-  },
-  {
-    "objectID": "course_blog.html#tips-and-tricks",
-    "href": "course_blog.html#tips-and-tricks",
-    "title": "Create a Quarto blog",
-    "section": "Tips and tricks",
-    "text": "Tips and tricks\nWith listings, you can control which posts will be shown where.\nThere are a lot of options for you executable code.\nYou can change the color scheme of the blog.\nLightbox images might be interesting.\nMake use of the categories to sort blog posts into groups.\nCheck other Quarto homepages for cool features!"
-  },
-  {
-    "objectID": "before_git_and_github.html#version-control",
-    "href": "before_git_and_github.html#version-control",
-    "title": "git and GitHub",
-    "section": "Version control",
-    "text": "Version control\nWe all have worked on data before, done analyses, talked with our PI, changed the analyses, worked a bit more… and in the end we have something like this:\n\n\n\nWhich one of these is the latest version?\n\n\nVersion control, the practice of tracking and managing changes to files, can help us not descend into chaos. With a version controlled project you always know which file, and even which part of the file, is the most recent, and you can even go back to older versions if you have to.\nVersion control can be used on the local system, where both the version database and the checked out file - the one that is actively being worked on - are on the local computer. Good, but the local computer can be corrupted and then the data is compromised.\n\n\n\nLocal version control\n\n\nVersion control can also be centralized, where the version database is on a central server, and the active file can be checked out from several different computers. This is useful when working from different systems, or when working with collaborators. However, when the central servers is compromised the historical version are lost.\n\n\n\nCentralized version control\n\n\nAt last, version control can be fully distributed, with all versions of the file being on the server and different computers. Each computer checks out the file from its own version database to work on them. The databases are then synchronized between the different computers and the server. One such distributed version control system is git. It can handle everything from small to very large projects and is simple to use. GitHubis a code hosting platform for version control and collaboration, built on git.\n\n\n\nDistributed version control\n\n\nDistributed version control facilitates collaboration with others. Software like git automatically tracks differences in files, and flags conflicts between files.\nAdditionally, GitHub, the code hosting platform based on git that we are using in this course, can be used to maintain uniformity within a working group. The group can develop their own project template that people can use and populate for their own projects.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "git and GitHub"
-    ]
-  },
-  {
-    "objectID": "before_git_and_github.html#git-and-github",
-    "href": "before_git_and_github.html#git-and-github",
-    "title": "git and GitHub",
-    "section": "git and GitHub",
-    "text": "git and GitHub\nGit is a version control software that is fully distributed - meaning that each project folder contains the full history of the project. These project folders are also called repositories and can be on several computers, or servers.\nGithub is a code hosting platform that is based on git. Here you can store, track and publish code (and code only, do NOT use github for data!). On Github you can collaborate with colleagues and work on projects together.\n\n\n\n\n\n\nNote\n\n\n\nA repository in git is the .git/ folder inside of your directory. This repository tracks all changes made to files in your project and contains your project history. Usually we refer to the git repository as the local repository.\nA repository in GitHub is where you can store your code, your files, together with their revision history. Repositories can be public or private, and might have several collaborators. Usually we refer to the Github repository as the remote repository.\n\n\nLet’s have a closer look at how git works:",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "git and GitHub"
-    ]
-  },
-  {
-    "objectID": "before_git_and_github.html#git",
-    "href": "before_git_and_github.html#git",
-    "title": "git and GitHub",
-    "section": "git",
-    "text": "git\n\nGit has three main states that your files can reside in: modified, staged, and committed:\n\n\n\nModified means that you have changed the file but have not committed it to your database yet.\nStaged means that you have marked a modified file in its current version to go into your next commit snapshot.\nCommitted means that the data is safely stored in your local database.\n\n\n\nsource: git documentation\n\nThis leads to the three main sections of a Git project: the working directory, the staging area, and the Git directory (or repository).\n\n\n\nWorking directory, staging area, and Git directory\n\n\nAnd the basic commands of git:\n\n\n\nBasic git commands\n\n\n\n\n\n\n\n\nNote\n\n\n\nThese basic operations are all done on your local system. You have the entire history of the project on your local disk, and do not need an internet connection to work on your data with git. You can do all your commits on your local computer and later push them to a remote repostitory, like Github.\n\n\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall git, and follow the Software Carpentries tutorial on Version Control with Git, chapters 1 to 13.\n\n\n\n\n\n\n\n\nNote\n\n\n\nMake sure you configure git with your GitHub account e-mail (either the one you signed up with, or the one provided by GitHub to hide your actual e-mail).\nI am using vim as a text editor, so I have never changed the default text editor for git. In the tutorial they give you options to change if you are used to a different editor.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "git and GitHub"
-    ]
-  },
-  {
-    "objectID": "before_VScode.html",
-    "href": "before_VScode.html",
-    "title": "Visual Studio Code",
-    "section": "",
-    "text": "During the pre-course assignements, and the course itself, we will be using Visual Studio Code (VScode). It is available for free and runs on all major platforms. Extensions make it very versatile, and we will be using it to edit and render text, to us version control, and to connect to and work on our course server.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall VScode using the instructions here.\n\n\nOnce you have installed VScode and open it, you will see the starting screen. Here is my starting screen: \nYours will look slightly different, especially in the activity bar all the way on the left, because I have already installed extensions when working with VScode. So don’t worry about the exact look.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nTo get aquainted with some of the features of VScode, please watch this 7-minute video from the Visual Studio homepage. Follow along the tutorial (as far as you can, he’s not providing the last script he’s showcasing).\nRead up more on the graphical user interface of VScode here.\n\n\n\n\n\n\n\n\nNote\n\n\n\nIf you can’t see the terminal on the lower part of the screen, you can open it by clicking on the button on the upper right of the screen.\n\n\n\nClick here to open the terminal",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "Visual Studio Code"
-    ]
-  },
-  {
-    "objectID": "course_publish_blog.html",
-    "href": "course_publish_blog.html",
-    "title": "Publish your blog",
-    "section": "",
-    "text": "To publish your blog we need to first start tracking it with git:"
-  },
-  {
-    "objectID": "course_publish_blog.html#tracking-your-blog-with-git",
-    "href": "course_publish_blog.html#tracking-your-blog-with-git",
-    "title": "Publish your blog",
-    "section": "Tracking your blog with git",
-    "text": "Tracking your blog with git\nIn the terminal, make sure you are in the directory of your blog, then type:\ngit init\nThis will initialize your blog directory as a git repository.\n\nInitialized empty Git repository in path/to/directory\n\nNow, if you check with\ngit status\nyou will see that the repository is indeed empty. You will also see some untracked files.\n\n\n\nTerminal after checking the git status\n\n\nAdd all the files to the repository and commit the changes to git."
-  },
-  {
-    "objectID": "course_publish_blog.html#add-the-blog-to-github",
-    "href": "course_publish_blog.html#add-the-blog-to-github",
-    "title": "Publish your blog",
-    "section": "add the blog to GitHub",
-    "text": "add the blog to GitHub\nNow we need to add the local repository to GitHub. Log into GitHub on the homepage. Then add a new repository, give it a name and make it public. Do not add anything to it, not .gitignore, README, license etc. \nOnce initialized, GitHub will give you several suggestions of what to do with your new repository. Follow the instructions of the option: ...or push an existing repository from the command line\nBack in VScode, check in the terminal that you are in the correct directory (the one of your blog).\nYou can then add the remote origin etc with the commands given on GitHub:\ngit remote add origin &lt;specifics of your repository&gt;\ngit branch -M main\ngit push -u origin main\nCheck on Github if the content of your blog has been added. You might have to refresh your page."
-  },
-  {
-    "objectID": "course_publish_blog.html#publish-via-github-actions",
-    "href": "course_publish_blog.html#publish-via-github-actions",
-    "title": "Publish your blog",
-    "section": "publish via GitHub actions",
-    "text": "publish via GitHub actions\nNow that you have a local git repository that is synced to GitHub you can publish your blog using GitHub Pages, a website hosting service.\nThe default URL of your blog will be a combination of your GitHub user name and the name of the repository. If you have your own domain you can also use that at a later point in time.\nThe steps for publishing your blog with GitHub Actions are here. Follow the instructions until the section Executing code.\nNow, the publish command will be triggered automatically every time you push changes to the remote repository."
-  },
-  {
-    "objectID": "course_publish_blog.html#tips-and-tricks",
-    "href": "course_publish_blog.html#tips-and-tricks",
-    "title": "Publish your blog",
-    "section": "Tips and tricks",
-    "text": "Tips and tricks\nWhen working on the blog, use git (adding, committing, pushing) often. Try to keep commits to one topic - maybe one blog entry per time. This way it is easier to label the commits and backtrack what has happened in the repository.\nDo not add large files to the repository. GitHub is a code hosting platform, not a data hosting platform. If you have data in your local directory you can exlude it from the repository with the .gitignore file."
-  },
-  {
-    "objectID": "before_quarto.html",
-    "href": "before_quarto.html",
-    "title": "Quarto",
-    "section": "",
-    "text": "When analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "before_quarto.html#literate-programming",
-    "href": "before_quarto.html#literate-programming",
-    "title": "Quarto",
-    "section": "",
-    "text": "When analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "before_quarto.html#quarto",
-    "href": "before_quarto.html#quarto",
-    "title": "Quarto",
-    "section": "Quarto",
-    "text": "Quarto\n\nAn open-source scientific and technical publishing system.\n\nMeaning that you can use your favorite text editor (such as VScode (o; ) to write documents in plain text markdown.\nQuarto chunks, or code cells, are executable from within the document and can be written in a variety of different languages - such as python, R, Julia, bash, Observable, and more.\nYour document can then be rendered into a variety of different output formats: html, pdf, MS Word, Markdown, and more.\nWith this you can make presentations, dashboards, homepages (like this one), reports, books, manuscripts, and more.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall Quarto, and follow the tutorial for VScode.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto has a very good documentation, that you can access on their homepage -&gt; Guide, or by searching the web for “Quarto, feature you are looking for”.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "Quarto"
-    ]
+    "objectID": "before_screen.html#practice-a-screen-tutorial",
+    "href": "before_screen.html#practice-a-screen-tutorial",
+    "title": "Manage persistent bash sessions",
+    "section": "Practice a screen tutorial",
+    "text": "Practice a screen tutorial\nConnect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from “2. Name Your Session”.\nAfter the above practice, in your terminal window you can test out the power of screen:\n\nwithin your screen session, run this infinite loop: while true; do date; sleep 1; done\nclose the terminal window running your above split screen session altogether (brutal closing, ie clicking the “close window” garbage can icon on the top right corner of the terminal window in VScode, or closing VScode and your connection to HPC2n completely).\nthen open a fresh terminal window, (be sure you are connected to HPC2N) and re-attach to your still alive and kicking screen session.\nnotice how the date/times have continued to be printed to the screen in the background.\npress CTRL-C to interrupt the loop, then CTRL-A ESC to enter scrolling mode, then you can use the PAGE-UP and PAGE-DOWN keys to observe the activity that took place in screen even whilst you were detached from the screen !\n\nThank-you to Gabriele Pozatti for this section!"
   },
   {
     "objectID": "before_command_line.html",
