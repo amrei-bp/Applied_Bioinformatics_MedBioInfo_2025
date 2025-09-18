@@ -287,6 +287,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p><br> Regardless of what type of bioinformatics project you are working on, you will have to assess whether the data you have is of good enough quality to proceed with - bad input data can seriously impair your ability to draw conclusions from the samples later on!</p>
+<p>Poor quality sequencing data can be caused by a variety of factors, such as sample contamination, improper sample handling, technical problems. Some of these problems will be checked for before and during the sequencing - it is always good to read all documentation coming from the sequencing facility.</p>
+<p>When it comes to sequencing data, FastQC is a well known and often used software to check raw reads for their quality.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sample preparation includes fragmenting the genome into the <strong>sequencing library</strong>.</p>
+<p>A <strong>read</strong> is the inferred nucleotide base sequence of a genome fragment as determined by the sequencer.</p>
+</div>
+</div>
 <section id="quality-control-tutorial" class="level2">
 <h2 class="anchored" data-anchor-id="quality-control-tutorial">Quality Control Tutorial</h2>
 <p>Within this tutorial we will</p>
@@ -330,7 +347,7 @@ Tip
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">RNAseq</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Metagenomics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href=""></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">RNAseq</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Metagenomics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Whole genome sequencing</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">proteomics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">image</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>Time series of the induction of human regulatory T cells (Tregs).</p>
@@ -344,6 +361,12 @@ Tip
 
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
 
 </div>
 </div>
@@ -401,8 +424,8 @@ Note
 <p>We could now look through the fastq file and scan the quality scores for the reads in our sample one by one. Sounds kind of tedious, doesn’t it? Luckily, here comes FastQC (and other, similar tools).</p>
 </section>
 <section id="fastqc" class="level2">
-<h2 class="anchored" data-anchor-id="fastqc">FastQC</h2>
-<p>Fastqc is a simple tool to monitor the quality and the properties of a NGS sequencing file in fastq, SAM and BAM format. More information <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" class="external" target="_blank">here</a>.</p>
+<h2 class="anchored" data-anchor-id="fastqc"><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a></h2>
+<p>Fastqc is a tool to monitor the quality and the properties of a NGS sequencing file in fastq, SAM and BAM format. It summarizes its findings for a quick visual overview. More information <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" class="external" target="_blank">here</a>.</p>
 <p>FastQC will give us an overview of the entire sample, so we won’t have to look at the quality score of every single read in the sample. In addition to the quality scores, FastQC also checks other quality measures.</p>
 <p>You will now check the quality of the data set you chose.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -427,6 +450,8 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add fastqc</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run fastqc <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then, activate the environment with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> shell</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="slurm" class="level3">
 <h3 class="anchored" data-anchor-id="slurm">SLURM</h3>
@@ -434,9 +459,9 @@ Tip
 <p>To be able to do so, SLURM needs a bit of information from us when we submit a job:</p>
 <p>-A: project_ID (to deduct the used computing time from the correct project) -t allocated time dd-hh:mm:ss (to optimize the job queue) -n number of cores (default is one)</p>
 <p>The basic usage of slurm on the command line is thus:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-A</span> project_ID <span class="at">-t</span> 30:00 <span class="at">-n</span> 1 <span class="op">&lt;</span>tool options and commands<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>We want to use FastQC on the samples, which is in the Pixi environment. So we preceed the <code>srun</code> command with <code>pixi run</code>, and add the FastQC specific commands:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run srun <span class="at">-A</span> project_ID <span class="at">-t</span> 15:00 <span class="at">-n</span> 1 fastqc <span class="at">--noextract</span> <span class="at">-o</span> fastqc data data/sample_1.fastq.gz data/sample_2.fastq.gz </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-A</span> project_ID <span class="at">-t</span> 30:00 <span class="at">-n</span> 1 <span class="op">&lt;</span>tool options and commands<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We want to use FastQC on the samples, so we add the FastQC specific commands:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-A</span> project_ID <span class="at">-t</span> 15:00 <span class="at">-n</span> 1 fastqc <span class="at">--noextract</span> <span class="at">-o</span> fastqc data data/sample_1.fastq.gz data/sample_2.fastq.gz </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You will of course have to modify for your project structure.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -479,18 +504,18 @@ Tip
 └── scripts
     └── fastqc.sh</code></pre>
 <p>Copy the following into the <code>fastqc.sh</code> file, and save the contents. Read through the file and try to understand what the different lines are doing.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#! /bin/bash -l</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -A project_ID</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 30:00</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 1</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> <span class="at">-o</span> ../fastqc <span class="at">--noextract</span> ../data/<span class="pp">*</span>fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Save and run with Pixi:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run sbatch fastqc.sh </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#! /bin/bash -l</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -A project_ID</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 30:00</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 1</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> <span class="at">-o</span> ../fastqc <span class="at">--noextract</span> ../data/<span class="pp">*</span>fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Save and run within your Pixi environment:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> fastqc.sh </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Check your job with:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="op">&lt;</span>user-name<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="op">&lt;</span>user-name<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>After running a bash script you will get a slurm output file in the directory you submitted your job from. Look at that output. See if you understand what that output contains.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> slurm-<span class="op">&lt;</span>jobID<span class="op">&gt;</span>.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> slurm-<span class="op">&lt;</span>jobID<span class="op">&gt;</span>.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now you have a .html file for each sample, which is fine for a few samples, but gets tedious when running a project with many samples. So let’s go and summarize them with MultiQC.</p>
 </section>
 <section id="multiqc" class="level2">

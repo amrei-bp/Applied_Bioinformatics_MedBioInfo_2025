@@ -49,7 +49,7 @@
     "href": "index.html#course-content",
     "title": "Applied Bioinformatics",
     "section": "Course content",
-    "text": "Course content\n\nbefore the course:\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nHPC access\nCreate user accounts for the HPC resources\n\n\nVScode\nSettting up and getting aquainted with VScode\n\n\nServer access\nSSH connect to the course server\n\n\nCommand line\nUse the command line to manipulate data\n\n\nscreen\nManage persistent bash sessions\n\n\nQuarto\nInstalling and using Quarto with VScode\n\n\ngit and GitHub\nVersion control with git and GitHub\n\n\n\n\n\nduring the course:\n\nProgram\n\n\nDay\nSession\n\n\n\n\nMonday\nWelcome, introduction\n\n\n\nData Management & Reproducible Research\n\n\n\nUsing git collaboratively\n\n\n\nCreate a blog with Quarto\n\n\n\nPublish your blog with GitHub actions\n\n\nTuesday\nQC of sequencing data\n\n\n\nIntroduction to environments\n\n\n\nFastQC & Multiqc with Pixi & Slurm\n\n\n\nIntroduction to containers\n\n\n\nUse containers\n\n\nWednesday\nnextflow\n\n\n\nquality control with nextflow\n\n\n\ncontainers cont.\n\n\nThursday\nnf-core\n\n\n\nHands-on: Test a nf-core pipeline\n\n\n\nHands-on: set up a nf-core pipeline\n\n\nFriday\nVisualize your results: ggplot\n\n\n\nDiscussion: AI in Bioinformatics\n\n\n\nclean-up and finishing",
+    "text": "Course content\n\nbefore the course:\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nHPC access\nCreate user accounts for the HPC resources\n\n\nVScode\nSettting up and getting aquainted with VScode\n\n\nServer access\nSSH connect to the course server\n\n\nCommand line\nUse the command line to manipulate data\n\n\nscreen\nManage persistent bash sessions\n\n\nQuarto\nInstalling and using Quarto with VScode\n\n\ngit and GitHub\nVersion control with git and GitHub\n\n\n\n\n\nduring the course:\n\nProgram\n\n\nDay\nSession\n\n\n\n\nMonday\nWelcome, introduction\n\n\n\nData Management & Reproducible Research\n\n\n\nUsing git collaboratively\n\n\n\nCreate a blog with Quarto\n\n\n\nPublish your blog with GitHub actions\n\n\nTuesday\nIntroduction to environments\n\n\n\nQuality control of sequencing data\n\n\n\nIntroduction to containers\n\n\n\nUse containers\n\n\nWednesday\nnextflow\n\n\n\nquality control with nextflow\n\n\n\ncontainers cont.\n\n\nThursday\nnf-core\n\n\n\nHands-on: Test a nf-core pipeline\n\n\n\nHands-on: set up a nf-core pipeline\n\n\nFriday\nVisualize your results: ggplot\n\n\n\nDiscussion: AI in Bioinformatics\n\n\n\nclean-up and finishing",
     "crumbs": [
       "Home"
     ]
@@ -104,96 +104,74 @@
     "text": "How To Decide When To Use AI\nIf we know the risks and the true cost of what we are doing, we can make informed decisions about how we chose to incorporate new technologies into our day-to-day and working lives.\nHere are some questions that we find useful to ask ourselves before opening a GPT:\n\nAm I phrasing my prompt in a good way? Here is a guide to prompt engineering that might be useful.\nCan I find this information any other way?\nHow much time am I saving by looking this question up here vs on BioStars, for example?\nDo I know enough about the topic to know whether the GPT is lying to me?\nWhat are the consequences of testing the validity of the GPT solution? Can I potentially corrupt my data or my system? Is there a potential for me to lie to someone who trusts me enough to ask my opinion?\n\nIf a GPT is used to learn a new skill, remember how important active learning is. Seek explanations for everything the GPT tells you. Find independent sources that were produced by experts to validate your learning.\nHold on to the ability to learn and the desire to be curious."
   },
   {
-    "objectID": "course_fastqc.html",
-    "href": "course_fastqc.html",
-    "title": "Quality control of sequencing data",
+    "objectID": "before_screen.html",
+    "href": "before_screen.html",
+    "title": "Manage persistent bash sessions",
     "section": "",
-    "text": "Within this tutorial we will\n\nget familiar with the command line.\nuse the job scheduler slurm.\nmake a Pixi environment.\nrun FastQC on some raw sequencing files to practice and to understand the output.\nuse MultiQC to summarize the FastQC output.\n\n\n\nScreen or GNU Screen is a terminal multiplexer. In other words, it means that you can start a screen session and then open any number of windows (virtual terminals) inside that session. Processes running in Screen will continue to run when their window is not visible even if you get disconnected.\nStart a named session\nscreen -S fastqc\nDetach from Linux Screen Session\nYou can detach from the screen session at any time by typing:\nCtrl + a d\nReattach to a Linux Screen\nTo find the session ID list the current running screen sessions with:\nscreen -ls\nTo resume your screen session use the following command:\nscreen -r name"
+    "text": "If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:\nScreen (and similar programs) allows you to run persistent bash sessions, so that if any of the above happens your bash session on the remote server will just continue. All running processes will proceed in your absence, and you can later re-attach to your session and find things exactly how they would have been had you sat right there, starring at the screen for hours 😎!\nThis is very useful since your re-attached session will continue in the same directory and will have all the project relevant command history saved."
   },
   {
-    "objectID": "course_fastqc.html#quality-control-tutorial",
-    "href": "course_fastqc.html#quality-control-tutorial",
-    "title": "Quality control of sequencing data",
-    "section": "",
-    "text": "Within this tutorial we will\n\nget familiar with the command line.\nuse the job scheduler slurm.\nmake a Pixi environment.\nrun FastQC on some raw sequencing files to practice and to understand the output.\nuse MultiQC to summarize the FastQC output.\n\n\n\nScreen or GNU Screen is a terminal multiplexer. In other words, it means that you can start a screen session and then open any number of windows (virtual terminals) inside that session. Processes running in Screen will continue to run when their window is not visible even if you get disconnected.\nStart a named session\nscreen -S fastqc\nDetach from Linux Screen Session\nYou can detach from the screen session at any time by typing:\nCtrl + a d\nReattach to a Linux Screen\nTo find the session ID list the current running screen sessions with:\nscreen -ls\nTo resume your screen session use the following command:\nscreen -r name"
+    "objectID": "before_screen.html#practice-a-screen-tutorial",
+    "href": "before_screen.html#practice-a-screen-tutorial",
+    "title": "Manage persistent bash sessions",
+    "section": "Practice a screen tutorial",
+    "text": "Practice a screen tutorial\nConnect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from “2. Name Your Session”.\nAfter the above practice, in your terminal window you can test out the power of screen:\n\nwithin your screen session, run this infinite loop: while true; do date; sleep 1; done\nclose the terminal window running your above split screen session altogether (brutal closing, ie clicking the “close window” garbage can icon on the top right corner of the terminal window in VScode, or closing VScode and your connection to HPC2n completely).\nthen open a fresh terminal window, (be sure you are connected to HPC2N) and re-attach to your still alive and kicking screen session.\nnotice how the date/times have continued to be printed to the screen in the background.\npress CTRL-C to interrupt the loop, then CTRL-A ESC to enter scrolling mode, then you can use the PAGE-UP and PAGE-DOWN keys to observe the activity that took place in screen even whilst you were detached from the screen !\n\nThank-you to Gabriele Pozatti for this section!"
   },
   {
-    "objectID": "course_fastqc.html#choose-your-adventure",
-    "href": "course_fastqc.html#choose-your-adventure",
+    "objectID": "course_qc.html",
+    "href": "course_qc.html",
+    "title": "Quality control of sequencing data",
+    "section": "",
+    "text": "Regardless of what type of bioinformatics project you are working on, you will have to assess whether the data you have is of good enough quality to proceed with - bad input data can seriously impair your ability to draw conclusions from the samples later on!\nPoor quality sequencing data can be caused by a variety of factors, such as sample contamination, improper sample handling, technical problems. Some of these problems will be checked for before and during the sequencing - it is always good to read all documentation coming from the sequencing facility.\nWhen it comes to sequencing data, FastQC is a well known and often used software to check raw reads for their quality."
+  },
+  {
+    "objectID": "course_qc.html#quality-control-tutorial",
+    "href": "course_qc.html#quality-control-tutorial",
+    "title": "Quality control of sequencing data",
+    "section": "Quality Control Tutorial",
+    "text": "Quality Control Tutorial\nWithin this tutorial we will\n\nget familiar with the command line.\nuse the job scheduler slurm.\nmake a Pixi environment.\nrun FastQC on some raw sequencing files to practice and to understand the output.\nuse MultiQC to summarize the FastQC output.\n\n\nScreen\nScreen or GNU Screen is a terminal multiplexer. In other words, it means that you can start a screen session and then open any number of windows (virtual terminals) inside that session. Processes running in Screen will continue to run when their window is not visible even if you get disconnected.\nStart a named session\nscreen -S fastqc\nDetach from Linux Screen Session\nYou can detach from the screen session at any time by typing:\nCtrl + a d\nReattach to a Linux Screen\nTo find the session ID list the current running screen sessions with:\nscreen -ls\nTo resume your screen session use the following command:\nscreen -r name"
+  },
+  {
+    "objectID": "course_qc.html#choose-your-adventure",
+    "href": "course_qc.html#choose-your-adventure",
     "title": "Quality control of sequencing data",
     "section": "Choose your adventure:",
-    "text": "Choose your adventure:\nThe next part - choosing your data - will be different depending on which dataset you want to work with. Please select the tab that applies.\n\n\n\n\n\n\nTip\n\n\n\nSince we will create a lot of output, some we will use in a downstream analysis, I would recommend to get very well organized with a clear system of directories.\nI called my working directory after the type of data (e.g. RNASeq), so I know which project I am working on. Within that directory I have my data in a sub-directory called data. This way, the data is not in the way, and I remember to not alter it.\n\n\n\nRNAseqMetagenomics\n\n\nTime series of the induction of human regulatory T cells (Tregs).\nThe dataset is available at the European Nucleotide Archive (ENA) under the accession: PRJNA369563.\nI have downloaded four paired samples for you, and they are available at:\nmedbioinfo2025/common_data/RNAseq\nIf you want to work with this data, make a symbolic link to the data\nln -s path/to/common_data/RNAseq/*fastq.gz data/"
+    "text": "Choose your adventure:\nThe next part - choosing your data - will be different depending on which dataset you want to work with. Please select the tab that applies.\n\n\n\n\n\n\nTip\n\n\n\nSince we will create a lot of output, some we will use in a downstream analysis, I would recommend to get very well organized with a clear system of directories.\nI called my working directory after the type of data (e.g. RNASeq), so I know which project I am working on. Within that directory I have my data in a sub-directory called data. This way, the data is not in the way, and I remember to not alter it.\n\n\n\nRNAseqMetagenomicsWhole genome sequencingproteomicsimage\n\n\nTime series of the induction of human regulatory T cells (Tregs).\nThe dataset is available at the European Nucleotide Archive (ENA) under the accession: PRJNA369563.\nI have downloaded four paired samples for you, and they are available at:\nmedbioinfo2025/common_data/RNAseq\nIf you want to work with this data, make a symbolic link to the data\nln -s path/to/common_data/RNAseq/*fastq.gz data/"
   },
   {
-    "objectID": "course_fastqc.html#data-format",
-    "href": "course_fastqc.html#data-format",
+    "objectID": "course_qc.html#data-format",
+    "href": "course_qc.html#data-format",
     "title": "Quality control of sequencing data",
     "section": "Data format",
     "text": "Data format\nYou now have the raw sequencing data, in a very common data format, fastq. Let’s have a look at the data (change accordingly):\nzcat data/sample.fastq.gz | head -n 10 \nFor each read we see an entry consisting of four lines. Every new read starts with an @.\n\nFastq format\n\n\n\n\n\n\nLine\nContent\n\n\n\n\n1\nInformation about the read, always starts with an @\n\n\n2\nnucleic sequence of the read\n\n\n3\nstarts with `+`, can (but does not have to) contain data\n\n\n4\ncharacters representing the quality scores with the bases of the read sequence\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe quality score is encoded in ASCII, to represent scores from 0 (high probability of error in calling the base) to 42 (low probability of error in calling the base).\n\n\nWe could now look through the fastq file and scan the quality scores for the reads in our sample one by one. Sounds kind of tedious, doesn’t it? Luckily, here comes FastQC (and other, similar tools)."
   },
   {
-    "objectID": "course_fastqc.html#fastqc",
-    "href": "course_fastqc.html#fastqc",
+    "objectID": "course_qc.html#fastqc",
+    "href": "course_qc.html#fastqc",
     "title": "Quality control of sequencing data",
     "section": "FastQC",
-    "text": "FastQC\nFastqc is a simple tool to monitor the quality and the properties of a NGS sequencing file in fastq, SAM and BAM format. More information here.\nFastQC will give us an overview of the entire sample, so we won’t have to look at the quality score of every single read in the sample. In addition to the quality scores, FastQC also checks other quality measures.\nYou will now check the quality of the data set you chose.\n\n\n\n\n\n\nTip\n\n\n\nFind someone who is working on the same data set, so you can discuss what you are finding in just your data.\n\n\nNow, first we check if FastQC is installed on the system:\nfastqc --help\nSince it isn’t (bash: fastqc: command not found) we will now make a Pixi environment that contains FastQC.\n\nPixi environment with FastQC\nInitiate a pixi environment, with permitted package sources from conda-forge and bioconda. Then add FastQC to the environment (at the moment we do not care which version, so we do not specify a version). Last, queck that we can run FastQC via Pixi.\npixi init -c conda-forge -c bioconda\npixi add fastqc\npixi run fastqc --help\n\n\nSLURM\nHPC2N is running SLURM (Simple Linux Utility for Resource Management) as its job scheduling system. When you submit a job on the cluster log-in node, SLURM will start, execute and monitor your jobs on the working nodes. It allocates access to the cluster resources, and manages the queue of pending jobs.\nTo be able to do so, SLURM needs a bit of information from us when we submit a job:\n-A: project_ID (to deduct the used computing time from the correct project) -t allocated time dd-hh:mm:ss (to optimize the job queue) -n number of cores (default is one)\nThe basic usage of slurm on the command line is thus:\nsrun -A project_ID -t 30:00 -n 1 &lt;tool options and commands&gt;\nWe want to use FastQC on the samples, which is in the Pixi environment. So we preceed the srun command with pixi run, and add the FastQC specific commands:\npixi run srun -A project_ID -t 15:00 -n 1 fastqc --noextract -o fastqc data data/sample_1.fastq.gz data/sample_2.fastq.gz \nYou will of course have to modify for your project structure.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nNow you can download the .html report from the server (in VScode: right click on the file in the file explorer –&gt; download, otherwise rsync from the local system) and look at them.\n\nWhat is the quality of your sample?\nCan you use it for downstream analyses? Discuss with your neighbour.\nLook at online resources to see if what you see is a problem, or expected because of the type of data you work with.\n\n\n\nNow, srun works fine if you’re working on one sample. But what if you want to run FastQC on many samples? Or if you want to go back and run the command again in a few weeks, will you remember exactly what you ran?"
+    "text": "FastQC\nFastqc is a tool to monitor the quality and the properties of a NGS sequencing file in fastq, SAM and BAM format. It summarizes its findings for a quick visual overview. More information here.\nFastQC will give us an overview of the entire sample, so we won’t have to look at the quality score of every single read in the sample. In addition to the quality scores, FastQC also checks other quality measures.\nYou will now check the quality of the data set you chose.\n\n\n\n\n\n\nTip\n\n\n\nFind someone who is working on the same data set, so you can discuss what you are finding in just your data.\n\n\nNow, first we check if FastQC is installed on the system:\nfastqc --help\nSince it isn’t (bash: fastqc: command not found) we will now make a Pixi environment that contains FastQC.\n\nPixi environment with FastQC\nInitiate a pixi environment, with permitted package sources from conda-forge and bioconda. Then add FastQC to the environment (at the moment we do not care which version, so we do not specify a version). Last, queck that we can run FastQC via Pixi.\npixi init -c conda-forge -c bioconda\npixi add fastqc\npixi run fastqc --help\nThen, activate the environment with:\npixi shell\n\n\nSLURM\nHPC2N is running SLURM (Simple Linux Utility for Resource Management) as its job scheduling system. When you submit a job on the cluster log-in node, SLURM will start, execute and monitor your jobs on the working nodes. It allocates access to the cluster resources, and manages the queue of pending jobs.\nTo be able to do so, SLURM needs a bit of information from us when we submit a job:\n-A: project_ID (to deduct the used computing time from the correct project) -t allocated time dd-hh:mm:ss (to optimize the job queue) -n number of cores (default is one)\nThe basic usage of slurm on the command line is thus:\nsrun -A project_ID -t 30:00 -n 1 &lt;tool options and commands&gt;\nWe want to use FastQC on the samples, so we add the FastQC specific commands:\nsrun -A project_ID -t 15:00 -n 1 fastqc --noextract -o fastqc data data/sample_1.fastq.gz data/sample_2.fastq.gz \nYou will of course have to modify for your project structure.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nNow you can download the .html report from the server (in VScode: right click on the file in the file explorer –&gt; download, otherwise rsync from the local system) and look at them.\n\nWhat is the quality of your sample?\nCan you use it for downstream analyses? Discuss with your neighbour.\nLook at online resources to see if what you see is a problem, or expected because of the type of data you work with.\n\n\n\nNow, srun works fine if you’re working on one sample. But what if you want to run FastQC on many samples? Or if you want to go back and run the command again in a few weeks, will you remember exactly what you ran?"
   },
   {
-    "objectID": "course_fastqc.html#sbatch",
-    "href": "course_fastqc.html#sbatch",
+    "objectID": "course_qc.html#sbatch",
+    "href": "course_qc.html#sbatch",
     "title": "Quality control of sequencing data",
     "section": "sbatch",
-    "text": "sbatch\nMake a new directory, called scripts. This is where you will house all scripts of your project. Within scripts, touch a new file, fastqc.sh.\nThis is how my project directory looks like at this point:\n.\n├── data\n│   ├── sample1_1.fastq.gz\n│   ├── sample1_2.fastq.gz\n│   ├── sample2_1.fastq.gz\n│   ├── sample2_2.fastq.gz\n├── fastqc\n│   ├── sample1_1_fastqc.html\n│   ├── sample1_1_fastqc.zip\n│   ├── sample1_2_fastqc.html\n│   └── sample1_2_fastqc.zip\n├── pixi.lock\n├── pixi.toml\n└── scripts\n    └── fastqc.sh\nCopy the following into the fastqc.sh file, and save the contents. Read through the file and try to understand what the different lines are doing.\n#! /bin/bash -l\n#SBATCH -A project_ID\n#SBATCH -t 30:00\n#SBATCH -n 1\n\nfastqc -o ../fastqc --noextract ../data/*fastq.gz\nSave and run with Pixi:\npixi run sbatch fastqc.sh \nCheck your job with:\nsqueue -u &lt;user-name&gt;\nAfter running a bash script you will get a slurm output file in the directory you submitted your job from. Look at that output. See if you understand what that output contains.\nless slurm-&lt;jobID&gt;.out\nNow you have a .html file for each sample, which is fine for a few samples, but gets tedious when running a project with many samples. So let’s go and summarize them with MultiQC."
+    "text": "sbatch\nMake a new directory, called scripts. This is where you will house all scripts of your project. Within scripts, touch a new file, fastqc.sh.\nThis is how my project directory looks like at this point:\n.\n├── data\n│   ├── sample1_1.fastq.gz\n│   ├── sample1_2.fastq.gz\n│   ├── sample2_1.fastq.gz\n│   ├── sample2_2.fastq.gz\n├── fastqc\n│   ├── sample1_1_fastqc.html\n│   ├── sample1_1_fastqc.zip\n│   ├── sample1_2_fastqc.html\n│   └── sample1_2_fastqc.zip\n├── pixi.lock\n├── pixi.toml\n└── scripts\n    └── fastqc.sh\nCopy the following into the fastqc.sh file, and save the contents. Read through the file and try to understand what the different lines are doing.\n#! /bin/bash -l\n#SBATCH -A project_ID\n#SBATCH -t 30:00\n#SBATCH -n 1\n\nfastqc -o ../fastqc --noextract ../data/*fastq.gz\nSave and run within your Pixi environment:\nsbatch fastqc.sh \nCheck your job with:\nsqueue -u &lt;user-name&gt;\nAfter running a bash script you will get a slurm output file in the directory you submitted your job from. Look at that output. See if you understand what that output contains.\nless slurm-&lt;jobID&gt;.out\nNow you have a .html file for each sample, which is fine for a few samples, but gets tedious when running a project with many samples. So let’s go and summarize them with MultiQC."
   },
   {
-    "objectID": "course_fastqc.html#multiqc",
-    "href": "course_fastqc.html#multiqc",
+    "objectID": "course_qc.html#multiqc",
+    "href": "course_qc.html#multiqc",
     "title": "Quality control of sequencing data",
     "section": "MultiQC",
     "text": "MultiQC\nMulti-QC summarises the output of a lot of different tools. Only having run FastQC it might not seem powerful, but at the end of workflows it is really nice to have a program go through all the files and summarize them, saving you the hassle.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nSet up and run MultiQC on your FastQC output. Things to think about:\n\nadd MultiQC to the Pixi environment\nwrite a sbatch script, just because you can\nsave the output in a separate directory\n\nOnce you have run MultiQC, go through the report and understand what it says about your data."
   },
   {
-    "objectID": "course_fastqc.html#notes-tips-and-tricks",
-    "href": "course_fastqc.html#notes-tips-and-tricks",
+    "objectID": "course_qc.html#notes-tips-and-tricks",
+    "href": "course_qc.html#notes-tips-and-tricks",
     "title": "Quality control of sequencing data",
     "section": "Notes, tips and tricks",
     "text": "Notes, tips and tricks\nRNAseq failed per base sequence content\nCheck your running jobs:\nsqueue -u &lt;user_name&gt;\nCheck the projects you are a member of:\nprojinfo"
-  },
-  {
-    "objectID": "before_quarto.html",
-    "href": "before_quarto.html",
-    "title": "Quarto",
-    "section": "",
-    "text": "When analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "before_quarto.html#literate-programming",
-    "href": "before_quarto.html#literate-programming",
-    "title": "Quarto",
-    "section": "",
-    "text": "When analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "before_quarto.html#quarto",
-    "href": "before_quarto.html#quarto",
-    "title": "Quarto",
-    "section": "Quarto",
-    "text": "Quarto\n\nAn open-source scientific and technical publishing system.\n\nMeaning that you can use your favorite text editor (such as VScode (o; ) to write documents in plain text markdown.\nQuarto chunks, or code cells, are executable from within the document and can be written in a variety of different languages - such as python, R, Julia, bash, Observable, and more.\nYour document can then be rendered into a variety of different output formats: html, pdf, MS Word, Markdown, and more.\nWith this you can make presentations, dashboards, homepages (like this one), reports, books, manuscripts, and more.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall Quarto, and follow the tutorial for VScode.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto has a very good documentation, that you can access on their homepage -&gt; Guide, or by searching the web for “Quarto, feature you are looking for”.",
-    "crumbs": [
-      "Home",
-      "Before the course",
-      "Quarto"
-    ]
   },
   {
     "objectID": "course_publish_blog.html",
@@ -426,18 +404,40 @@
     "text": "Goal of the course\nWith this, we want to give you tools that will help you plan and carry out your research. These tools will make your work more efficient and more reproducible. No matter what kind of data you use, you will take something useful from this course.\n\n\n\nOverview of modern sequencing technologies and where they apply to biological processes"
   },
   {
-    "objectID": "before_screen.html",
-    "href": "before_screen.html",
-    "title": "Manage persistent bash sessions",
+    "objectID": "before_quarto.html",
+    "href": "before_quarto.html",
+    "title": "Quarto",
     "section": "",
-    "text": "If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:\nScreen (and similar programs) allows you to run persistent bash sessions, so that if any of the above happens your bash session on the remote server will just continue. All running processes will proceed in your absence, and you can later re-attach to your session and find things exactly how they would have been had you sat right there, starring at the screen for hours 😎!\nThis is very useful since your re-attached session will continue in the same directory and will have all the project relevant command history saved."
+    "text": "When analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Quarto"
+    ]
   },
   {
-    "objectID": "before_screen.html#practice-a-screen-tutorial",
-    "href": "before_screen.html#practice-a-screen-tutorial",
-    "title": "Manage persistent bash sessions",
-    "section": "Practice a screen tutorial",
-    "text": "Practice a screen tutorial\nConnect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from “2. Name Your Session”.\nAfter the above practice, in your terminal window you can test out the power of screen:\n\nwithin your screen session, run this infinite loop: while true; do date; sleep 1; done\nclose the terminal window running your above split screen session altogether (brutal closing, ie clicking the “close window” garbage can icon on the top right corner of the terminal window in VScode, or closing VScode and your connection to HPC2n completely).\nthen open a fresh terminal window, (be sure you are connected to HPC2N) and re-attach to your still alive and kicking screen session.\nnotice how the date/times have continued to be printed to the screen in the background.\npress CTRL-C to interrupt the loop, then CTRL-A ESC to enter scrolling mode, then you can use the PAGE-UP and PAGE-DOWN keys to observe the activity that took place in screen even whilst you were detached from the screen !\n\nThank-you to Gabriele Pozatti for this section!"
+    "objectID": "before_quarto.html#literate-programming",
+    "href": "before_quarto.html#literate-programming",
+    "title": "Quarto",
+    "section": "",
+    "text": "When analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "before_quarto.html#quarto",
+    "href": "before_quarto.html#quarto",
+    "title": "Quarto",
+    "section": "Quarto",
+    "text": "Quarto\n\nAn open-source scientific and technical publishing system.\n\nMeaning that you can use your favorite text editor (such as VScode (o; ) to write documents in plain text markdown.\nQuarto chunks, or code cells, are executable from within the document and can be written in a variety of different languages - such as python, R, Julia, bash, Observable, and more.\nYour document can then be rendered into a variety of different output formats: html, pdf, MS Word, Markdown, and more.\nWith this you can make presentations, dashboards, homepages (like this one), reports, books, manuscripts, and more.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall Quarto, and follow the tutorial for VScode.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto has a very good documentation, that you can access on their homepage -&gt; Guide, or by searching the web for “Quarto, feature you are looking for”.",
+    "crumbs": [
+      "Home",
+      "Before the course",
+      "Quarto"
+    ]
   },
   {
     "objectID": "before_command_line.html",
