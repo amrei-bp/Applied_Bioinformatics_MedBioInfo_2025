@@ -47,9 +47,9 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 | Wednesday  | nextflow |
 |   | quality control with nextflow |
 |  | containers cont. |
-| Thursday   | nf-core |
-|   | Hands-on: Test a nf-core pipeline|
-|   | Hands-on: set up a nf-core pipeline  |
+| Thursday   | [nf-core](course_nf-core.qmd) |
+|   | [Test a nf-core pipeline](course_test_nf-core.qmd)|
+|   | [Set up a nf-core pipeline](course_nf-core_rnaseq.qmd)  |
 | Friday  | [Visualize your results: ggplot](course_ggplot.qmd) |
 |   | [Discussion: AI in Bioinformatics](course_AI.qmd)|
 |   | clean-up and finishing|
