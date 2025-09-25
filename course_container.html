@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-a6e161b2431e1f94a14e0f5d32135a3c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0fc7d564eecbdf6d30da349085419380.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0bbd18d9a619feb482eab2d7ca7910f1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -254,6 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#running-containers" id="toc-running-containers" class="nav-link" data-scroll-target="#running-containers">Running Containers</a></li>
   <li><a href="#downloading-container-images" id="toc-downloading-container-images" class="nav-link" data-scroll-target="#downloading-container-images">Downloading Container Images</a></li>
   <li><a href="#running-containers-1" id="toc-running-containers-1" class="nav-link" data-scroll-target="#running-containers-1">Running Containers</a></li>
+  <li><a href="#running-containers-in-batch-jobs" id="toc-running-containers-in-batch-jobs" class="nav-link" data-scroll-target="#running-containers-in-batch-jobs">Running containers in batch jobs</a></li>
   <li><a href="#building-containers" id="toc-building-containers" class="nav-link" data-scroll-target="#building-containers">Building Containers</a></li>
   </ul></li>
   </ul>
@@ -352,11 +353,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>apptainer: command not found
+<span class="screen-reader-only">Important</span>Apptainer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>As you can see, Apptainer is not installed on the course server. Is there a way we can still use it?</p>
+<p>As you can see, Apptainer is installed on the course server. If it wasn’t, could we still use it?</p>
 </div>
 </div>
 <p>This command has several parts to it:</p>
@@ -427,6 +428,8 @@ Tip
 <section id="running-containers-1" class="level3">
 <h3 class="anchored" data-anchor-id="running-containers-1">Running Containers</h3>
 <p>Once you have the container image on your local machine, you want to be able to use it. Apptainer can be used to build the container from the image. Then you can either enter the container and run as if you had the exact same operating system as the person who built it, or you can run the software inside the container from outside of the container.</p>
+<section id="running-from-the-outside" class="level4">
+<h4 class="anchored" data-anchor-id="running-from-the-outside">running “from the outside”</h4>
 <p>There are 2 different ways to use a container: <code>run</code> and <code>exec</code>. The <code>apptainer run</code> command launches the container and first runs the <code>%runscript</code> for the container if one is defined, and then runs your command (we will cover <code>%runscript</code> in the <code>Building Containers</code> section). The <code>apptainer exec</code> command will not run the <code>%runscript</code> even if one is defined. It is a small, fiddly detail that might be applicable if you use other people’s containers. After calling Apptainer and the <code>run</code> or <code>exec</code> commands, you can use your software as you usually would</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec vcftools_0.1.17.sif vcftools <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This command runs your <code>vcftools_0.1.17.sif</code> container from the image, calls on the program <code>vcftools</code> that is within the container, and shows you the version. If you had installed VCFtools locally, you would have just used</p>
@@ -445,23 +448,59 @@ Important
 </div>
 </div>
 </section>
+<section id="running-interactively-from-the-inside" class="level4">
+<h4 class="anchored" data-anchor-id="running-interactively-from-the-inside">running interactively “from the inside”</h4>
+<p>You can also enter the container, and work interactively from within. For that you use the <code>apptainer shell</code> command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> shell <span class="op">&lt;</span>name-of-container<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Inside the container, your prompt will change to <code>Singularity</code> (remember, that is the legacy name for Apptainer). Now you can use the tools inside the container.</p>
+<p>However, when entering the container, the file system outside of it becomes inaccessible - with the exception of paths that are explicitely bound into it. There are some system defined bind paths that are automatically accessible within the container (such as your home directory), but you might have to manually set others with the ´-B´ flag. This will make the bound file path accessible from within the container and you can interact with the directories jsut as you normally would.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> shell <span class="op">&lt;</span>name-of-container<span class="op">&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> shell <span class="at">-B</span> outside/path:inside/path <span class="op">&lt;</span>name-of-container<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In the above, we bind in the outside/path (which could be ../data) and makes it accessible within the container as inside/path (which could be plain /data).</p>
+<p>To exit the container, simply type and enter <code>exit</code>.</p>
+</section>
+</section>
+<section id="running-containers-in-batch-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="running-containers-in-batch-jobs">Running containers in batch jobs</h3>
+<p>You can run Apptainer containers as part of a batch job by integrating them into a SLURM job submission script. Here is an example batch script.</p>
+<p>Let’s go back to our <code>FastQC</code> sbatch script and add the container:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#! /bin/bash -l</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -A project_ID</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 30:00</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 1</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">-B</span> ../data:data fastqc <span class="at">-o</span> . <span class="at">--noextract</span> data/<span class="pp">*</span>fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>To do for you
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What has changed? And what do these changes do? Discuss with your neighbour.</p>
+</div>
+</div>
+</section>
 <section id="building-containers" class="level3">
 <h3 class="anchored" data-anchor-id="building-containers">Building Containers</h3>
 <p>If the software you would like to use is not packaged into a container by anyone else, you might want to build it yourself. For this, we are just going to show a very simple example. Building containers from scratch is a computationally intensive task. You build containers from a <code>definition</code> file with the extension <code>.def</code></p>
 <p>Here we are going to build a container with a cow telling us the date. Save this in a file called <code>lolcow.def</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> ubuntu:20.04</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> update</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> install cowsay lolcat fortune</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">%environment</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LC_ALL</span><span class="op">=</span>C</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/usr/games:<span class="va">$PATH</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">%runscript</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">date</span> <span class="kw">|</span> <span class="ex">cowsay</span> <span class="kw">|</span> <span class="ex">lolcat</span>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> ubuntu:20.04</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> update</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> install cowsay lolcat fortune</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">%environment</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LC_ALL</span><span class="op">=</span>C</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/usr/games:<span class="va">$PATH</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="ex">%runscript</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">date</span> <span class="kw">|</span> <span class="ex">cowsay</span> <span class="kw">|</span> <span class="ex">lolcat</span>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>There are several components to this definition file.</p>
 <ol type="1">
 <li>You can set the operating system you want in the container, in this case Ubuntu 20.04.</li>
@@ -469,14 +508,14 @@ Important
 <li><code>%environment</code> is where you export paths and modify the environment.</li>
 <li><code>%runscript</code> is the script that will run when you use <code>apptainer run container.sif</code>. If you don’t include a runscript, then nothing will happen when you try to run it without any commands. You could build this container without anything in the <code>%runscript</code> section, and use <code>apptainer run container.sif date | cowsay | lolcat</code> to get the same output.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> build lolcow.sif lolcow.def</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> build lolcow.sif lolcow.def</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You’ll get a lot of output on the status of the build, ending in</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Adding environment to container</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Adding runscript</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Creating SIF file...</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Build complete: lolcow.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Adding environment to container</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Adding runscript</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Creating SIF file...</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">INFO:</span>    Build complete: lolcow.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We can now run our new container with</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run lolcow.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run lolcow.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/container/lolcow1.png" class="img-fluid figure-img"></p>
@@ -496,19 +535,19 @@ Note
 <p>Try removing the %runscript, build it again, and see what happens.</p>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> ubuntu:20.04</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> update</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> install cowsay lolcat fortune</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">%environment</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LC_ALL</span><span class="op">=</span>C</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/usr/games:<span class="va">$PATH</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">%runscript</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">fortune</span> <span class="kw">|</span> <span class="ex">cowsay</span> <span class="kw">|</span> <span class="ex">lolcat</span>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> ubuntu:20.04</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> update</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> install cowsay lolcat fortune</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">%environment</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LC_ALL</span><span class="op">=</span>C</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/usr/games:<span class="va">$PATH</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="ex">%runscript</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">fortune</span> <span class="kw">|</span> <span class="ex">cowsay</span> <span class="kw">|</span> <span class="ex">lolcat</span>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If we use the same definition file as before, but substitute <code>date</code> for <code>fortune</code> in the runscript and build the container, we now get a philosophical cow with a dark sense of humour:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -523,9 +562,9 @@ Note
 </figure>
 </div>
 <p>To show the difference between the <code>run</code> and <code>exec</code> commands, we can use the same container with <code>fortune</code> in the runscript and run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run lolcow.sif bash <span class="at">-c</span> <span class="st">"date|cowsay"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run lolcow.sif bash <span class="at">-c</span> <span class="st">"date|cowsay"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>and</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec lolcow.sif bash <span class="at">-c</span> <span class="st">"date|cowsay"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec lolcow.sif bash <span class="at">-c</span> <span class="st">"date|cowsay"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The <code>run</code> command gives us a philosophical cow while <code>exec</code> gives us our boring cow again.</p>
 
 
