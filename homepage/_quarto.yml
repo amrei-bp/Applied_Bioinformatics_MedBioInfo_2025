@@ -28,14 +28,31 @@ website:
         href: index.qmd
       - section: "Before the course"
         contents:
+          - before_accounts.qmd
           - before_VScode.qmd
+          - before_server.qmd
+          - before_command_line.qmd
+          - before_screen.qmd
           - before_quarto.qmd
           - before_git_and_github.qmd
-          - before_quarto_and_git.qmd
-          - before_server.qmd
 
 
       - section: "During the course"
+        contents:
+          - course_intro.qmd
+          - course_data_management.qmd
+          - course_git.qmd
+          - course_blog.qmd
+          - course_publish_blog.qmd
+          - course_environments.qmd
+          - course_qc.qmd
+          - course_container.qmd
+          - course_nf-core.qmd
+          - course_test_nf-core.qmd
+          - course_nf-core_rnaseq.qmd
+          - course_ggplot.qmd
+          - course_AI.qmd
+
 
 format:
   html:
