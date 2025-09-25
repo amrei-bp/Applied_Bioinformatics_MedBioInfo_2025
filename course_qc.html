@@ -361,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_nf-core_rnaseq.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./course_nf-core_rnaseq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Use nf-core</span></a>
   </div>
 </li>
@@ -507,8 +507,8 @@ Tip
 <p>The dataset is available at the European Nucleotide Archive (ENA) under the accession: <a href="https://www.ebi.ac.uk/ena/browser/view/PRJNA369563" class="external" target="_blank">PRJNA369563</a>.</p>
 <p>I have downloaded four paired samples for you, and they are available at:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">medbioinfo2025/common_data/RNAseq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If you want to work with this data, make a symbolic link to the data</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> path/to/common_data/RNAseq/<span class="pp">*</span>fastq.gz data/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you want to work with this data, make a symbolic link to the data, do this from within a subdirectory called <code>data</code>(or something similar). You want to avoid mingling your data with the analyses:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> path/to/common_data/RNAseq/<span class="pp">*</span>fastq.gz .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 

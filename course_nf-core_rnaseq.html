@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>nfcore: test pipeline – Applied Bioinformatics 2025</title>
+<title>nfcore RNAseq pipeline – Applied Bioinformatics 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -160,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nf-core.html">Pipelines</a></li><li class="breadcrumb-item"><a href="./course_test_nf-core.html">Test nf-core</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nf-core.html">Pipelines</a></li><li class="breadcrumb-item"><a href="./course_nf-core_rnaseq.html">Use nf-core</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -355,13 +355,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_test_nf-core.html" class="sidebar-item-text sidebar-link active">
+  <a href="./course_test_nf-core.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test nf-core</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_nf-core_rnaseq.html" class="sidebar-item-text sidebar-link">
+  <a href="./course_nf-core_rnaseq.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Use nf-core</span></a>
   </div>
 </li>
@@ -400,19 +400,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#setting-up-your-pixi-environment" id="toc-setting-up-your-pixi-environment" class="nav-link" data-scroll-target="#setting-up-your-pixi-environment">Setting Up Your Pixi Environment</a></li>
+  <li><a href="#create-the-pixi-environment" id="toc-create-the-pixi-environment" class="nav-link active" data-scroll-target="#create-the-pixi-environment">Create the Pixi environment</a></li>
+  <li><a href="#link-your-data-into-the-directory" id="toc-link-your-data-into-the-directory" class="nav-link" data-scroll-target="#link-your-data-into-the-directory">Link your data into the directory</a></li>
+  <li><a href="#nf-core-launch" id="toc-nf-core-launch" class="nav-link" data-scroll-target="#nf-core-launch">nf-core launch</a>
+  <ul class="collapse">
+  <li><a href="#setting-working-and-results-directories" id="toc-setting-working-and-results-directories" class="nav-link" data-scroll-target="#setting-working-and-results-directories">Setting working and results directories</a></li>
+  <li><a href="#setting-all-other-inputs-that-are-required" id="toc-setting-all-other-inputs-that-are-required" class="nav-link" data-scroll-target="#setting-all-other-inputs-that-are-required">Setting all other inputs that are required</a></li>
+  <li><a href="#getting-your-json-file" id="toc-getting-your-json-file" class="nav-link" data-scroll-target="#getting-your-json-file">Getting your JSON file</a></li>
   <li><a href="#configuration-profile" id="toc-configuration-profile" class="nav-link" data-scroll-target="#configuration-profile">Configuration profile</a></li>
-  <li><a href="#run-the-pipeline-with-the-test-profile" id="toc-run-the-pipeline-with-the-test-profile" class="nav-link" data-scroll-target="#run-the-pipeline-with-the-test-profile">run the pipeline with the test profile</a></li>
+  </ul></li>
+  <li><a href="#starting-the-run" id="toc-starting-the-run" class="nav-link" data-scroll-target="#starting-the-run">Starting The Run</a>
+  <ul class="collapse">
+  <li><a href="#submit-directly-via-pixi" id="toc-submit-directly-via-pixi" class="nav-link" data-scroll-target="#submit-directly-via-pixi">submit directly via pixi</a></li>
+  <li><a href="#submit-via-sbatch" id="toc-submit-via-sbatch" class="nav-link" data-scroll-target="#submit-via-sbatch">submit via sbatch</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nf-core.html">Pipelines</a></li><li class="breadcrumb-item"><a href="./course_test_nf-core.html">Test nf-core</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nf-core.html">Pipelines</a></li><li class="breadcrumb-item"><a href="./course_nf-core_rnaseq.html">Use nf-core</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">nfcore: test pipeline</h1>
+<h1 class="title">nfcore RNAseq pipeline</h1>
 </div>
 
 
@@ -429,93 +439,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Now that you know about Linux, containers, pixi, and Nextflow, we get to start with another really cool part of our course! In this section, we will create a <code>pixi</code> environment containing <code>nf-core</code> and <code>nextflow</code>. Once we’ve done that, we will turn our attention to <a href="https://nf-co.re">nf-core</a> to run up a pipeline with the build in test data. This is a good way to test the setup, and to familiarize yourself with the output of the pipeline.</p>
+<p><br> Great, now we have tested that nextflow and nf-core are set up correctly. Now we want to use the pipeline on our own data. For the sake of the tutorial, I will use the RNAseq data some of you have worked earlier on.</p>
+<p>As a little reminder: the data is located in:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">medbioinfo2025/common_data/RNAseq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To practice we will go through some of the steps you have done before:</p>
+<section id="create-the-pixi-environment" class="level2">
+<h2 class="anchored" data-anchor-id="create-the-pixi-environment">Create the Pixi environment</h2>
+<p>While initializing, make a new directory for this analysis - think about naming it something with meaning.</p>
+<p>What dependencies do you need for nextflow and nf-core?</p>
 </section>
-<section id="setting-up-your-pixi-environment" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up-your-pixi-environment">Setting Up Your Pixi Environment</h2>
-<p>In our course directory execute these commands, one after the other.</p>
-<p>Let’s inititalise an environment for this - feel free to change the name of the environment/ directory.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init nextflow_test <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Change directory into the project you created, and list the files there:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> name_nextflow</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Add nf-core and Nextflow:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add nextflow nf-core</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="link-your-data-into-the-directory" class="level2">
+<h2 class="anchored" data-anchor-id="link-your-data-into-the-directory">Link your data into the directory</h2>
+<p>Make a subdirectory, <code>data</code>, change into it and create a symlink to the data:</p>
+<p>Use <code>ln -s SOURCE TARGET</code>. Since you are in the directory <code>data</code>the TARGET is simply <code>.</code>.</p>
+<p>Change back to the parent directory.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Note
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>While <code>apptainer</code> is sticky loaded on this server, it won’t always be the case for other servers. So, if you are running within a Linux environment (and not otherwise), you can add <code>apptainer</code> with the <code>add</code> command.</p>
+<p>This is how my project directory looks like afterwards:</p>
+<pre class="verbatim"><code>.
+├── data
+│   ├── SRR5223504_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_1.fastq.gz
+│   ├── SRR5223504_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_2.fastq.gz
+│   ├── SRR5223517_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_1.fastq.gz
+│   ├── SRR5223517_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_2.fastq.gz
+│   ├── SRR5223546_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223546_1.fastq.gz
+│   ├── SRR5223546_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223546_2.fastq.gz
+│   ├── SRR5223559_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223559_1.fastq.gz
+│   └── SRR5223559_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223559_2.fastq.gz
+├── pixi.lock
+└── pixi.toml</code></pre>
 </div>
 </div>
-</div>
-<p>And just check that everything worked, check the version of nextflow, get the nf-core help, and run the nextflow <code>Hello World</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow <span class="at">-version</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nf-core <span class="at">--help</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run hello</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Your nextflow version should be something like this:</p>
-<pre class="verbatim"><code>N E X T F L O W
-version 25.04.7 build 5955
-created 08-09-2025 13:29 UTC (15:29 CEST)
-cite doi:10.1038/nbt.3820
-http://nextflow.io</code></pre>
 </section>
-<section id="configuration-profile" class="level2">
-<h2 class="anchored" data-anchor-id="configuration-profile">Configuration profile</h2>
-<p>Since we are working on a server with a configuration profile established, but not available via nf-core, you need to download it to your working directory:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Here is the configuration profile on HPC2N from the above link. The most important things we need to pay attention to are the <code>max_memory</code>, <code>max_cpus</code>, and <code>max_time</code> settings. Your jobs won’t be able to exceed these maximum values.</p>
-<p>To use the config file with nextflow you need to add our compute project under <code>project</code>. Use single quotes, as seen in the other entries in the file.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">//</span> Config profile for HPC2N</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">params</span> {</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">config_profile_description</span> = <span class="st">'Cluster profile for HPC2N'</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">config_profile_contact</span> = <span class="st">'Pedro Ojeda @pojeda'</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">config_profile_url</span> = <span class="st">'https://www.hpc2n.umu.se/'</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">project</span> = null</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">clusterOptions</span> = null</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max_memory</span> = 128.GB</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max_cpus</span> = 28</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max_time</span> = 168.h</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">email</span> = <span class="st">'pedroojeda2011@gmail.com'</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> {</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">enabled</span> = true</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> {</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">executor</span> = <span class="st">'slurm'</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="ex">clusterOptions</span> = { <span class="st">"-A </span><span class="va">$params</span><span class="st">.project </span><span class="va">${params</span><span class="er">.clusterOptions ?: ''</span><span class="va">}</span><span class="st">"</span> }</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="run-the-pipeline-with-the-test-profile" class="level2">
-<h2 class="anchored" data-anchor-id="run-the-pipeline-with-the-test-profile">run the pipeline with the test profile</h2>
-<p>As an example, I am running the <a href="https://nf-co.re/sarek/3.4.2/">Sarek pipeline</a>, wich is a variant calling pipeline:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run nf-core/sarek <span class="at">-profile</span> test <span class="at">--outdir</span> sarek_test <span class="at">-c</span> hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Let’s have a look at the components of the above command:</p>
-<ul>
-<li><code>pixi run</code>: we are using our pixi environment to run the following commands</li>
-<li><code>nextflow run</code>: run the following with nextflow</li>
-<li><code>nf-core/sarek</code>: name/ location of the pipeline</li>
-<li><code>-profile test</code>: use the test profile for this run - this uses the build in test data etc. On servers with a nf-core configuration file you would list the name of the profile here.</li>
-<li><code>--outdir sarek_test</code>: name and location of the directory for the pipeline output</li>
-<li><code>-c hpc2n.config</code>: name and location of the configuration file for the server</li>
-</ul>
-<p>My test run finished within 3 and a half minutes:</p>
+<section id="nf-core-launch" class="level2">
+<h2 class="anchored" data-anchor-id="nf-core-launch">nf-core launch</h2>
+<p>Nf-core helps you set up the pipelines with the <code>nf-core launcher</code>. To access that, click on the <code>launch version 3.19.0</code> button on the <a href="https://nf-co.re/rnaseq/3.19.0/">nf-core/rnaseq homepage</a>. (This was the version on the website at the time of writing this session. The version number may change). We are then redirected to a page where we can fill in all of our information about input files, as well as selecting or deselecting certain parts of the pipeline. We will share the things here that you need to input each time, and go through some finer details based on the discussion with you.</p>
+<section id="setting-working-and-results-directories" class="level3">
+<h3 class="anchored" data-anchor-id="setting-working-and-results-directories">Setting working and results directories</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We recommend that you use absolute paths rather than relative paths for setting up your runs.</p>
+</div>
+</div>
+<p>During the first part, you need to set a working and result directory. If you are using a server that has a profile established, you can put the name of the server there. In our case, we will use the server configuration file locally.</p>
+<p>Set resume to <code>True</code>, otherwise you don’t need to change anything here.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/nf-core/sarek_done.png" class="img-fluid figure-img"></p>
-<figcaption>sarek run summary</figcaption>
+<p><img src="figures/nf-core/rnaseq_setup1.png" class="img-fluid figure-img"></p>
+<figcaption>Setting work and output directories</figcaption>
+</figure>
+</div>
+<p>Next, the pipeline asks for the input CSV. Exact requirements for how that input file should look like can be found under the tab <code>Usage</code> on the pipeline homepage. This input CSV is unique to each analysis.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/nf-core/rnaseq_setup2.png" class="img-fluid figure-img"></p>
+<figcaption>Setting results and input CSV</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -528,11 +522,97 @@ http://nextflow.io</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Have a look at the output of the run. Do you understand what happened, and what the output is? Is this pipeline as suitable for your data as you thought?</p>
+<p>Create the necessary input file and add the path to it in the launcher.</p>
+<p>Set the outdir to the name and path to a directory you want the output to be saved to.</p>
+</div>
+</div>
+</section>
+<section id="setting-all-other-inputs-that-are-required" class="level3">
+<h3 class="anchored" data-anchor-id="setting-all-other-inputs-that-are-required">Setting all other inputs that are required</h3>
+<p>In this section, you set variables that are related to your reference genome. If you are using something listed on iGenomes, you can input that name. If you are working with your own reference genome, or something not listed, you need to input the absolute path of the reference genomes you have downloaded.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/nf-core/rnaseq_setup3.png" class="img-fluid figure-img"></p>
+<figcaption>Reference genome options</figcaption>
+</figure>
+</div>
+<p>Depending on your strategy, you might need to input a corresponding gff as well. It really depends on the kind of analysis you are hoping to perform.</p>
+<p>In our case, we have human samples, so in theory we can use the iGenomes reference. However, the transcriptome and GTF files in iGenomes are out of date, so nf-core recommends <a href="https://nf-co.re/docs/usage/reference_genomes#custom-genomes">downloading and using the more up-to-date version</a>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>To do for you
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let’s do that.</p>
+<p>Then, add the names and path to the downloaded reference (if located in a different directory) files in the launcher.</p>
+</div>
+</div>
+<p>Other than the options above, you don’t need to change anything to run the pipeline. However, for your project you might want to change some of the default parameters. For this evercise we will keep the rest as is.</p>
+</section>
+<section id="getting-your-json-file" class="level3">
+<h3 class="anchored" data-anchor-id="getting-your-json-file">Getting your JSON file</h3>
+<p>Once everything is filled in, click on <code>Launch</code> and you will be redirected to another page containing your JSON file that has information on your run.</p>
+<p>Copy the JSON file a bit lower on the screen and saving it as <code>nf-params.json</code> in your folder on HPC2N.</p>
+<p>Add the <code>save_reference</code> line as recommended by nf-core (because we are using their downloaded human genome).</p>
+</section>
+<section id="configuration-profile" class="level3">
+<h3 class="anchored" data-anchor-id="configuration-profile">Configuration profile</h3>
+<p>As before, you need the HPC2N configuration file, with the correct project ID.</p>
+</section>
+</section>
+<section id="starting-the-run" class="level2">
+<h2 class="anchored" data-anchor-id="starting-the-run">Starting The Run</h2>
+<p>The launcher gives us the command to run the pipeline:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-resume</span> <span class="at">-params-file</span> nf-params.json</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We need to change this slightly, to add that we are running it via Pixi, and to add the server specific configuration file:</p>
+<section id="submit-directly-via-pixi" class="level3">
+<h3 class="anchored" data-anchor-id="submit-directly-via-pixi">submit directly via pixi</h3>
+<p>Now you can run the pipeline with the following command (you might have to change it a bit to add pathways to files that are not in your current working directory):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-resume</span> <span class="at">-params-file</span> nf-params.json <span class="at">-c</span> hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>There are several layers to this command:</p>
+<p>First we invoke <code>Pixi</code> and tell it to <code>run</code> the following commands.</p>
+<p>Then we say which program we want to run, namely <code>Nextflow</code>.</p>
+<p>The following commands are Nextflow/ nf-core commands:</p>
+<ul>
+<li>we want to <code>run</code> the <code>nf-core/rnaseq</code> pipeline, version <code>3.19.0</code></li>
+<li>we want to use the parameter file called <code>nf-params.json</code></li>
+<li>we want to use the hpc configuration file called <code>hpc2n.config</code></li>
+</ul>
+</section>
+<section id="submit-via-sbatch" class="level3">
+<h3 class="anchored" data-anchor-id="submit-via-sbatch">submit via sbatch</h3>
+<p>Alternatively, you can run nextflow via pixi using a batch script and slurm: copy the following text to file called <code>name_submit_rnaseq.sh</code> where <code>name</code> is your name.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash -l</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -A our_proj_allocation</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 5</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 24:00:00</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/your_home_directory/.pixi/bin/pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-params-file</span> /your_path/nf-params.json</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>And then submit it to slurm with</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> name_submit_rnaseq.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can check the progress of your job with <code>squeue -u your_username</code></p>
+<p>And now we wait until the run is done!</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nextflow is notoriously bad at cleaning after itself. You can check previous runs with <code>pixi run nextflow log</code>. And then clean up with for example <code>pixi run nextflow clean -f -before &lt;run_name&gt;</code>. <a href="https://fig.io/manual/nextflow/clean">Here</a> is an explanation of the command.</p>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
