@@ -62,9 +62,9 @@ apptainer pull vcftools_0.1.16-1.sif docker://biocontainers/vcftools:v0.1.16-1-d
 ```
 
 ::: {.callout-important}
-## apptainer: command not found
+## Apptainer
 
-As you can see, Apptainer is not installed on the course server. Is there a way we can still use it?
+As you can see, Apptainer is installed on the course server. If it wasn't, could we still use it?
 
 :::
 
@@ -119,6 +119,8 @@ Here we use `oras://` instead of `docker://` as we are pulling from the [oras](h
 ### Running Containers
 Once you have the container image on your local machine, you want to be able to use it. Apptainer can be used to build the container from the image. Then you can either enter the container and run as if you had the exact same operating system as the person who built it, or you can run the software inside the container from outside of the container.
 
+#### running "from the outside"
+
 There are 2 different ways to use a container: `run` and `exec`. The `apptainer run` command launches the container and first runs the `%runscript` for the container if one is defined, and then runs your command (we will cover `%runscript` in the `Building Containers` section). The `apptainer exec` command will not run the `%runscript` even if one is defined. It is a small, fiddly detail that might be applicable if you use other people's containers. After calling Apptainer and the `run` or `exec` commands, you can use your software as you usually would
 
 ```{.bash}
@@ -133,6 +135,48 @@ vcftools --version
 
 ::: {.callout-important}
 Please remember that VCFtools is just an example. If you want to run any other tool everything after `apptainer run` or `apptainer exec` has to be substituted by the name of the specific container image and the run commands for that particular tool!
+:::
+
+
+#### running interactively "from the inside"
+
+You can also enter the container, and work interactively from within. For that you use the `apptainer shell` command:
+
+```{.bash}
+apptainer shell <name-of-container>
+```
+
+Inside the container, your prompt will change to `Singularity` (remember, that is the legacy name for Apptainer). Now you can use the tools inside the container. 
+
+However, when entering the container, the file system outside of it becomes inaccessible - with the exception of paths that are explicitely bound into it. There are some system defined bind paths that are automatically accessible within the container (such as your home directory), but you might have to manually set others with the ´-B´ flag. This will make the bound file path accessible from within the container and you can interact with the directories jsut as you normally would. 
+
+```{.bash}
+apptainer shell <name-of-container>
+apptainer shell -B outside/path:inside/path <name-of-container>
+```
+
+In the above, we bind in the outside/path (which could be ../data) and makes it accessible within the container as inside/path (which could be plain /data).
+
+To exit the container, simply type and enter `exit`. 
+
+### Running containers in batch jobs
+
+You can run Apptainer containers as part of a batch job by integrating them into a SLURM job submission script. Here is an example batch script. 
+
+Let's go back to our `FastQC` sbatch script and add the container: 
+
+```{.bash}
+#! /bin/bash -l
+#SBATCH -A project_ID
+#SBATCH -t 30:00
+#SBATCH -n 1
+
+apptainer exec -B ../data:data fastqc -o . --noextract data/*fastq.gz
+```
+
+::: {.callout-important}
+## To do for you
+What has changed? And what do these changes do? Discuss with your neighbour. 
 :::
 
 
