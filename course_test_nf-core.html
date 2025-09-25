@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Manage persistent bash sessions – Applied Bioinformatics</title>
+<title>nfcore: test pipeline – Applied Bioinformatics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -125,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./before_accounts.html">Before the course</a></li><li class="breadcrumb-item"><a href="./before_screen.html">Manage persistent bash sessions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">During the course</li><li class="breadcrumb-item"><a href="./course_test_nf-core.html">nfcore: test pipeline</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -192,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./before_screen.html" class="sidebar-item-text sidebar-link active">
+  <a href="./before_screen.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Manage persistent bash sessions</span></a>
   </div>
 </li>
@@ -272,7 +307,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_test_nf-core.html" class="sidebar-item-text sidebar-link">
+  <a href="./course_test_nf-core.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">nfcore: test pipeline</span></a>
   </div>
 </li>
@@ -303,16 +338,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#practice-a-screen-tutorial" id="toc-practice-a-screen-tutorial" class="nav-link active" data-scroll-target="#practice-a-screen-tutorial">Practice a screen tutorial</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#setting-up-your-pixi-environment" id="toc-setting-up-your-pixi-environment" class="nav-link" data-scroll-target="#setting-up-your-pixi-environment">Setting Up Your Pixi Environment</a></li>
+  <li><a href="#configuration-profile" id="toc-configuration-profile" class="nav-link" data-scroll-target="#configuration-profile">Configuration profile</a></li>
+  <li><a href="#run-the-pipeline-with-the-test-profile" id="toc-run-the-pipeline-with-the-test-profile" class="nav-link" data-scroll-target="#run-the-pipeline-with-the-test-profile">run the pipeline with the test profile</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./before_accounts.html">Before the course</a></li><li class="breadcrumb-item"><a href="./before_screen.html">Manage persistent bash sessions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">During the course</li><li class="breadcrumb-item"><a href="./course_test_nf-core.html">nfcore: test pipeline</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Manage persistent bash sessions</h1>
+<h1 class="title">nfcore: test pipeline</h1>
 </div>
 
 
@@ -329,16 +367,95 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><br></p>
-<p>If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Now that you know about Linux, containers, pixi, and Nextflow, we get to start with another really cool part of our course! In this section, we will create a <code>pixi</code> environment containing <code>nf-core</code> and <code>nextflow</code>. Once we’ve done that, we will turn our attention to <a href="https://nf-co.re">nf-core</a> to run up a pipeline with the build in test data. This is a good way to test the setup, and to familiarize yourself with the output of the pipeline.</p>
+</section>
+<section id="setting-up-your-pixi-environment" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-your-pixi-environment">Setting Up Your Pixi Environment</h2>
+<p>In our course directory execute these commands, one after the other.</p>
+<p>Let’s inititalise an environment for this - feel free to change the name of the environment/ directory.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init nextflow_test <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Change directory into the project you created, and list the files there:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> name_nextflow</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Add nf-core and Nextflow:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add nextflow nf-core</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>While <code>apptainer</code> is sticky loaded on this server, it won’t always be the case for other servers. So, if you are running within a Linux environment (and not otherwise), you can add <code>apptainer</code> with the <code>add</code> command.</p>
+</div>
+</div>
+</div>
+<p>And just check that everything worked, check the version of nextflow, get the nf-core help, and run the nextflow <code>Hello World</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow <span class="at">-version</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nf-core <span class="at">--help</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run hello</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Your nextflow version should be something like this:</p>
+<pre class="verbatim"><code>N E X T F L O W
+version 25.04.7 build 5955
+created 08-09-2025 13:29 UTC (15:29 CEST)
+cite doi:10.1038/nbt.3820
+http://nextflow.io</code></pre>
+</section>
+<section id="configuration-profile" class="level2">
+<h2 class="anchored" data-anchor-id="configuration-profile">Configuration profile</h2>
+<p>Since we are working on a server with a configuration profile established, but not available via nf-core, you need to download it to your working directory:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here is the configuration profile on HPC2N from the above link. The most important things we need to pay attention to are the <code>max_memory</code>, <code>max_cpus</code>, and <code>max_time</code> settings. Your jobs won’t be able to exceed these maximum values.</p>
+<p>To use the config file with nextflow you need to add our compute project under <code>project</code>. Use single quotes, as seen in the other entries in the file.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">//</span> Config profile for HPC2N</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">params</span> {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">config_profile_description</span> = <span class="st">'Cluster profile for HPC2N'</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">config_profile_contact</span> = <span class="st">'Pedro Ojeda @pojeda'</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">config_profile_url</span> = <span class="st">'https://www.hpc2n.umu.se/'</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">project</span> = null</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">clusterOptions</span> = null</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max_memory</span> = 128.GB</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max_cpus</span> = 28</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max_time</span> = 168.h</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">email</span> = <span class="st">'pedroojeda2011@gmail.com'</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> {</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">enabled</span> = true</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> {</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">executor</span> = <span class="st">'slurm'</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="ex">clusterOptions</span> = { <span class="st">"-A </span><span class="va">$params</span><span class="st">.project </span><span class="va">${params</span><span class="er">.clusterOptions ?: ''</span><span class="va">}</span><span class="st">"</span> }</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="run-the-pipeline-with-the-test-profile" class="level2">
+<h2 class="anchored" data-anchor-id="run-the-pipeline-with-the-test-profile">run the pipeline with the test profile</h2>
+<p>As an example, I am running the <a href="https://nf-co.re/sarek/3.4.2/">Sarek pipeline</a>, wich is a variant calling pipeline:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run nf-core/sarek <span class="at">-profile</span> test <span class="at">--outdir</span> sarek_test <span class="at">-c</span> hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Let’s have a look at the components of the above command:</p>
 <ul>
-<li>you started a program which prints out interesting stuff in your terminal, but taking forever to run, it is in effect denying you the option to do anything else in your terminal 😕</li>
-<li>you are at home connected to a remote server via SSH, you’re eagerly waiting for a phylogeny inference program that has been running for 6 hours to finish, then your Internet connection goes down (or your laptop battery runs dry), which terminates your SSH session which in turn terminates your running program, so you have to start again from scratch 😤</li>
-<li>you are at the lab working on a powerful workstation preparing some data for a project meeting tomorrow, some long running workflow in your terminal will require a few minutes of user interaction at around 11pm in order for the results to be ready in the morning: if only you could access your active terminal from home rather than hiking back to the lab at night 😴</li>
-<li>from a terminal on your laptop, you’ve been running via SSH some interactive program for a few hours on a remote server. You need to power down the laptop to bring it home with you, but that means shutting down your terminal and terminating everything that was running and starting everything from scratch when you re-open your laptop later 😬</li>
+<li><code>pixi run</code>: we are using our pixi environment to run the following commands</li>
+<li><code>nextflow run</code>: run the following with nextflow</li>
+<li><code>nf-core/sarek</code>: name/ location of the pipeline</li>
+<li><code>-profile test</code>: use the test profile for this run - this uses the build in test data etc. On servers with a nf-core configuration file you would list the name of the profile here.</li>
+<li><code>--outdir sarek_test</code>: name and location of the directory for the pipeline output</li>
+<li><code>-c hpc2n.config</code>: name and location of the configuration file for the server</li>
 </ul>
-<p>Screen (and similar programs) allows you to run persistent bash sessions, so that if any of the above happens your bash session on the remote server will just continue. All running processes will proceed in your absence, and you can later re-attach to your session and find things exactly how they would have been had you sat right there, starring at the screen for hours 😎!</p>
-<p>This is very useful since your re-attached session will continue in the same directory and will have all the project relevant command history saved.</p>
+<p>My test run finished within 3 and a half minutes:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/nf-core/sarek_done.png" class="img-fluid figure-img"></p>
+<figcaption>sarek run summary</figcaption>
+</figure>
+</div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -349,22 +466,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Watch an <a href="https://www.youtube.com/watch?v=Mw6QvsChxo4">8 min. video</a> which demonstrates how screen works.</p>
-<p>And follow the instructions below:</p>
+<p>Have a look at the output of the run. Do you understand what happened, and what the output is? Is this pipeline as suitable for your data as you thought?</p>
 </div>
 </div>
-<section id="practice-a-screen-tutorial" class="level2">
-<h2 class="anchored" data-anchor-id="practice-a-screen-tutorial">Practice a screen tutorial</h2>
-<p>Connect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from <a href="https://www.geeksforgeeks.org/linux-unix/screen-command-in-linux-with-examples/">“2. Name Your Session”</a>.</p>
-<p>After the above practice, in your terminal window you can test out the power of screen:</p>
-<ul>
-<li>within your screen session, run this infinite loop: <code>while true; do date; sleep 1; done</code></li>
-<li>close the terminal window running your above split screen session altogether (brutal closing, ie clicking the “close window” garbage can icon on the top right corner of the terminal window in VScode, or closing VScode and your connection to HPC2n completely).</li>
-<li>then open a fresh terminal window, (be sure you are connected to HPC2N) and re-attach to your still alive and kicking screen session.</li>
-<li>notice how the date/times have continued to be printed to the screen in the background.</li>
-<li>press <code>CTRL-C</code> <code>to interrupt the loop, then CTRL-A ESC</code> to enter scrolling mode, then you can use the <code>PAGE-UP</code> and <code>PAGE-DOWN</code> keys to observe the activity that took place in screen even whilst you were detached from the screen !</li>
-</ul>
-<p>Thank-you to Gabriele Pozatti for this section!</p>
 
 
 </section>
