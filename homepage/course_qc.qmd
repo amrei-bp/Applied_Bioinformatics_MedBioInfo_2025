@@ -83,10 +83,10 @@ I have downloaded four paired samples for you, and they are available at:
 medbioinfo2025/common_data/RNAseq
 ```
 
-If you want to work with this data, make a symbolic link to the data
+If you want to work with this data, make a symbolic link to the data, do this from within a subdirectory called `data`(or something similar). You want to avoid mingling your data with the analyses:
 
 ```{.bash}
-ln -s path/to/common_data/RNAseq/*fastq.gz data/
+ln -s path/to/common_data/RNAseq/*fastq.gz .
 ```
 
 ## Metagenomics
