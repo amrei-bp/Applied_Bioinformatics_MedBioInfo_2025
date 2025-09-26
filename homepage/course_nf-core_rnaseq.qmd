@@ -11,6 +11,12 @@ As a little reminder: the data is located in:
 medbioinfo2025/common_data/RNAseq
 ```
 
+::: {.callout-note}
+You can also work on one of the other datasets - I would recommend using the nf-core/mag pipeline for the metagenomics data set. 
+
+The necessary databases for that are available on the server at `/pfs/data/databases`.
+:::
+
 To practice we will go through some of the steps you have done before: 
 
 ## Create the Pixi environment
@@ -48,7 +54,7 @@ This is how my project directory looks like afterwards:
 
 ## nf-core launch
 
-Nf-core helps you set up the pipelines with the `nf-core launcher`. To access that, click on the `launch version 3.19.0` button on the [nf-core/rnaseq homepage](https://nf-co.re/rnaseq/3.19.0/). (This was the version on the website at the time of writing this session. The version number may change). We are then redirected to a page where we can fill in all of our information about input files, as well as selecting or deselecting certain parts of the pipeline. We will share the things here that you need to input each time, and go through some finer details based on the discussion with you.
+Nf-core helps you set up the pipelines with the `nf-core launcher`. To access that, click on the `launch version 3.19.0` button on the [nf-core/rnaseq homepage](https://nf-co.re/rnaseq/3.19.0/). (This was the version available in the launcher at the time of writing this session. The version number will change in the future). We are then redirected to a page where we can fill in all of our information about input files, as well as selecting or deselecting certain parts of the pipeline. We will share the things here that you need to input each time, and go through some finer details based on the discussion with you.
 
 ### Setting working and results directories
 
@@ -108,6 +114,8 @@ Add the `save_reference` line as recommended by nf-core (because we are using th
 
 As before, you need the HPC2N configuration file, with the correct project ID. 
 
+Add your e-mail under `email` and you will receive a message with a summary of the run. 
+
 
 ## Starting The Run
 
@@ -161,7 +169,7 @@ sbatch name_submit_rnaseq.sh
 
 You can check the progress of your job with `squeue -u your_username`
 
-And now we wait until the run is done!
+And now we wait until the run is done! - My run took a little more than five hours for all four samples. 
 
 
 ::: {.callout-tip }
