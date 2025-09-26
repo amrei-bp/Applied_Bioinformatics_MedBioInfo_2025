@@ -315,6 +315,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">QC with Pixi</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bonus_python_pixi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bonus: Python in Pixi</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -407,7 +413,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#running-containers" id="toc-running-containers" class="nav-link" data-scroll-target="#running-containers">Running Containers</a></li>
   <li><a href="#downloading-container-images" id="toc-downloading-container-images" class="nav-link" data-scroll-target="#downloading-container-images">Downloading Container Images</a></li>
   <li><a href="#running-containers-1" id="toc-running-containers-1" class="nav-link" data-scroll-target="#running-containers-1">Running Containers</a></li>
-  <li><a href="#running-containers-in-batch-jobs" id="toc-running-containers-in-batch-jobs" class="nav-link" data-scroll-target="#running-containers-in-batch-jobs">Running containers in batch jobs</a></li>
+  <li><a href="#running-containers-with-sbatch" id="toc-running-containers-with-sbatch" class="nav-link" data-scroll-target="#running-containers-with-sbatch">Running containers with sbatch</a></li>
   <li><a href="#building-containers" id="toc-building-containers" class="nav-link" data-scroll-target="#building-containers">Building Containers</a></li>
   </ul></li>
   </ul>
@@ -613,8 +619,8 @@ Important
 <p>To exit the container, simply type and enter <code>exit</code>.</p>
 </section>
 </section>
-<section id="running-containers-in-batch-jobs" class="level3">
-<h3 class="anchored" data-anchor-id="running-containers-in-batch-jobs">Running containers in batch jobs</h3>
+<section id="running-containers-with-sbatch" class="level3">
+<h3 class="anchored" data-anchor-id="running-containers-with-sbatch">Running containers with sbatch</h3>
 <p>You can run Apptainer containers as part of a batch job by integrating them into a SLURM job submission script. Here is an example batch script.</p>
 <p>Let’s go back to our <code>FastQC</code> sbatch script and add the container:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#! /bin/bash -l</span></span>

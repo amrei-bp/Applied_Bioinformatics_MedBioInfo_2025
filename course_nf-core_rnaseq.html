@@ -315,6 +315,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">QC with Pixi</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bonus_python_pixi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bonus: Python in Pixi</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -442,6 +448,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><br> Great, now we have tested that nextflow and nf-core are set up correctly. Now we want to use the pipeline on our own data. For the sake of the tutorial, I will use the RNAseq data some of you have worked earlier on.</p>
 <p>As a little reminder: the data is located in:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">medbioinfo2025/common_data/RNAseq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can also work on one of the other datasets - I would recommend using the nf-core/mag pipeline for the metagenomics data set.</p>
+<p>The necessary databases for that are available on the server at <code>/pfs/data/databases</code>.</p>
+</div>
+</div>
 <p>To practice we will go through some of the steps you have done before:</p>
 <section id="create-the-pixi-environment" class="level2">
 <h2 class="anchored" data-anchor-id="create-the-pixi-environment">Create the Pixi environment</h2>
@@ -481,7 +501,7 @@ Note
 </section>
 <section id="nf-core-launch" class="level2">
 <h2 class="anchored" data-anchor-id="nf-core-launch">nf-core launch</h2>
-<p>Nf-core helps you set up the pipelines with the <code>nf-core launcher</code>. To access that, click on the <code>launch version 3.19.0</code> button on the <a href="https://nf-co.re/rnaseq/3.19.0/">nf-core/rnaseq homepage</a>. (This was the version on the website at the time of writing this session. The version number may change). We are then redirected to a page where we can fill in all of our information about input files, as well as selecting or deselecting certain parts of the pipeline. We will share the things here that you need to input each time, and go through some finer details based on the discussion with you.</p>
+<p>Nf-core helps you set up the pipelines with the <code>nf-core launcher</code>. To access that, click on the <code>launch version 3.19.0</code> button on the <a href="https://nf-co.re/rnaseq/3.19.0/">nf-core/rnaseq homepage</a>. (This was the version available in the launcher at the time of writing this session. The version number will change in the future). We are then redirected to a page where we can fill in all of our information about input files, as well as selecting or deselecting certain parts of the pipeline. We will share the things here that you need to input each time, and go through some finer details based on the discussion with you.</p>
 <section id="setting-working-and-results-directories" class="level3">
 <h3 class="anchored" data-anchor-id="setting-working-and-results-directories">Setting working and results directories</h3>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -563,6 +583,7 @@ Important
 <section id="configuration-profile" class="level3">
 <h3 class="anchored" data-anchor-id="configuration-profile">Configuration profile</h3>
 <p>As before, you need the HPC2N configuration file, with the correct project ID.</p>
+<p>Add your e-mail under <code>email</code> and you will receive a message with a summary of the run.</p>
 </section>
 </section>
 <section id="starting-the-run" class="level2">
@@ -596,7 +617,7 @@ Important
 <p>And then submit it to slurm with</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> name_submit_rnaseq.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can check the progress of your job with <code>squeue -u your_username</code></p>
-<p>And now we wait until the run is done!</p>
+<p>And now we wait until the run is done! - My run took a little more than five hours for all four samples.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
