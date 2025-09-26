@@ -159,7 +159,7 @@ In the above, we bind in the outside/path (which could be ../data) and makes it 
 
 To exit the container, simply type and enter `exit`. 
 
-### Running containers in batch jobs
+### Running containers with sbatch
 
 You can run Apptainer containers as part of a batch job by integrating them into a SLURM job submission script. Here is an example batch script. 
 
