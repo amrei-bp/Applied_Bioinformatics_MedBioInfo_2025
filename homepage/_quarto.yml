@@ -67,6 +67,8 @@ website:
             href: course_environments.qmd
           - text: "QC with Pixi"
             href: course_qc.qmd
+          - text: "Bonus: Python in Pixi"
+            href: bonus_python_pixi.qmd
       - section: "Working with containers"
         contents:
           - text: "Apptainer"

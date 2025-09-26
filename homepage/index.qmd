@@ -42,6 +42,7 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 |   | [Publish your blog with GitHub actions](course_publish_blog.qmd) |
 | Tuesday   | [Introduction to environments](course_environments.qmd)   |
 |   | [Quality control of sequencing data](course_qc.qmd) |
+|   | [Bonus: Python in Pixi](bonus_python_pixi.qmd) |
 |   | [Introduction to containers](course_container.qmd)  |
 |   | Use containers |
 | Wednesday  | nextflow |
