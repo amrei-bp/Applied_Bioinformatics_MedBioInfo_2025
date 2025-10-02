@@ -44,8 +44,8 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 |   | [Quality control of sequencing data](course_qc.qmd) |
 |   | [Bonus: Python in Pixi](bonus_python_pixi.qmd) |
 |   | [Introduction to containers](course_container.qmd)  |
-|   | Use containers |
-| Wednesday  | nextflow |
+|   | [Using containers on your data](course_qc_container.qmd) |
+| Wednesday  | [Introduction to Nextflow](course_nextflow.qmd) |
 |   | quality control with nextflow |
 |  | containers cont. |
 | Thursday   | [nf-core](course_nf-core.qmd) |
