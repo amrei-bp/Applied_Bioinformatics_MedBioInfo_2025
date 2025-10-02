@@ -77,6 +77,8 @@ website:
             href: course_qc_container.qmd
       - section: "Workflow manager"
         contents:
+          - text: Nextflow
+            href: course_nextflow.qmd
       - section: "Pipelines"
         contents:
           - text: "nf-core"
