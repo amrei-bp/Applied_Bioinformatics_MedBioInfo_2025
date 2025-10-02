@@ -73,6 +73,8 @@ website:
         contents:
           - text: "Apptainer"
             href: course_container.qmd
+          - text: QC with Apptainer
+            href: course_qc_container.qmd
       - section: "Workflow manager"
         contents:
       - section: "Pipelines"
