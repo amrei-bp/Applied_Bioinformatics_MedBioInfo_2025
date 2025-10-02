@@ -46,7 +46,7 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 |   | [Introduction to containers](course_container.qmd)  |
 |   | [Using containers on your data](course_qc_container.qmd) |
 | Wednesday  | [Introduction to Nextflow](course_nextflow.qmd) |
-|   | quality control with nextflow |
+|   | Nextflow tutorial |
 |  | containers cont. |
 | Thursday   | [nf-core](course_nf-core.qmd) |
 |   | [Test a nf-core pipeline](course_test_nf-core.qmd)|
@@ -55,5 +55,5 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 |   | [Discussion: AI in Bioinformatics](course_AI.qmd)|
 |   | clean-up and finishing|
 
-: Program {.striped .hover}
+: During the course {.striped .hover}
 
