@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>nfcore RNAseq pipeline – Applied Bioinformatics 2025</title>
+<title>Personal course homepage – Applied Bioinformatics 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -160,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nf-core.html">Pipelines</a></li><li class="breadcrumb-item"><a href="./course_nf-core_rnaseq.html">Use nf-core</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_intro.html">Why this course?</a></li><li class="breadcrumb-item"><a href="./course_intro.html">Personal course homepage</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -256,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./course_intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Personal course homepage</span></a>
   </div>
 </li>
@@ -389,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_nf-core_rnaseq.html" class="sidebar-item-text sidebar-link active">
+  <a href="./course_nf-core_rnaseq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Use nf-core</span></a>
   </div>
 </li>
@@ -428,29 +393,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#create-the-pixi-environment" id="toc-create-the-pixi-environment" class="nav-link active" data-scroll-target="#create-the-pixi-environment">Create the Pixi environment</a></li>
-  <li><a href="#link-your-data-into-the-directory" id="toc-link-your-data-into-the-directory" class="nav-link" data-scroll-target="#link-your-data-into-the-directory">Link your data into the directory</a></li>
-  <li><a href="#nf-core-launch" id="toc-nf-core-launch" class="nav-link" data-scroll-target="#nf-core-launch">nf-core launch</a>
-  <ul class="collapse">
-  <li><a href="#setting-working-and-results-directories" id="toc-setting-working-and-results-directories" class="nav-link" data-scroll-target="#setting-working-and-results-directories">Setting working and results directories</a></li>
-  <li><a href="#setting-all-other-inputs-that-are-required" id="toc-setting-all-other-inputs-that-are-required" class="nav-link" data-scroll-target="#setting-all-other-inputs-that-are-required">Setting all other inputs that are required</a></li>
-  <li><a href="#getting-your-json-file" id="toc-getting-your-json-file" class="nav-link" data-scroll-target="#getting-your-json-file">Getting your JSON file</a></li>
-  <li><a href="#configuration-profile" id="toc-configuration-profile" class="nav-link" data-scroll-target="#configuration-profile">Configuration profile</a></li>
-  </ul></li>
-  <li><a href="#starting-the-run" id="toc-starting-the-run" class="nav-link" data-scroll-target="#starting-the-run">Starting The Run</a>
-  <ul class="collapse">
-  <li><a href="#submit-directly-via-pixi" id="toc-submit-directly-via-pixi" class="nav-link" data-scroll-target="#submit-directly-via-pixi">submit directly via pixi</a></li>
-  <li><a href="#submit-via-sbatch" id="toc-submit-via-sbatch" class="nav-link" data-scroll-target="#submit-via-sbatch">submit via sbatch</a></li>
-  </ul></li>
+  <li><a href="#hello-and-welcome-to-the-course" id="toc-hello-and-welcome-to-the-course" class="nav-link active" data-scroll-target="#hello-and-welcome-to-the-course">Hello and welcome to the course!</a></li>
+  <li><a href="#your-homepage-and-github" id="toc-your-homepage-and-github" class="nav-link" data-scroll-target="#your-homepage-and-github">Your Homepage and GitHub</a></li>
+  <li><a href="#good-git-practices" id="toc-good-git-practices" class="nav-link" data-scroll-target="#good-git-practices">Good Git Practices</a></li>
+  <li><a href="#writing-your-daily-blog" id="toc-writing-your-daily-blog" class="nav-link" data-scroll-target="#writing-your-daily-blog">Writing Your Daily Blog</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nf-core.html">Pipelines</a></li><li class="breadcrumb-item"><a href="./course_nf-core_rnaseq.html">Use nf-core</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_intro.html">Why this course?</a></li><li class="breadcrumb-item"><a href="./course_intro.html">Personal course homepage</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">nfcore RNAseq pipeline</h1>
+<h1 class="title">Personal course homepage</h1>
 </div>
 
 
@@ -467,195 +422,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><br> Great, now we have tested that nextflow and nf-core are set up correctly. Now we want to use the pipeline on our own data. For the sake of the tutorial, I will use the RNAseq data some of you have worked earlier on.</p>
-<p>As a little reminder: the data is located in:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">medbioinfo2025/common_data/RNAseq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can also work on one of the other datasets - I would recommend using the nf-core/mag pipeline for the metagenomics data set.</p>
-<p>The necessary databases for that are available on the server at <code>/pfs/data/databases</code>.</p>
-</div>
-</div>
-<p>To practice we will go through some of the steps you have done before:</p>
-<section id="create-the-pixi-environment" class="level2">
-<h2 class="anchored" data-anchor-id="create-the-pixi-environment">Create the Pixi environment</h2>
-<p>While initializing, make a new directory for this analysis - think about naming it something with meaning.</p>
-<p>What dependencies do you need for nextflow and nf-core?</p>
+<p><br></p>
+<section id="hello-and-welcome-to-the-course" class="level2">
+<h2 class="anchored" data-anchor-id="hello-and-welcome-to-the-course">Hello and welcome to the course!</h2>
+<p>Today we will talk about the why’s and how’s of this course, and you will set up your own course homepage. This homepage will be your personal learning space throughout the course. Each evening, you’ll write a short blog post to reflect on what you’ve learned during the day. Some days, you might write several posts if you have a lot to share. These daily reflections will help you keep track of your progress, deepen your understanding, and build a clear record of your learning, as well as a habit of documentation.</p>
 </section>
-<section id="link-your-data-into-the-directory" class="level2">
-<h2 class="anchored" data-anchor-id="link-your-data-into-the-directory">Link your data into the directory</h2>
-<p>Make a subdirectory, <code>data</code>, change into it and create a symlink to the data:</p>
-<p>Use <code>ln -s SOURCE TARGET</code>. Since you are in the directory <code>data</code>the TARGET is simply <code>.</code>.</p>
-<p>Change back to the parent directory.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This is how my project directory looks like afterwards:</p>
-<pre class="verbatim"><code>.
-├── data
-│   ├── SRR5223504_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_1.fastq.gz
-│   ├── SRR5223504_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_2.fastq.gz
-│   ├── SRR5223517_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_1.fastq.gz
-│   ├── SRR5223517_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_2.fastq.gz
-│   ├── SRR5223546_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223546_1.fastq.gz
-│   ├── SRR5223546_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223546_2.fastq.gz
-│   ├── SRR5223559_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223559_1.fastq.gz
-│   └── SRR5223559_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223559_2.fastq.gz
-├── pixi.lock
-└── pixi.toml</code></pre>
-</div>
-</div>
+<section id="your-homepage-and-github" class="level2">
+<h2 class="anchored" data-anchor-id="your-homepage-and-github">Your Homepage and GitHub</h2>
+<p>Your Quarto homepage will be version-controlled using Git and GitHub. <strong>By the end of the course, you will share both the URL of your GitHub repository and the URL of your published homepage.</strong> This way I can review your work, follow your progress, and see how your site has developed over time.</p>
 </section>
-<section id="nf-core-launch" class="level2">
-<h2 class="anchored" data-anchor-id="nf-core-launch">nf-core launch</h2>
-<p>Nf-core helps you set up the pipelines with the <code>nf-core launcher</code>. To access that, click on the <code>launch version 3.19.0</code> button on the <a href="https://nf-co.re/rnaseq/3.19.0/">nf-core/rnaseq homepage</a>. (This was the version available in the launcher at the time of writing this session. The version number will change in the future). We are then redirected to a page where we can fill in all of our information about input files, as well as selecting or deselecting certain parts of the pipeline. We will share the things here that you need to input each time, and go through some finer details based on the discussion with you.</p>
-<section id="setting-working-and-results-directories" class="level3">
-<h3 class="anchored" data-anchor-id="setting-working-and-results-directories">Setting working and results directories</h3>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We recommend that you use absolute paths rather than relative paths for setting up your runs.</p>
-</div>
-</div>
-<p>During the first part, you need to set a working and result directory. If you are using a server that has a profile established, you can put the name of the server there. In our case, we will use the server configuration file locally.</p>
-<p>Set resume to <code>True</code>, otherwise you don’t need to change anything here.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/nf-core/rnaseq_setup1.png" class="img-fluid figure-img"></p>
-<figcaption>Setting work and output directories</figcaption>
-</figure>
-</div>
-<p>Next, the pipeline asks for the input CSV. Exact requirements for how that input file should look like can be found under the tab <code>Usage</code> on the pipeline homepage. This input CSV is unique to each analysis.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/nf-core/rnaseq_setup2.png" class="img-fluid figure-img"></p>
-<figcaption>Setting results and input CSV</figcaption>
-</figure>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>To do for you
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Create the necessary input file and add the path to it in the launcher.</p>
-<p>Set the outdir to the name and path to a directory you want the output to be saved to.</p>
-</div>
-</div>
+<section id="good-git-practices" class="level2">
+<h2 class="anchored" data-anchor-id="good-git-practices">Good Git Practices</h2>
+<p>Throughout the course, I expect you to follow good Git practices. This means writing clear and informative commit messages, keeping each commit focused on one topic or change, and committing regularly rather than saving everything for the end. These habits are an essential part of professional software development and will make your project much easier to follow and maintain.</p>
 </section>
-<section id="setting-all-other-inputs-that-are-required" class="level3">
-<h3 class="anchored" data-anchor-id="setting-all-other-inputs-that-are-required">Setting all other inputs that are required</h3>
-<p>In this section, you set variables that are related to your reference genome. If you are using something listed on iGenomes, you can input that name. If you are working with your own reference genome, or something not listed, you need to input the absolute path of the reference genomes you have downloaded.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/nf-core/rnaseq_setup3.png" class="img-fluid figure-img"></p>
-<figcaption>Reference genome options</figcaption>
-</figure>
-</div>
-<p>Depending on your strategy, you might need to input a corresponding gff as well. It really depends on the kind of analysis you are hoping to perform.</p>
-<p>In our case, we have human samples, so in theory we can use the iGenomes reference. However, the transcriptome and GTF files in iGenomes are out of date, so nf-core recommends <a href="https://nf-co.re/docs/usage/reference_genomes#custom-genomes">downloading and using the more up-to-date version</a>.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>To do for you
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Let’s do that.</p>
-<p>Then, add the names and path to the downloaded reference (if located in a different directory) files in the launcher.</p>
-</div>
-</div>
-<p>Other than the options above, you don’t need to change anything to run the pipeline. However, for your project you might want to change some of the default parameters. For this evercise we will keep the rest as is.</p>
-</section>
-<section id="getting-your-json-file" class="level3">
-<h3 class="anchored" data-anchor-id="getting-your-json-file">Getting your JSON file</h3>
-<p>Once everything is filled in, click on <code>Launch</code> and you will be redirected to another page containing your JSON file that has information on your run.</p>
-<p>Copy the JSON file a bit lower on the screen and saving it as <code>nf-params.json</code> in your folder on HPC2N.</p>
-<p>Add the <code>save_reference</code> line as recommended by nf-core (because we are using their downloaded human genome).</p>
-</section>
-<section id="configuration-profile" class="level3">
-<h3 class="anchored" data-anchor-id="configuration-profile">Configuration profile</h3>
-<p>As before, you need the HPC2N configuration file, with the correct project ID.</p>
-<p>Add your e-mail under <code>email</code> and you will receive a message with a summary of the run.</p>
-</section>
-</section>
-<section id="starting-the-run" class="level2">
-<h2 class="anchored" data-anchor-id="starting-the-run">Starting The Run</h2>
-<p>The launcher gives us the command to run the pipeline:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-resume</span> <span class="at">-params-file</span> nf-params.json</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>We need to change this slightly, to add that we are running it via Pixi, and to add the server specific configuration file:</p>
-<section id="submit-directly-via-pixi" class="level3">
-<h3 class="anchored" data-anchor-id="submit-directly-via-pixi">submit directly via pixi</h3>
-<p>Now you can run the pipeline with the following command (you might have to change it a bit to add pathways to files that are not in your current working directory):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-resume</span> <span class="at">-params-file</span> nf-params.json <span class="at">-c</span> hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>There are several layers to this command:</p>
-<p>First we invoke <code>Pixi</code> and tell it to <code>run</code> the following commands.</p>
-<p>Then we say which program we want to run, namely <code>Nextflow</code>.</p>
-<p>The following commands are Nextflow/ nf-core commands:</p>
-<ul>
-<li>we want to <code>run</code> the <code>nf-core/rnaseq</code> pipeline, version <code>3.19.0</code></li>
-<li>we want to use the parameter file called <code>nf-params.json</code></li>
-<li>we want to use the hpc configuration file called <code>hpc2n.config</code></li>
-</ul>
-</section>
-<section id="submit-via-sbatch" class="level3">
-<h3 class="anchored" data-anchor-id="submit-via-sbatch">submit via sbatch</h3>
-<p>Alternatively, you can run nextflow via pixi using a batch script and slurm: copy the following text to file called <code>name_submit_rnaseq.sh</code> where <code>name</code> is your name.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash -l</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -A our_proj_allocation</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 5</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 24:00:00</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/your_home_directory/.pixi/bin/pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-params-file</span> /your_path/nf-params.json</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>And then submit it to slurm with</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> name_submit_rnaseq.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You can check the progress of your job with <code>squeue -u your_username</code></p>
-<p>And now we wait until the run is done! - My run took a little more than five hours for all four samples.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Nextflow is notoriously bad at cleaning after itself. You can check previous runs with <code>pixi run nextflow log</code>. And then clean up with for example <code>pixi run nextflow clean -f -before &lt;run_name&gt;</code>. <a href="https://fig.io/manual/nextflow/clean">Here</a> is an explanation of the command.</p>
-</div>
-</div>
+<section id="writing-your-daily-blog" class="level2">
+<h2 class="anchored" data-anchor-id="writing-your-daily-blog">Writing Your Daily Blog</h2>
+<p>Your daily posts do not have to be long or perfect. <strong>The goal is to build a habit of documentation and communication.</strong> Use simple language, write honestly about what you’ve learned, and don’t be afraid to include code, images, or links to illustrate your thoughts. Over time, these posts will form a valuable record of your growth and achievements during the course - and maybe later?</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
