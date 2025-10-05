@@ -93,7 +93,7 @@ ln -s path/to/common_data/RNAseq/*fastq.gz .
 
 This metagenomics data set is a soil sample taken in the Argentinian pampa, for which the 16S rDNA V4 region has been sequenced using 454 GS FLX Titanium. This allows us to analyze the genetic variation the 16S rDNA, which is present in all living organisms. 
 
-The dataset is available at the European Nucleotide Archive (ENA) under the accession: [PRJNA178180](https://www.ebi.ac.uk/ena/browser/view/PRJNA178180), more specifically . 
+The dataset is available at the European Nucleotide Archive (ENA) under the accession: [PRJNA178180](https://www.ebi.ac.uk/ena/browser/view/PRJNA178180). 
 
 I have downloaded two samples for you, and they are available at: 
 
@@ -109,6 +109,21 @@ ln -s path/to/common_data/metagenomics/*fastq.gz .
 
 ## Whole genome sequencing
 
+This data set contains population genomics data of the Shiitake mushroom, *Lentinula edodes*, which was sequenced with Illumina, using whole genome sequencing. 
+
+This data set is available at the European Nucleotide Archive (ENA) under the accession: [PRJNA535345](https://www.ebi.ac.uk/ena/browser/view/SRP193830). 
+
+I have downloaded four paired end samples for you, which are available at: 
+
+```{.bash}
+medbioinfo2025/common_data/wgs
+```
+
+If you want to work with this data, make a symbolic link to the data, do this from within a subdirectory called `data`(or something similar). You want to avoid mingling your data with the analyses:
+
+```{.bash}
+ln -s path/to/common_data/wgs/*fastq.gz .
+```
 
 :::::
 
