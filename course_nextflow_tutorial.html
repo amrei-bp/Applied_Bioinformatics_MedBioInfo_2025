@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>nfcore: test pipeline – Applied Bioinformatics 2025</title>
+<title>Nextflow tutorial – Applied Bioinformatics 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -160,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nf-core.html">Pipelines</a></li><li class="breadcrumb-item"><a href="./course_test_nf-core.html">Test nf-core</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nextflow.html">Workflow manager</a></li><li class="breadcrumb-item"><a href="./course_nextflow_tutorial.html">Nextflow basics</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -366,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_nextflow_tutorial.html" class="sidebar-item-text sidebar-link">
+  <a href="./course_nextflow_tutorial.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Nextflow basics</span></a>
   </div>
 </li>
@@ -395,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_test_nf-core.html" class="sidebar-item-text sidebar-link active">
+  <a href="./course_test_nf-core.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test nf-core</span></a>
   </div>
 </li>
@@ -440,19 +440,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#setting-up-your-pixi-environment" id="toc-setting-up-your-pixi-environment" class="nav-link" data-scroll-target="#setting-up-your-pixi-environment">Setting Up Your Pixi Environment</a></li>
-  <li><a href="#configuration-profile" id="toc-configuration-profile" class="nav-link" data-scroll-target="#configuration-profile">Configuration profile</a></li>
-  <li><a href="#run-the-pipeline-with-the-test-profile" id="toc-run-the-pipeline-with-the-test-profile" class="nav-link" data-scroll-target="#run-the-pipeline-with-the-test-profile">run the pipeline with the test profile</a></li>
+  <li><a href="#create-pixi-environment" id="toc-create-pixi-environment" class="nav-link active" data-scroll-target="#create-pixi-environment">create Pixi environment</a></li>
+  <li><a href="#training-material" id="toc-training-material" class="nav-link" data-scroll-target="#training-material">Training material</a></li>
+  <li><a href="#processes-and-channels" id="toc-processes-and-channels" class="nav-link" data-scroll-target="#processes-and-channels">Processes and Channels:</a></li>
+  <li><a href="#execution-abstraction" id="toc-execution-abstraction" class="nav-link" data-scroll-target="#execution-abstraction">Execution abstraction</a></li>
+  <li><a href="#scripting-language" id="toc-scripting-language" class="nav-link" data-scroll-target="#scripting-language">Scripting language</a></li>
+  <li><a href="#nextflow-code" id="toc-nextflow-code" class="nav-link" data-scroll-target="#nextflow-code">Nextflow code</a></li>
+  <li><a href="#lets-run-this-script" id="toc-lets-run-this-script" class="nav-link" data-scroll-target="#lets-run-this-script">Let’s run this script!</a></li>
+  <li><a href="#modify-and-resume" id="toc-modify-and-resume" class="nav-link" data-scroll-target="#modify-and-resume">Modify and resume:</a></li>
+  <li><a href="#workflow-parameters" id="toc-workflow-parameters" class="nav-link" data-scroll-target="#workflow-parameters">Workflow parameters:</a></li>
+  <li><a href="#clean-up-nextflow" id="toc-clean-up-nextflow" class="nav-link" data-scroll-target="#clean-up-nextflow">Clean up Nextflow:</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nf-core.html">Pipelines</a></li><li class="breadcrumb-item"><a href="./course_test_nf-core.html">Test nf-core</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nextflow.html">Workflow manager</a></li><li class="breadcrumb-item"><a href="./course_nextflow_tutorial.html">Nextflow basics</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">nfcore: test pipeline</h1>
+<h1 class="title">Nextflow tutorial</h1>
 </div>
 
 
@@ -469,95 +475,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Now that you know about Linux, containers, pixi, and Nextflow, we get to start with another really cool part of our course! In this section, we will create a <code>pixi</code> environment containing <code>nf-core</code> and <code>nextflow</code>. Once we’ve done that, we will turn our attention to <a href="https://nf-co.re">nf-core</a> to run up a pipeline with the build in test data. This is a good way to test the setup, and to familiarize yourself with the output of the pipeline.</p>
+<section id="create-pixi-environment" class="level2">
+<h2 class="anchored" data-anchor-id="create-pixi-environment">create Pixi environment</h2>
 </section>
-<section id="setting-up-your-pixi-environment" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up-your-pixi-environment">Setting Up Your Pixi Environment</h2>
-<p>In our course directory execute these commands, one after the other.</p>
-<p>Let’s inititalise an environment for this - feel free to change the name of the environment/ directory.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init nextflow_test <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Change directory into the project you created, and list the files there:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> name_nextflow</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Add nf-core and Nextflow:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add nextflow nf-core</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="training-material" class="level2">
+<h2 class="anchored" data-anchor-id="training-material">Training material</h2>
+<p>To download the material, execute this command:</p>
+<p>git clone https://github.com/nextflow-io/training.git</p>
+<p>Then cd into the relevant directory. By default, that is hello-nextflow.</p>
+<p>Basic concepts:</p>
+<p>Nextflow is a workflow orchestration engine and domain-specific language (DSL) that makes it “easy” to write data-intensive computational workflows.</p>
+<p>It is designed around the idea that the Linux platform is the lingua franca of data science. Linux provides many simple but powerful command-line and scripting tools that, when chained together, facilitate complex data manipulations.</p>
+<p>Nextflow extends this approach, adding the ability to define complex program interactions and a high-level parallel computational environment, based on the dataflow programming model. Nextflow’s core features are:</p>
+<ul>
+<li>Workflow portability and reproducibility</li>
+<li>Scalability of parallelization and deployment</li>
+<li>Integration of existing tools, systems, and industry standards</li>
+</ul>
+</section>
+<section id="processes-and-channels" class="level2">
+<h2 class="anchored" data-anchor-id="processes-and-channels">Processes and Channels:</h2>
+<p>In practice, a Nextflow workflow is made by joining together different processes. Each <code>process</code> can be written in any scripting language that can be executed by the Linux platform (Bash, Perl, Ruby, Python, etc.).</p>
+<p>Processes are executed independently and are isolated from each other, i.e., they do not share a common (writable) state. The only way they can communicate is via asynchronous first-in, first-out (FIFO) queues, called <code>channels</code>.</p>
+<p>Any <code>process</code> can define one or more <code>channels</code> as an <code>input</code> and <code>output</code>. The interaction between these processes, and ultimately the workflow execution flow itself, is implicitly defined by these input and output declarations.</p>
+<p>Below is a visualization of a process:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/nextflow/nf_basic_workflow_vis.png" class="img-fluid figure-img"></p>
+<figcaption>Nextflow basics</figcaption>
+</figure>
+</div>
+<p>And here the way this could be implemented in a <code>process block</code> as part of a Nextflow pipeline:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> PROCESS_NAME{</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">input:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="ex">data</span> z</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="ex">data</span> y</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="ex">data</span> x</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">//</span> directives</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">container</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">script:</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">task1</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="ex">task2</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="ex">task3</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">output:</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="ex">output</span> x</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="ex">output</span> y</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="ex">output</span> z</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Note
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>While <code>apptainer</code> is sticky loaded on this server, it won’t always be the case for other servers. So, if you are running within a Linux environment (and not otherwise), you can add <code>apptainer</code> with the <code>add</code> command.</p>
+<p>Quick side information about channels (advanced, but good to keep in mind):</p>
+<p>In Nextflow there are two kinds of channels: <a href="https://www.nextflow.io/docs/latest/channel.html#queue-channel">queue channels and value channels</a>.</p>
+<p>A <code>queue channel</code> is a non-blocking unidirectional FIFO queue which connects two processes, channel factories, or operators.</p>
+<p>The content of a queue channel is consumed and can only be read once, which is usually fine in a workflow. However, if you need to re-use the same content you need a Value channel.</p>
+<p>A <code>value channel</code> a.k.a. singleton channel is bound to a single value and can be read an unlimited number of times without consuming its content.</p>
+<p>More information here: https://www.nextflow.io/docs/latest/channel.html#channel-types</p>
 </div>
 </div>
-</div>
-<p>And just check that everything worked, check the version of nextflow, get the nf-core help, and run the nextflow <code>Hello World</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow <span class="at">-version</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nf-core <span class="at">--help</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run hello</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Your nextflow version should be something like this:</p>
-<pre class="verbatim"><code>N E X T F L O W
-version 25.04.7 build 5955
-created 08-09-2025 13:29 UTC (15:29 CEST)
-cite doi:10.1038/nbt.3820
-http://nextflow.io</code></pre>
 </section>
-<section id="configuration-profile" class="level2">
-<h2 class="anchored" data-anchor-id="configuration-profile">Configuration profile</h2>
-<p>Since we are working on a server with a configuration profile established, but not available via nf-core, you need to download it to your working directory:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Here is the configuration profile on HPC2N from the above link. The most important things we need to pay attention to are the <code>max_memory</code>, <code>max_cpus</code>, and <code>max_time</code> settings. Your jobs won’t be able to exceed these maximum values.</p>
-<p>To use the config file with nextflow you need to add our compute project under <code>project</code>. Use single quotes, as seen in the other entries in the file.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">//</span> Config profile for HPC2N</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">params</span> {</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">config_profile_description</span> = <span class="st">'Cluster profile for HPC2N'</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">config_profile_contact</span> = <span class="st">'Pedro Ojeda @pojeda'</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">config_profile_url</span> = <span class="st">'https://www.hpc2n.umu.se/'</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">project</span> = null</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">clusterOptions</span> = null</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max_memory</span> = 128.GB</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max_cpus</span> = 28</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max_time</span> = 168.h</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">email</span> = <span class="st">'pedroojeda2011@gmail.com'</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> {</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">enabled</span> = true</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> {</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">executor</span> = <span class="st">'slurm'</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="ex">clusterOptions</span> = { <span class="st">"-A </span><span class="va">$params</span><span class="st">.project </span><span class="va">${params</span><span class="er">.clusterOptions ?: ''</span><span class="va">}</span><span class="st">"</span> }</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="run-the-pipeline-with-the-test-profile" class="level2">
-<h2 class="anchored" data-anchor-id="run-the-pipeline-with-the-test-profile">run the pipeline with the test profile</h2>
-<p>As an example, I am running the <a href="https://nf-co.re/sarek/3.4.2/">Sarek pipeline</a>, wich is a variant calling pipeline:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run nf-core/sarek <span class="at">-profile</span> test <span class="at">--outdir</span> sarek_test <span class="at">-c</span> hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Let’s have a look at the components of the above command:</p>
-<ul>
-<li><code>pixi run</code>: we are using our pixi environment to run the following commands</li>
-<li><code>nextflow run</code>: run the following with nextflow</li>
-<li><code>nf-core/sarek</code>: name/ location of the pipeline</li>
-<li><code>-profile test</code>: use the test profile for this run - this uses the build in test data etc. On servers with a nf-core configuration file you would list the name of the profile here.</li>
-<li><code>--outdir sarek_test</code>: name and location of the directory for the pipeline output</li>
-<li><code>-c hpc2n.config</code>: name and location of the configuration file for the server</li>
-</ul>
-<p>My test run finished within 3 and a half minutes:</p>
+<section id="execution-abstraction" class="level2">
+<h2 class="anchored" data-anchor-id="execution-abstraction">Execution abstraction</h2>
+<p>Another important concept in Nextflow. This is the way you ran fastQC on your samples in pre-course exercise 7:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-A</span> project_ID <span class="at">-t</span> 15:00 <span class="at">-n</span> 1 fastqc <span class="at">--noextract</span> <span class="at">-o</span> fastqc data data/sample_1.fastq.gz data/sample_2.fastq.gz </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here, there is a mix of information on what command should be executed (fastqc with the noextract option) and information on how the script should be run on the target platform (debitted to which project, run for 15 minutes etc.).</p>
+<p>In Nextflow the <code>process</code> defines <strong>what command or script is executed</strong>, the <code>executor</code> determines <strong>how that script</strong> is run in the target platform.</p>
+<p>If not otherwise specified, processes are executed on the local computer. The local executor is very useful for workflow development and testing purposes, however, for real-world computational workflows a high-performance computing (HPC) or cloud platform is often required.</p>
+<p>In other words, <strong>Nextflow provides an abstraction between the workflow’s functional logic and the underlying execution system (or runtime)</strong>. Thus, it is possible to write a workflow that runs seamlessly on your computer, a cluster, or the cloud, without being modified. You simply define the target execution platform in the configuration file.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/nf-core/sarek_done.png" class="img-fluid figure-img"></p>
-<figcaption>sarek run summary</figcaption>
+<p><img src="figures/nextflow/Nextflow_execution_abstraction.png" class="img-fluid figure-img"></p>
+<figcaption>Execution abstraction</figcaption>
 </figure>
 </div>
+</section>
+<section id="scripting-language" class="level2">
+<h2 class="anchored" data-anchor-id="scripting-language">Scripting language</h2>
+<p>Nextflow is a Domain Specific Language (DSL) implemented as an extension of the Groovy programming language. This means that Nextflow can run any Groovy and Java code. It is not necessary to learn Groovy to use Nextflow DSL but it can be useful in edge cases where you need more functionality than the DSL provides.</p>
+<p>But remember: Each process can be written in any scripting language that can be executed by the Linux platform (Bash, Perl, Ruby, Python, etc.). This is done in the script part of the process.</p>
+<p>Your first script</p>
+<p>Here you will execute your first Nextflow script (hello.nf), which we will go through line-by-line.</p>
+<p>In this toy example, the script takes an input string (a parameter called params.greeting) and splits it into chunks of six characters in the first process. The second process then converts the characters to upper case. The result is finally displayed on-screen.</p>
+<p>But first we need to retreive the files and set up the conda nextflow environment: Preparations: Start a screen session</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-S</span> nextflow</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Activate the pixi environment (if you haven’t done so yet)</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> shell</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -568,9 +581,207 @@ http://nextflow.io</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Have a look at the output of the run. Do you understand what happened, and what the output is? Is this pipeline as suitable for your data as you thought?</p>
+<p>Check your nextflow version - which one are we using? Is it the same as you have specified in your Pixi environment?</p>
 </div>
 </div>
+</section>
+<section id="nextflow-code" class="level2">
+<h2 class="anchored" data-anchor-id="nextflow-code">Nextflow code</h2>
+<p>Here is a simple nextflow file:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>#!/usr/bin/env nextflow</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>params.greeting = 'Hello world!'</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>greeting_ch = Channel.of(params.greeting)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>process SPLITLETTERS {</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    input:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    val x</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="in">    output:</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="in">    path 'chunk_*'</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="in">    script:</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="in">    """</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="in">    printf '$x' | split -b 6 - chunk_</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="in">    """</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>process CONVERTTOUPPER {</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    input:</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    path y</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="in">    output:</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="in">    stdout</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="in">    script:</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="in">    """</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="in">    cat $y | tr '[a-z]' '[A-Z]' </span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="in">    """</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>workflow {</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    letters_ch = SPLITLETTERS(greeting_ch)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    results_ch = CONVERTTOUPPER(letters_ch.flatten())</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    results_ch.view{ it }</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This code begins with a shebang that declares Nextflow as the interpreter.</p>
+<p>Then we declare a <code>parameter</code> “greeting” and initialize it with the value “Hello world!”.</p>
+<p>Then we initialize a <code>channel</code> labeled “greeting_ch”. It contains the value from params.greeting. This channel is the input for the processes in the workflow.</p>
+<p>Next we define the <code>process</code> named “SPLITLETTERS”. This is also called a <code>process block</code>. It starts by naming the process, and its definition is enclosed by squiggly brackets.</p>
+<p>Within the process block we declare the <code>input</code> for the process. Inputs can be values (<code>val</code>), files, paths, or other qualifiers (<a href="https://www.nextflow.io/docs/latest/process.html#inputs">more see here</a>). We tell the process to expect an input value (val), which we assign to the variable “x”.</p>
+<p>Then, we define the <code>output</code> of the process.</p>
+<p>We tell the process to expect an output file (path), with a filename starting with “chunk_”, as output from the script. The process sends the output as a channel.</p>
+<p>We then define the script portion of the process. Three double quotes start and end the code block to execute this process. Inside is the code to execute — printing the input value x (called using the dollar symbol [$] prefix), splitting the string into chunks with a length of 6 characters (“Hello” and “world!”), and saving each to a file (chunk_aa and chunk_ab).</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>To do for you
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Look at the next process. What happens in there?</p>
+</div>
+</div>
+<p>At the end, we define the <code>workflow scope</code>, where each process is called. The workflow scope starts with “workflow” and is enclosed in squiggly brackets:</p>
+<p>First, execute the process SPLITLETTERS on the greeting_ch (aka greeting channel), and store the output in the channel letters_ch.</p>
+<p>Then, execute the process CONVERTTOUPPER on the letters channel letters_ch, which is flattened using the operator .flatten(). This transforms the input channel in such a way that every item is a separate element. We store the output in the channel results_ch.</p>
+<p>Finally, we print the final output (in results_ch) to screen using the view operator (appended onto the channel name).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quick side information about the Nextflow code:</p>
+<p>The order in which the workflow scope and the process blocks appear in the nextflow file does not matter. As it is, I prefer having the workflow scope at the top (you will see that later), followed by the process blocks.</p>
+<p>Similarly, within the process block it does not matter in which order you declare the different parts. My personal preference is the order input, process, output.</p>
+</div>
+</div>
+</section>
+<section id="lets-run-this-script" class="level2">
+<h2 class="anchored" data-anchor-id="lets-run-this-script">Let’s run this script!</h2>
+<p>In the directory where the nextflow script is located, run</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run hello.nf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output looks something like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a> N E X T F L O W   ~  version 25.04.7</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Launching <span class="in">`hello.nf`</span> <span class="co">[</span><span class="ot">jolly_faraday</span><span class="co">]</span> DSL2 - revision: f5e335f983</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>executor &gt;  local (3)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">96/fd5f07</span><span class="co">]</span> SPLITLETTERS (1)   <span class="co">[</span><span class="ot">100%</span><span class="co">]</span> 1 of 1 ✔</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">7e/dad424</span><span class="co">]</span> CONVERTTOUPPER (2) <span class="co">[</span><span class="ot">100%</span><span class="co">]</span> 2 of 2 ✔</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>HELLO </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>WORLD!</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The standard output shows (line by line):</p>
+<ol type="1">
+<li>The version of Nextflow that was executed.</li>
+<li>The script and version names.</li>
+<li>The executor used (in the above case: local). Tsk tsk tsk.</li>
+<li>he first process is executed once, which means there is one task. The line starts with a unique hexadecimal value**, and ends with the percentage and other task completion information.</li>
+<li>The second process is executed twice (once for chunk_aa and once for chunk_ab), which means two tasks.</li>
+<li>The result string from stdout is printed.</li>
+</ol>
+<p>** The hexadecimal numbers, like <code>96/fd5f07</code>, identify the unique process execution, that we call a task. These numbers are also the prefix of the directories where each task is executed. You can inspect the files produced by changing to the directory <code>$PWD/work</code> and using these numbers to find the task-specific execution path.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It’s worth noting that the process CONVERTTOUPPER is executed in parallel, so there’s no guarantee that the instance processing the first split (the chunk Hello ’) will be executed before the one processing the second split (the chunk ’world!).</p>
+<p>This means you might see</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>WORLD!</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>HELLO </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>on your screen.</p>
+</div>
+</div>
+</section>
+<section id="modify-and-resume" class="level2">
+<h2 class="anchored" data-anchor-id="modify-and-resume">Modify and resume:</h2>
+<p>Nextflow keeps track of all the processes executed in your workflow. If you modify some parts of your script, only the processes that are changed will be re-executed. The execution of the processes that are not changed will be skipped and the cached result will be used instead.</p>
+<p>This allows for testing or modifying part of your workflow without having to re-execute it from scratch.</p>
+<p>For the sake of this tutorial, modify the CONVERTTOUPPER process in the previous example, replacing the process script with the string <code>rev $y</code>, so that the process looks like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>process CONVERTTOUPPER {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">    input:</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">    path y</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="in">    output:</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="in">    stdout</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="in">    script:</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="in">    """</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="in">    rev $y</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="in">    """</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then, save the file with the same name, and execute it by adding the <code>-resume</code> option to the command line:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run hello.nf <span class="at">-resume</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You will see that the execution of the process SPLITLETTERS is skipped (the task ID is the same as in the first output) — its results are retrieved from the cache. The second process is executed as expected, printing the reversed strings.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quick side note on the cache:</p>
+<p>The workflow results are cached by default in the directory <code>$PWD/work</code>. Depending on your script, this folder can take up a lot of disk space. If you are sure you won’t need to resume your workflow execution, clean this folder periodically. We will get into the how to in a bit.</p>
+</div>
+</div>
+</section>
+<section id="workflow-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-parameters">Workflow parameters:</h2>
+<p>As we have seen workflow parameters are simply declared by prepending the prefix params to a variable name, separated by a dot character (e.g.&nbsp;params.greeting). Their value can alternatively be specified on the command line by prefixing the parameter name with a double dash character, i.e.&nbsp;<code>--paramName</code>.</p>
+<p>Now, let’s try to execute the previous example specifying a different input string parameter, as shown below:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run hello.nf <span class="at">-resume</span> <span class="at">--greeting</span> <span class="st">'Bonjour le monde!'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quick side note on configuration files and hierarchies:</p>
+<p>When a pipeline script is launched, Nextflow looks for configuration files in multiple locations. Since each configuration file can contain conflicting settings, the sources are ranked to determine which settings are applied. Possible configuration sources, in order of priority:</p>
+<ol type="1">
+<li>Parameters specified on the command line (–something value)</li>
+<li>Parameters provided using the -params-file option</li>
+<li>Config file specified using the -c my_config option</li>
+<li>The config file named nextflow.config in the current directory</li>
+<li>The config file named nextflow.config in the workflow project directory</li>
+<li>The config file $HOME/.nextflow/config</li>
+<li>Values defined within the pipeline script itself (e.g.&nbsp;main.nf)</li>
+</ol>
+<p>When more than one of these options for specifying configurations are used, they are merged, so that the settings in the first override the same settings appearing in the second, and so on.</p>
+</div>
+</div>
+</section>
+<section id="clean-up-nextflow" class="level2">
+<h2 class="anchored" data-anchor-id="clean-up-nextflow">Clean up Nextflow:</h2>
+<p>Periodically, it makes sense to clean up your nextflow working directory. You can do that manually, but the non-descriptive nature of the file system makes that difficult. Fortunately, Nextflow keeps track of your nextflow runs and their files.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>will show you the executions log and runtime information of all Nextflow runs executed from the current directory(!!).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> clean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>will clean up the project cache and the work directories. Specify the run name and option as explained <a href="https://www.nextflow.io/docs/latest/reference/cli.html#clean">here</a>.</p>
+<p>An example that cleans all runs before the named run and forces the clean up:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow clean <span class="at">-before</span> <span class="op">&lt;</span>RUN NAME<span class="op">&gt;</span> -f</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
