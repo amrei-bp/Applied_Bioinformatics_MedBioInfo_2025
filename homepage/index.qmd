@@ -32,10 +32,12 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 
 ### during the course:
 
+We will sometimes be sharing ideas, scripts etc. during the course. For this purpose, I have set up a page on HackMD that we all can access and edit: [living document at HackMD](https://hackmd.io/@amrei/SJoLZbphgl/edit). 
+
 
 | Day  | Session  |
 |--------|--------|
-| Monday  | [Welcome, introduction](course_intro.qmd)  |
+| Monday  | [Welcome, course setup](course_intro.qmd)  |
 |   | [Data Management & Reproducible Research](course_data_management.qmd)  |
 |   | [Using git collaboratively](course_git.qmd)  |
 |   | [Create a blog with Quarto](course_blog.qmd) |
@@ -46,7 +48,7 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 |   | [Introduction to containers](course_container.qmd)  |
 |   | [Using containers on your data](course_qc_container.qmd) |
 | Wednesday  | [Introduction to Nextflow](course_nextflow.qmd) |
-|   | Nextflow tutorial |
+|   | [Nextflow tutorial](course_nextflow_tutorial.qmd) |
 | Thursday   | [nf-core](course_nf-core.qmd) |
 |   | [Test a nf-core pipeline](course_test_nf-core.qmd)|
 |   | [Set up a nf-core pipeline](course_nf-core_rnaseq.qmd)  |
