@@ -79,6 +79,10 @@ website:
         contents:
           - text: Nextflow
             href: course_nextflow.qmd
+          - text: Nextflow basics
+            href: course_nextflow_tutorial.qmd
+          - text: Nextflow RNAseq
+            href: course_nextflow_rnaseq.qmd
       - section: "Pipelines"
         contents:
           - text: "nf-core"

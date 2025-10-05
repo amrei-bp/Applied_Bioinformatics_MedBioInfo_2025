@@ -48,7 +48,8 @@ We will sometimes be sharing ideas, scripts etc. during the course. For this pur
 |   | [Introduction to containers](course_container.qmd)  |
 |   | [Using containers on your data](course_qc_container.qmd) |
 | Wednesday  | [Introduction to Nextflow](course_nextflow.qmd) |
-|   | [Nextflow tutorial](course_nextflow_tutorial.qmd) |
+|   | [Nextflow basics](course_nextflow_tutorial.qmd) |
+|   | [Nextflow RNAseq](course_nextflow_rnaseq.qmd) |
 | Thursday   | [nf-core](course_nf-core.qmd) |
 |   | [Test a nf-core pipeline](course_test_nf-core.qmd)|
 |   | [Set up a nf-core pipeline](course_nf-core_rnaseq.qmd)  |
