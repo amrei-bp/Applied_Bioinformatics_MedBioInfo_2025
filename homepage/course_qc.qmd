@@ -213,7 +213,7 @@ srun -A project_ID -t 30:00 -n 1 <tool options and commands>
 We want to use FastQC on the samples, so we add the FastQC specific commands:
 
 ```{.bash}
-srun -A project_ID -t 15:00 -n 1 fastqc --noextract -o fastqc data data/sample_1.fastq.gz data/sample_2.fastq.gz 
+srun -A project_ID -t 15:00 -n 1 fastqc --noextract -o fastqc data/sample_1.fastq.gz data/sample_2.fastq.gz 
 ```
 
 You will of course have to modify for your project structure. 
