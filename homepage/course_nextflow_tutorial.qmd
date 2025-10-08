@@ -2,16 +2,21 @@
 title: "Nextflow tutorial"
 ---
 
-
-## create Pixi environment
+This material is adapted from the [https://training.nextflow.io/latest/](https://training.nextflow.io/latest/). 
 
 ## Training material
 
-To download the material, execute this command:
+The material for this training is available at
 
-git clone https://github.com/nextflow-io/training.git
+```{.bash}
+medbioinfo2025/common_data/nf-training
+```
 
-Then cd into the relevant directory. By default, that is hello-nextflow.
+::: {.callout-important}
+## To do for you
+Copy this folder into your course directory. 
+:::
+
 
 Basic concepts:
 
@@ -102,29 +107,27 @@ Nextflow is a Domain Specific Language (DSL) implemented as an extension of the 
 
 But remember: Each process can be written in any scripting language that can be executed by the Linux platform (Bash, Perl, Ruby, Python, etc.). This is done in the script part of the process.
 
-Your first script
+## Your first script
 
 Here you will execute your first Nextflow script (hello.nf), which we will go through line-by-line.
 
 In this toy example, the script takes an input string (a parameter called params.greeting) and splits it into chunks of six characters in the first process. The second process then converts the characters to upper case. The result is finally displayed on-screen.
 
-But first we need to retreive the files and set up the conda nextflow environment:
-Preparations:
-Start a screen session
-
-```{.bash}
-screen -S nextflow
-```
-
-Activate the pixi environment (if you haven't done so yet)
-
-```{.bash}
-pixi shell
-```
+But first we need to set up the Pixi nextflow environment.
 
 ::: {.callout-important}
 ## To do for you
-Check your nextflow version - which one are we using? Is it the same as you have specified in your Pixi environment?
+Start a screen session and initialize the Pixi environment:
+
+```{.bash}
+screen -S nextflow
+pixi init -c bioconda -c conda-forge
+```
+:::
+
+
+::: {.callout-note}
+How do we add nextflow to our environment?
 :::
 
 ## Nextflow code

@@ -1,5 +1,5 @@
 ---
-title: "nfcore RNAseq pipeline"
+title: "nf-core RNAseq pipeline"
 ---
 
 <br>

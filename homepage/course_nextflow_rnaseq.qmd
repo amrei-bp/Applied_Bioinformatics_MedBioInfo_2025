@@ -21,7 +21,7 @@ Though these tools may not be the ones you will use in your pipeline, they could
 
 ## Preparations
 
-If you haven't done so yet, copy the directory "nf-training" from the `common_data directory` into your personal directory. Change directory into it. 
+If you haven't done so yet, copy the directory "nf-training" from the `common_data` directory into your personal directory. Change directory into it. 
 
 ## Set the executor
 
@@ -225,61 +225,31 @@ Nextflow parallelizes the execution of your workflow simply by providing multipl
 Add the process specific runtime environment definition for QUANTIFICATION to nextflow.config.
 :::
 
+
 ## Quality control
 
-Next, we implement a FASTQC quality control step for your input reads (using the label fastqc). The inputs are the same as the read pairs used in the QUANTIFICATION step.
-
-You can run it by using the following command:
-
-```{.bash}
-pixi run nextflow run script5.nf
-```
-
-after adding the required containers (and publish directory) again.
+Now we want to add another process, using our beloved FastQC to check the samples. The input is the same as the read pairs used in the QUANTIFICATION step.
 
 ::: {.callout-important}
 ## To do for you
-- Where can you get a FastQC container?
-- How do you add it to the process?
+Sit together with your neighbour and first think 5 minutes what you need to do to implement this new process. 
+
+We will then discuss in class. 
 :::
 
-Nextflow DSL2 knows to split the reads_pair_ch into two identical channels as they are required twice as an input for both of the FASTQC and the QUANTIFICATION process.
+## MultiQC 
 
+This last step collects the outputs from the QUANTIFICATION and FASTQC processes to create a final report using MultiQC.
 
-## MultiQC report
+Again, what do you need to consider when adding this process to the pipeline?
 
-This step collects the outputs from the QUANTIFICATION and FASTQC processes to create a final report using the MultiQC tool.
+::: {.callout-tip}
 
-::: {.callout-important}
-## To do for you
-Look at script.6.nf. What does the new process do?
+We only want one task of MultiQC to be executed to produce one report. For this, it needs to wait for the report generating processes to stop. We can use the mix channel operator to combine the two channels followed by the collect operator, to return the complete channel contents as a single element.
+
+So the new line in the workflow scope looks like this: 
+
+> MULTIQC(quant_ch.mix(fastqc_ch).collect())
 :::
 
-Add the containers:
 
-```{.bash}
-    container 'https://depot.galaxyproject.org/singularity/multiqc:1.14--pyhdfd78af_0'
-    publishDir "$params.outdir/multiqc", mode:'copy'
-```
-
-And run on all samples with the following command:
-
-```{.bash}
-pixi run nextflow run script6.nf --reads 'data/ggal/*_{1,2}.fq' 
-```
-
-It creates the final report in the results folder in the current work directory.
-
-In this script, note the use of the `mix` and `collect` operators chained together to gather the outputs of the QUANTIFICATION and FASTQC processes as a single input. Operators can be used to combine and transform channels:
-
-
-```{.bash}
-MULTIQC(quant_ch.mix(fastqc_ch).collect()) 
-```
-
-We only want one task of MultiQC to be executed to produce one report. Therefore, we use the mix channel operator to combine the two channels followed by the collect operator, to return the complete channel contents as a single element.
-
-::: {.callout-important}
-## To do for you
-Take a breather!
-:::
