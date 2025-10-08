@@ -157,6 +157,16 @@ apptainer shell -B outside/path:inside/path <name-of-container>
 
 In the above, we bind in the outside/path (which could be ../data) and makes it accessible within the container as inside/path (which could be plain /data).
 
+::: {.callout-note}
+You can try out the binding from outside the container too: 
+
+```{.bash}
+apptainer exec -B ../data:/rawdata ../containers/fastqc:0.12.1.sif ls /rawdata
+```
+
+Will list the contents of `../data`, even though it's being called on as `rawdata`. 
+:::
+
 To exit the container, simply type and enter `exit`. 
 
 ### Running containers with sbatch
@@ -171,7 +181,7 @@ Let's go back to our `FastQC` sbatch script and add the container:
 #SBATCH -t 30:00
 #SBATCH -n 1
 
-apptainer exec -B ../data:data fastqc -o . --noextract data/*fastq.gz
+apptainer exec container_image.sif fastqc -o . --noextract ../data/*fastq.gz
 ```
 
 ::: {.callout-important}
