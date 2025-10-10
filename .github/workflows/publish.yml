@@ -31,6 +31,7 @@ jobs:
             any::patchwork
             any::plotly
             any::ggiraph
+            any::pacman
 
       # set up Quarto and render
       - name: Set up Quarto
