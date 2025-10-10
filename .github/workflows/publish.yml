@@ -32,6 +32,7 @@ jobs:
             any::plotly
             any::ggiraph
             any::pacman
+          cache-version: 1
 
       # set up Quarto and render
       - name: Set up Quarto
