@@ -158,7 +158,7 @@ Alternatively, you can run nextflow via pixi using a batch script and slurm: cop
 #SBATCH -n 5
 #SBATCH -t 24:00:00
 
-/your_home_directory/.pixi/bin/pixi run nextflow run nf-core/rnaseq -r 3.19.0 -params-file /your_path/nf-params.json
+/your_home_directory/.pixi/bin/pixi run nextflow run nf-core/rnaseq -r 3.19.0 -params-file /your_path/nf-params.json -c server.config
 ```
 
 And then submit it to slurm with 
