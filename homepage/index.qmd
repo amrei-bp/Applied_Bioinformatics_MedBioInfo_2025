@@ -32,9 +32,6 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 
 ### during the course:
 
-We will sometimes be sharing ideas, scripts etc. during the course. For this purpose, I have set up a page on HackMD that we all can access and edit: [living document at HackMD](https://hackmd.io/@amrei/SJoLZbphgl/edit). 
-
-
 | Day  | Session  |
 |--------|--------|
 | Monday  | [Welcome, course setup](course_intro.qmd)  |
